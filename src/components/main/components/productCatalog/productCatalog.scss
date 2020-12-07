@@ -1,0 +1,22 @@
+.product-catalog__heading {
+    margin: 5vw;
+    margin-bottom: 2.5vw;
+    color: rgb(26, 30, 40);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 130%;
+    text-align: center;
+}
+.product-catalog {
+    display: flex;
+    flex-direction: row;
+    margin: 0vw 5vw;
+    padding: 2.5vw;
+    background-color: rgb(235, 235, 235);
+    .product-list {
+        display: flex;
+        flex-direction: row;
+        flex-basis: 75%;
+        flex-wrap: wrap;
+    }
+}

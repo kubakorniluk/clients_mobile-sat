@@ -1,0 +1,106 @@
+.filter-panel {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 25%;
+    background-color: rgb(255, 255, 255);
+    margin: 1vw;
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5vw;
+        .header__title {
+            margin: 0;
+            color: rgb(26, 30, 40);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 130%;
+            text-align: left;
+        }
+        .header__toggle {
+            color: rgb(26, 30, 40);
+            border: none;
+            background-color: transparent;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 130%;
+            cursor: pointer;
+            transition: 0.5s;
+
+        }
+        .header__toggle:focus {
+            outline: 0;
+        }
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        transition: 0.5s;
+        .filter-by-price, .filter-by-category {
+            display: flex;
+            padding: 0 .75vw .75vw .75vw;
+            margin: .75vw 1.5vw;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 100%;
+            font-weight: 300;
+            border: 1px solid rgb(200, 200, 200);
+        }
+        .filter-by-category {
+            display: flex;
+            flex-direction: column;
+        }
+        .fieldset__name {
+            padding: 0 .75vw;
+            margin-bottom: 0.5vw;
+            font-family: 'Poppins', sans-serif;
+            font-size: 110%;
+            font-weight: 400;
+        }
+        .fieldset__label {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .filter-by-price__input {
+            display: block;
+            width: 80%;
+            border: 1px solid rgb(200, 200, 200);
+            border-radius: 0;
+            padding: .5vw;
+            font-family: 'Poppins', sans-serif;
+        }
+        .filter-by-price__separator {
+            display: block;
+            padding: 1vw;
+        }
+        .filter-by-category__input {
+            border: 1px solid rgb(26, 30, 40);
+            border-radius: none;
+            margin-right: 1vw;
+        }
+        .content__filter {
+            margin: .75vw 1.5vw;
+            padding: 1vw;
+            color: rgb(255, 255, 255);
+            border: .5px solid rgb(26, 30, 40);
+            background-color: rgb(26, 30, 40);
+            font-family: 'Poppins', sans-serif;
+            font-size: 100%;
+            font-weight: 300;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .content__filter:hover {
+            color: rgb(26, 30, 40);
+            background-color: rgb(255, 255, 255);
+        }
+        .content__filter:focus {
+            outline: 0;
+        }
+
+    }
+}

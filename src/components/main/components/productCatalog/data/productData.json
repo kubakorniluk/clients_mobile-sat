@@ -1,0 +1,32 @@
+[
+    {
+        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "name": "Opaska v2",
+        "category": "Opaski",
+        "price": 49.00
+    },
+    {
+        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "name": "Zegarek Tissot",
+        "category": "Zegarki",
+        "price": 1659.99
+    },
+    {
+        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "name": "Maseczka White",
+        "category": "Maseczki",
+        "price": 9.99
+    },
+    {
+        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "name": "Opaska XS",
+        "category": "Opaski",
+        "price": 29.99
+    },
+    {
+        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "name": "Maseczka Gucci",
+        "category": "Maseczki",
+        "price": 99.99
+    }
+]
