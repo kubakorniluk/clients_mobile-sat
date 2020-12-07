@@ -10,13 +10,13 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5vw;
+        padding: 1.5vw 1.75vw 0.75vw 1.75vw;
         .header__title {
             margin: 0;
             color: rgb(26, 30, 40);
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
-            font-size: 130%;
+            font-size: 100%;
             text-align: left;
         }
         .header__toggle {
@@ -25,7 +25,7 @@
             background-color: transparent;
             font-family: 'Poppins', sans-serif;
             font-weight: 400;
-            font-size: 130%;
+            font-size: 115%;
             cursor: pointer;
             transition: 0.5s;
 
@@ -42,7 +42,7 @@
         .filter-by-price, .filter-by-category {
             display: flex;
             padding: 0 .75vw .75vw .75vw;
-            margin: .75vw 1.5vw;
+            margin: .75vw 1.75vw;
             border: none;
             font-family: 'Poppins', sans-serif;
             font-size: 100%;
@@ -57,13 +57,14 @@
             padding: 0 .75vw;
             margin-bottom: 0.5vw;
             font-family: 'Poppins', sans-serif;
-            font-size: 110%;
+            font-size: 95%;
             font-weight: 400;
         }
         .fieldset__label {
             display: flex;
             flex-direction: row;
             align-items: center;
+            font-size: 90%;
         }
         .filter-by-price__input {
             display: block;
@@ -83,13 +84,13 @@
             margin-right: 1vw;
         }
         .content__filter {
-            margin: .75vw 1.5vw;
+            margin: .75vw 1.75vw;
             padding: 1vw;
             color: rgb(255, 255, 255);
             border: .5px solid rgb(26, 30, 40);
             background-color: rgb(26, 30, 40);
             font-family: 'Poppins', sans-serif;
-            font-size: 100%;
+            font-size: 95%;
             font-weight: 300;
             cursor: pointer;
             transition: 0.5s;

@@ -7,13 +7,13 @@
     },
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        "name": "Zegarek Tissot",
+        "name": "Zegarek 4",
         "category": "Zegarki",
         "price": 1659.99
     },
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        "name": "Maseczka White",
+        "name": "Maseczka 1",
         "category": "Maseczki",
         "price": 9.99
     },
@@ -25,7 +25,7 @@
     },
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        "name": "Maseczka Gucci",
+        "name": "Mefedron",
         "category": "Maseczki",
         "price": 99.99
     }
