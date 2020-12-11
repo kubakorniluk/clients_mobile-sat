@@ -4,7 +4,7 @@
         display: block;
         width: auto;
         height: 50vh;
-        margin: 0vw 5vw;
+        margin: 0 5vw 5vw 5vw;
         background-image: url("https://images.pexels.com/photos/327540/pexels-photo-327540.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
         background-size: cover;
         background-position: center;
@@ -23,17 +23,40 @@
                     color: rgb(255, 255, 255);
                     font-family: 'Poppins', sans-serif;
                     font-weight: 400;
-                    font-size: 110%;
+                    font-size: 130%;
                 }
                 .text__subtitle {
                     margin-bottom: 0;
                     color: rgb(255, 255, 255);
                     font-family: 'Poppins', sans-serif;
                     font-weight: 300;
-                    font-size: 100%;
+                    font-size: 110%;
                     width: 75%;
                 }
             }
         }
+    }
+}
+@media only screen and (min-width: 576px) { 
+    .text__title {
+        font-size: 110%;
+    }
+}
+
+@media only screen and (min-width: 768px) { 
+    .text__title {
+        font-size: 115%;
+    }
+}
+
+@media only screen and (min-width: 992px) { 
+    .text__title {
+        font-size: 120%;
+    }
+}
+
+@media only screen and (min-width: 1200px) { 
+    .text__title {
+        font-size: 125%;
     }
 }

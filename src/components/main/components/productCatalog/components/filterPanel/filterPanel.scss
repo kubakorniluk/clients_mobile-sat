@@ -1,22 +1,20 @@
 .filter-panel {
-    height: auto;
     display: flex;
     flex-direction: column;
     flex-basis: 25%;
+    padding: 1vw 1.5vw;
     background-color: rgb(255, 255, 255);
-    margin: 1vw;
     .header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5vw 1.75vw 0.75vw 1.75vw;
         .header__title {
             margin: 0;
             color: rgb(26, 30, 40);
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
-            font-size: 100%;
+            font-size: 115%;
             text-align: left;
         }
         .header__toggle {
@@ -37,15 +35,15 @@
     .content {
         display: flex;
         flex-direction: column;
-        height: auto;
         transition: 0.5s;
         .filter-by-price, .filter-by-category {
             display: flex;
-            padding: 0 .75vw .75vw .75vw;
-            margin: .75vw 1.75vw;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 0 1vw 1vw 1vw;
+            margin: 1vw 0;
             border: none;
             font-family: 'Poppins', sans-serif;
-            font-size: 100%;
             font-weight: 300;
             border: 1px solid rgb(200, 200, 200);
         }
@@ -57,26 +55,27 @@
             padding: 0 .75vw;
             margin-bottom: 0.5vw;
             font-family: 'Poppins', sans-serif;
-            font-size: 95%;
+            font-size: 105%;
             font-weight: 400;
         }
         .fieldset__label {
             display: flex;
             flex-direction: row;
             align-items: center;
-            font-size: 90%;
+            font-size: 95%;
         }
         .filter-by-price__input {
             display: block;
-            width: 80%;
+            width: 75%;
+            background-color: transparent;
             border: 1px solid rgb(200, 200, 200);
             border-radius: 0;
             padding: .5vw;
             font-family: 'Poppins', sans-serif;
         }
         .filter-by-price__separator {
-            display: block;
-            padding: 1vw;
+            font-weight: 400;
+            padding: 0 1vw;
         }
         .filter-by-category__input {
             border: 1px solid rgb(26, 30, 40);
@@ -84,13 +83,13 @@
             margin-right: 1vw;
         }
         .content__filter {
-            margin: .75vw 1.75vw;
+            margin: .75vw 0;
             padding: 1vw;
             color: rgb(255, 255, 255);
             border: .5px solid rgb(26, 30, 40);
             background-color: rgb(26, 30, 40);
             font-family: 'Poppins', sans-serif;
-            font-size: 95%;
+            font-size: 105%;
             font-weight: 300;
             cursor: pointer;
             transition: 0.5s;

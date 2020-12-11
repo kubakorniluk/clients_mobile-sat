@@ -1,54 +1,68 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import FilterPanel from './components/filterPanel/filterPanel'
-import Product from './components/product/product';
 import './productCatalog.scss';
 class ProductCatalog extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: true,
-            data: [],
+            productData: [],
             filter: filter => filter
         }
         this.importData = this.importData.bind(this);
-        this.filterByPrice = this.filterByPrice.bind(this)
+        this.changeState = this.changeState.bind(this);
     }
     componentDidMount() {
         this.importData(this.state.filter);
+    }
+    componentDidUpdate(prevState) {
+        if(prevState.filter !== prevState.filter) {
+            this.importData(this.state.filter)
+        }
     }
     importData(filter) {
         import('./data/productData.json')
         .then(json => 
             this.setState({
-                isLoading: false,
-                data: json.default.filter(filter)
+                productData: json.default.filter(filter)
             })
         );
     }
-    filterByPrice(price) {
-        this.setState({
-            filter: price
-        })
+    changeState(x) {
+        this.setState(prevState({
+            productData: x(prevState.productData)
+        }))
     }
     render() {
+        const Product = React.lazy(() => import('./components/product/product'));
+        const loading = <h1>Ładowanie produktów...</h1>
+
+        const heading  = (
+            <div className="products__header">
+                <h1 className="product-catalog__heading">Produkty</h1>
+            </div>  
+        )
         return (
             <React.Fragment>
-                <h1 className="product-catalog__heading">Produkty</h1>
                 <section className="product-catalog">
-                    <FilterPanel categories={this.state.data.map(c => c.category)}/>
+                    <FilterPanel  changeState={this.changeState} categories={this.state.productData.map(c => c.category)}/>
                     <div className="product-list">
-                        {
-                            this.state.data.map((item, index) => { 
-                                return (
-                                    <Product 
-                                        img={item.img} 
-                                        name={item.name} 
-                                        price={item.price} 
-                                        key={index}
-                                    />
-                                )
-                            })
-                        }
+                        {heading}
+                        <div className="products">
+                            <Suspense fallback={loading}>
+                                {
+                                    this.state.productData.map((item, index) => { 
+                                        return (
+                                            <Product 
+                                                img={item.img}
+                                                name={item.name}
+                                                price={item.price}
+                                                key={index}
+                                            />
+                                        )
+                                    })
+                                }
+                            </Suspense>
+                        </div>
                     </div>
                 </section>
             </React.Fragment>

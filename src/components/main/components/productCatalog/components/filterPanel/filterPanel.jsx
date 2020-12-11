@@ -5,18 +5,26 @@ class FilterPanel extends React.Component {
         super(props);
         this.state = {
             toggle: true,
-            priceFrom: 0,
-            priceTo: 0
+            priceFrom: "",
+            priceTo: ""
         }
         this.togglePanel = this.togglePanel.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     togglePanel() {
         this.setState(prevState => ({
             toggle: !prevState.toggle
         }))
     }
-    filter() {
-        return(null)
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+    handleSubmit(event) {
+        event.preventDefault();
+        this.props.changeState(a => a >= parseInt(this.state.priceFrom))
     }
     render() {
         const contentStyleShow = {
@@ -33,24 +41,34 @@ class FilterPanel extends React.Component {
                     <button 
                         className="header__toggle"
                         onClick={this.togglePanel}
-                    >{this.state.toggle ? <span>&#11167;</span> : <span>&#11165;</span>}</button>
+                    >{this.state.toggle ? <span>&#11165;</span> : <span>&#11167;</span>}</button>
                 </div>
                 {
-                    <div className="content" style={this.state.toggle ? contentStyleShow : contentStyleHide}>
+                    <form 
+                        className="content" 
+                        style={
+                            this.state.toggle ? contentStyleShow : contentStyleHide
+                        }
+                        onSubmit={this.handleSubmit}
+                    >
                         <fieldset className="filter-by-price">
                             <legend className="fieldset__name">Cena</legend>
                             <input 
                                 type="number"
+                                name="priceFrom"
                                 placeholder="Od" 
-                                // value={this.state.priceFrom}
                                 className="filter-by-price__input"
+                                value={this.state.priceFrom}
+                                onChange={this.handleChange}
                             />
                             <span className="filter-by-price__separator">-</span>
                             <input 
                                 type="number" 
+                                name="priceTo"
                                 placeholder="Do"
                                 className="filter-by-price__input"
-                                // value={this.state.priceTo}
+                                value={this.state.priceTo}
+                                onChange={this.handleChange}
                             />
                         </fieldset>
                         <fieldset className="filter-by-category">
@@ -76,8 +94,12 @@ class FilterPanel extends React.Component {
                                 }
                             )}
                         </fieldset>
-                        <button className="content__filter" onClick={this.filter}>Filtruj</button>
-                    </div>
+                        <button 
+                            type="submit"
+                            className="content__filter" 
+                            >Filtruj
+                        </button>
+                    </form>
                 }
             </div>
         );

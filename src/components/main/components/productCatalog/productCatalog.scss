@@ -1,22 +1,31 @@
 .product-catalog__heading {
-    margin: 5vw;
-    margin-bottom: 2.5vw;
+    padding: 1vw 1.5vw;
+    margin: 0;
     color: rgb(26, 30, 40);
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 115%;
-    text-align: center;
+    text-align: left;
 }
 .product-catalog {
     display: flex;
     flex-direction: row;
-    margin: 0vw 5vw;
+    align-items: flex-start;
+    margin: 0 5vw;
     padding: 2.5vw;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(242, 242, 242);
     .product-list {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-basis: 75%;
-        flex-wrap: wrap;
+        .products {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .products__header {
+            background-color: rgb(255, 255, 255);
+            margin: 0 0 2vw 2vw;
+        }
     }
 }
