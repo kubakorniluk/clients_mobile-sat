@@ -1,8 +1,8 @@
 import React from 'react';
 import './navbar.scss';
-function Navbar() {
-    const LOGO = <h1 className="navbar__logo">Mobile Sat</h1>
-    const MENU = (
+const Navbar = () => {
+    const logo = <h1 className="navbar__logo">Mobile Sat</h1>
+    const menuDesktop = (
         <ul className="menu">
             <li className="menu__item">Strona główna</li>
             <li className="menu__item">Nowości</li>
@@ -12,8 +12,8 @@ function Navbar() {
     )
     return (
         <nav className="navbar">
-            {LOGO}
-            {MENU}
+            {logo}
+            {menuDesktop}
         </nav>
     );
 }

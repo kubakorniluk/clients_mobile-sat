@@ -1,12 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
+import Fieldset from '../../../../../fieldset/fieldset';
+import Input from '../../../../../input/input' ;
+import Button from '../../../../../button/button';
 import './filterPanel.scss';
-class FilterPanel extends React.Component {
+
+const contentStyleShow = {
+    display: 'flex'
+} 
+const contentStyleHide = {
+    display: 'none'
+}
+
+class FilterPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
             toggle: true,
-            priceFrom: "",
-            priceTo: ""
+            priceFrom: '',
+            priceTo: ''
         }
         this.togglePanel = this.togglePanel.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -24,81 +35,67 @@ class FilterPanel extends React.Component {
     }
     handleSubmit(event) {
         event.preventDefault();
-        this.props.changeState(a => a >= parseInt(this.state.priceFrom))
+        alert(`Od ${this.state.priceFrom} do ${this.state.priceTo}`);
     }
     render() {
-        const contentStyleShow = {
-            display: 'flex'
-        } 
-        const contentStyleHide = {
-            display: 'none'
-        }
         const categories = [...new Set(this.props.categories)];
         return (
             <div className="filter-panel">
                 <div className="header">
                     <h1 className="header__title">Filtry</h1>
-                    <button 
-                        className="header__toggle"
+                    <Button 
+                        type='button' 
+                        text={this.state.toggle ? <span>&#11165;</span> : <span>&#11167;</span>}
+                        className='header__toggle'
                         onClick={this.togglePanel}
-                    >{this.state.toggle ? <span>&#11165;</span> : <span>&#11167;</span>}</button>
+                    />
                 </div>
                 {
                     <form 
                         className="content" 
-                        style={
-                            this.state.toggle ? contentStyleShow : contentStyleHide
-                        }
+                        style={this.state.toggle ? contentStyleShow : contentStyleHide}
                         onSubmit={this.handleSubmit}
                     >
-                        <fieldset className="filter-by-price">
-                            <legend className="fieldset__name">Cena</legend>
-                            <input 
-                                type="number"
-                                name="priceFrom"
-                                placeholder="Od" 
-                                className="filter-by-price__input"
-                                value={this.state.priceFrom}
-                                onChange={this.handleChange}
+                        <Fieldset title='Cena'>
+                            <Input 
+                                type='number'
+                                name='priceFrom' 
+                                value={this.state.priceFrom} 
+                                onChange={this.handleChange} 
+                                placeholder='Od'
                             />
                             <span className="filter-by-price__separator">-</span>
-                            <input 
-                                type="number" 
-                                name="priceTo"
-                                placeholder="Do"
-                                className="filter-by-price__input"
-                                value={this.state.priceTo}
-                                onChange={this.handleChange}
+                            <Input 
+                                type='number' 
+                                name='priceTo' 
+                                value={this.state.priceTo} 
+                                onChange={this.handleChange} 
+                                placeholder='Do'
                             />
-                        </fieldset>
-                        <fieldset className="filter-by-category">
-                            <legend className="fieldset__name">Kategorie</legend>
-                            <label htmlFor="" className="fieldset__label"> 
-                                <input 
-                                    type="checkbox" 
-                                    id="" 
-                                    className="filter-by-category__input"
-                                />Wszystkie
-                            </label>
+                        </Fieldset>
+                        <Fieldset title='Kategorie'>
+                            <Input
+                                label={true}
+                                labelText='Wszystkie'
+                                type='checkbox'
+                                name='categoriesAll'
+                                 
+                            />
                             {categories.map(
                                 (category, index) => {
                                     return (
-                                        <label key={index} htmlFor="" className="fieldset__label"> 
-                                            <input 
-                                                type="checkbox" 
-                                                id="" 
-                                                className="filter-by-category__input"
-                                            />{category}
-                                        </label>
+                                        <Input
+                                            key={index}
+                                            label={true}
+                                            labelText={category}
+                                            name={category}
+                                            type='checkbox'
+                                        />
                                     )
                                 }
                             )}
-                        </fieldset>
-                        <button 
-                            type="submit"
-                            className="content__filter" 
-                            >Filtruj
-                        </button>
+                        </Fieldset>
+                        <Button type='submit' text='Filtruj' />
                     </form>
                 }
             </div>

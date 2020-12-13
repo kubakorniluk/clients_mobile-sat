@@ -1,6 +1,6 @@
 import React from 'react';
 import './product.scss';
-function Product(props) {
+const Product = (props) => {
     return (
         <div className="card">
             <img  className="card__img" src={props.img} alt=""/>
