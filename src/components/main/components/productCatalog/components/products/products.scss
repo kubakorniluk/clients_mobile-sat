@@ -1,0 +1,30 @@
+.products {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .card {
+        background-color: rgb(255, 255, 255);
+        border: 2.5px solid  rgb(255, 255, 255);
+        width: calc(100%/3 - 2vw);
+        cursor: pointer;
+        margin: 0vw 0vw 2vw 2vw;
+        transition: 0.5s;
+        .card__img {
+            width: 100%;
+        }
+        .content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 1vw;
+            .content__title, .content__price {
+                margin: 0;
+                color: rgb(26, 30, 40);
+                font-family: 'Poppins', sans-serif;
+                font-size: 110%;
+                font-weight: 400;
+    
+            }
+        }
+    }
+}

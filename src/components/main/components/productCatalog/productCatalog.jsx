@@ -31,7 +31,7 @@ class ProductCatalog extends Component {
         );
     }
     render() {
-        const Product = React.lazy(() => import('./components/product/product'));
+        const Products = React.lazy(() => import('./components/products/products'));
         const loading = <h1>Ładowanie produktów...</h1>
 
         const heading = (
@@ -44,22 +44,9 @@ class ProductCatalog extends Component {
                 <FilterPanel categories={this.state.productsData.map(cat => cat.category)}/>
                 <div className="product-list">
                     {/* {heading} */}
-                    <div className="products">
-                        <Suspense fallback={loading}>
-                            {
-                                this.state.productsData.map((item, index) => { 
-                                    return (
-                                        <Product 
-                                            img={item.img}
-                                            name={item.name}
-                                            price={item.price}
-                                            key={index}
-                                        />
-                                    )
-                                })
-                            }
-                        </Suspense>
-                    </div>
+                    <Suspense fallback={loading}>
+                        <Products products={this.state.productsData} />
+                    </Suspense>
                 </div>
             </section>
         );

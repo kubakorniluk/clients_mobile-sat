@@ -15,11 +15,6 @@
         display: flex;
         flex-direction: column;
         flex-basis: 75%;
-        .products {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
         .products__header {
             background-color: rgb(255, 255, 255);
             margin: 0 0 2vw 2vw;

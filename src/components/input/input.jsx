@@ -22,12 +22,10 @@ const Input = ({
         />
     )
     const inputWithLabel = (
-        <>
-            <label htmlFor={name} className="form__label">
-                {labelText}
-            </label>
+        <label htmlFor={name} className="form__label">
             {input}
-        </>
+            {labelText}
+        </label>
     )
     return label ? inputWithLabel : input;
 }

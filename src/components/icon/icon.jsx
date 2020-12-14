@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import * as fa from '@fortawesome/free-solid-svg-icons';
+import * as fas from '@fortawesome/free-solid-svg-icons';
+import * as fab from '@fortawesome/free-brands-svg-icons';
 import './icon.scss';
 
 const Icon = ({
@@ -10,10 +11,10 @@ const Icon = ({
     action
 }) => {
 
-    library.add(fa[name]);
+    library.add(fas[name]);
     return (
         <i className="icon" onClick={action}>
-            <FontAwesomeIcon icon={fa[name]} />
+            <FontAwesomeIcon icon={fas[name]} />
         </i>
     );
 }

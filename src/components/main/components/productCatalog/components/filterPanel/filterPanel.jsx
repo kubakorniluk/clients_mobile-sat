@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Fieldset from '../../../../../fieldset/fieldset';
 import Input from '../../../../../input/input' ;
 import Button from '../../../../../button/button';
+import Icon from '../../../../../icon/icon';
 import './filterPanel.scss';
 
 const showContent = {
@@ -45,7 +46,7 @@ class FilterPanel extends Component {
                     <h1 className="header__title">Filtry</h1>
                     <Button 
                         type='button' 
-                        text={this.state.toggle ? <span>&#11165;</span> : <span>&#11167;</span>}
+                        text={<Icon name={this.state.toggle ? 'faCaretUp' : 'faCaretDown'}/>}
                         className='header__toggle'
                         onClick={this.togglePanel}
                     />
