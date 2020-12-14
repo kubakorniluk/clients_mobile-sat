@@ -4,8 +4,7 @@ import './menu.scss';
 
 const Menu = ({
     screen, 
-    cta,
-    style
+    cta
 }) => {
     const menu = (
         <ul className={`menu menu--${screen}`}>
@@ -15,27 +14,12 @@ const Menu = ({
             <li className={`menu__item ${cta ? 'menu__item--cta' : null}`}>Kontakt</li>
         </ul>
     )
-    if(screen === 'mobile') {
-        return (
-            <aside
-                className="sidebar" 
-                style={ style }
-            >
-                {menu}
-            </aside>
-        )
-    } 
     return menu;
 }
 
 export default Menu;
 
-Menu.defaultProps = {
-    style: ''
-}
-
 Menu.propTypes = {
     screen: PropTypes.string.isRequired,
-    cta: PropTypes.bool.isRequired,
-    style: PropTypes.any
+    cta: PropTypes.bool.isRequired
 }

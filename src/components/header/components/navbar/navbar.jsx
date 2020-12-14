@@ -1,5 +1,6 @@
 import React, { Component, Suspense } from 'react';
-import Button from '../../../button/button';
+import Menu from './components/menu/menu';
+import Icon from '../../../icon/icon'
 import './navbar.scss';
 
 const showSidebar = {
@@ -24,28 +25,20 @@ class Navbar extends Component {
         }))
     }
     render() {
-        const Menu = React.lazy(() => import('./components/menu/menu'));
-        const menuMobile = (
+        const MobileMenu = React.lazy(() => import('./components/mobileMenu/mobileMenu'));
+        const mobile = (
             <>
-                <Button 
-                    type='button'
-                    text='&#9776;'
-                    className=''
-                    onClick={this.handleClick}
-                />
+                <Icon name='faBars' action={this.handleClick} />
                 <Suspense fallback={null}>
-                    <Menu 
-                        style={this.state.toggle ? showSidebar : hideSidebar} 
-                        screen='mobile' 
-                        cta={false} 
-                    />
+                    <MobileMenu toggle={this.state.toggle ? showSidebar : hideSidebar}/>
                 </Suspense>
             </>
         )
+        const desktop = <Menu screen='desktop' cta={true} />
         return (
             <nav className="navbar">
                 <h1 className="navbar__logo">Mobile Sat</h1>
-                { (this.state.screenWidth < 768) ? <Menu screen='desktop' cta={true} /> : menuMobile }
+                { (this.state.screenWidth < 768) ?  desktop : mobile }
             </nav>
         );
     }
