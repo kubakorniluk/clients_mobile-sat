@@ -4,10 +4,10 @@ import Input from '../../../../../input/input' ;
 import Button from '../../../../../button/button';
 import './filterPanel.scss';
 
-const contentStyleShow = {
+const showContent = {
     display: 'flex'
 } 
-const contentStyleHide = {
+const hideContent = {
     display: 'none'
 }
 
@@ -40,7 +40,7 @@ class FilterPanel extends Component {
     render() {
         const categories = [...new Set(this.props.categories)];
         return (
-            <div className="filter-panel">
+            <aside className="filter-panel">
                 <div className="header">
                     <h1 className="header__title">Filtry</h1>
                     <Button 
@@ -53,7 +53,7 @@ class FilterPanel extends Component {
                 {
                     <form 
                         className="content" 
-                        style={this.state.toggle ? contentStyleShow : contentStyleHide}
+                        style={this.state.toggle ? showContent : hideContent}
                         onSubmit={this.handleSubmit}
                     >
                         <Fieldset title='Cena'>
@@ -62,7 +62,7 @@ class FilterPanel extends Component {
                                 name='priceFrom' 
                                 value={this.state.priceFrom} 
                                 onChange={this.handleChange} 
-                                placeholder='Od'
+                                placeholder='Od'    
                             />
                             <span className="filter-by-price__separator">-</span>
                             <Input 
@@ -73,13 +73,12 @@ class FilterPanel extends Component {
                                 placeholder='Do'
                             />
                         </Fieldset>
-                        <Fieldset title='Kategorie'>
+                        <Fieldset title='Kategorie' className='filter-by-category'>
                             <Input
                                 label={true}
                                 labelText='Wszystkie'
                                 type='checkbox'
                                 name='categoriesAll'
-                                 
                             />
                             {categories.map(
                                 (category, index) => {
@@ -98,7 +97,7 @@ class FilterPanel extends Component {
                         <Button type='submit' text='Filtruj' />
                     </form>
                 }
-            </div>
+            </aside>
         );
     }
 }

@@ -1,5 +1,4 @@
 .product-catalog__heading {
-    padding: 1vw 1.5vw;
     margin: 0;
     color: rgb(26, 30, 40);
     font-family: 'Poppins', sans-serif;
@@ -12,8 +11,6 @@
     flex-direction: row;
     align-items: flex-start;
     margin: 0 5vw;
-    padding: 2.5vw;
-    background-color: rgb(242, 242, 242);
     .product-list {
         display: flex;
         flex-direction: column;

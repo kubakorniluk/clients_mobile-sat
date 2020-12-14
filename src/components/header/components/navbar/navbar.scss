@@ -12,34 +12,4 @@
         font-size: 130%;
         color: rgb(26, 30, 40);
     }
-    .menu {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        .menu__item {
-            font-size: 105%;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 400;
-            color: rgb(26, 30, 40);
-            margin: 0 1.75vw;
-            position: relative;
-            cursor: pointer;
-        }
-        .menu__item:last-of-type {
-            margin-right: 0;
-            color: rgb(255, 255, 255);
-            padding: .75vw 1.5vw;
-            border: 1px solid rgb(26, 30, 40);
-            background-color: rgb(26, 30, 40);
-            cursor: pointer;
-            transition: 0.5s;
-        }
-        .menu__item:last-of-type:hover {
-            background-color: rgb(255, 255, 255);
-            color:rgb(26, 30, 40);
-        }
-    }
 }

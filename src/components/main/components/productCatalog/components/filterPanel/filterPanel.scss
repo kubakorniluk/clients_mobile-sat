@@ -3,12 +3,13 @@
     flex-direction: column;
     flex-basis: 25%;
     padding: 1vw 1.5vw;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(242, 242, 242);
     .header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        padding-bottom: 0;
         .header__title {
             margin: 0;
             color: rgb(26, 30, 40);
@@ -37,7 +38,7 @@
     .content {
         display: flex;
         flex-direction: column;
-        transition: 0.5s;
+        transition: 0.75s;
         .filter-by-price__separator {
             font-weight: 400;
             padding: 0 1vw;

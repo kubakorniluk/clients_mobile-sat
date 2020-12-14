@@ -29,9 +29,7 @@ const Input = ({
             {input}
         </>
     )
-    return (
-        label ? inputWithLabel : input  
-    );
+    return label ? inputWithLabel : input;
 }
 export default Input;
 

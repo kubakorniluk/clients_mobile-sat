@@ -2,14 +2,21 @@ import React, { Component, Suspense} from 'react';
 import FilterPanel from './components/filterPanel/filterPanel'
 import './productCatalog.scss';
 class ProductCatalog extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            productData: []
+            productsData: [],
+            productsCount: 0,
+            viewedProducts: 5
         }
         this.importData = this.importData.bind(this);
     }
-    componentDidMount() { this.importData(this.state.filter) }
+    componentDidMount() {
+        this.importData();
+        this.setState((state) => ({
+            productsCount: state.productsData.length
+        }))
+    }
     componentDidUpdate(prevState) {
         if(prevState.filter !== prevState.filter) {
             this.importData()
@@ -18,9 +25,9 @@ class ProductCatalog extends Component {
     importData(filter) {
         import('./data/productData.json')
         .then(json => 
-            this.setState({
-                productData: json.default
-            })
+            this.setState(state => ({
+                productsData: json.default.slice(state.productsCount, state.viewedProducts)
+            }))
         );
     }
     render() {
@@ -34,13 +41,13 @@ class ProductCatalog extends Component {
         )
         return (
             <section className="product-catalog">
-                <FilterPanel categories={this.state.productData.map(cat => cat.category)}/>
+                <FilterPanel categories={this.state.productsData.map(cat => cat.category)}/>
                 <div className="product-list">
-                    {heading}
+                    {/* {heading} */}
                     <div className="products">
                         <Suspense fallback={loading}>
                             {
-                                this.state.productData.map((item, index) => { 
+                                this.state.productsData.map((item, index) => { 
                                     return (
                                         <Product 
                                             img={item.img}

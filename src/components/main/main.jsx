@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductCatalog from './components/productCatalog/productCatalog';
 import './main.scss';
-function Main() {
+const Main = () => {
     return (
         <main className="main">
             <ProductCatalog />
