@@ -4,7 +4,7 @@ import Icon from '../../../icon/icon'
 import './navbar.scss';
 
 const showSidebar = {
-    width: '33.33%'
+    width: '100%'
 } 
 const hideSidebar = {
     width: 0
@@ -30,15 +30,15 @@ class Navbar extends Component {
             <>
                 <Icon name={this.state.toggle ? 'faTimes' : 'faBars'} action={this.handleClick} />
                 <Suspense fallback={null}>
-                    <MobileMenu toggle={this.state.toggle ? showSidebar : hideSidebar}/>
+                    <MobileMenu action={this.handleClick} toggle={this.state.toggle ? showSidebar : hideSidebar}/>
                 </Suspense>
             </>
         )
-        const desktop = <Menu screen='desktop' cta={true} />
+        const desktop = <Menu screen='desktop'/>
         return (
             <nav className="navbar">
                 <h1 className="navbar__logo">e-shop.net</h1>
-                { (this.state.screenWidth < 768) ?  desktop : mobile }
+                { (this.state.screenWidth < 576) ?  desktop : mobile }
             </nav>
         );
     }

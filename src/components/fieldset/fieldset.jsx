@@ -15,9 +15,7 @@ const Fieldset = ({
 }
 export default Fieldset;
 
-Fieldset.defaultProps = {
-    className: ''
-}
+Fieldset.defaultProps = { className: '' }
 
 Fieldset.propTypes = {
     title: PropTypes.string.isRequired,

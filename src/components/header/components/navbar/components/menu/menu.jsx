@@ -6,7 +6,7 @@ const Menu = ({
     screen, 
     cta
 }) => {
-    const menu = (
+    return (
         <ul className={`menu menu--${screen}`}>
             <li className="menu__item">Strona główna</li>
             <li className="menu__item">Nowości</li>
@@ -14,12 +14,13 @@ const Menu = ({
             <li className={`menu__item ${cta ? 'menu__item--cta' : null}`}>Kontakt</li>
         </ul>
     )
-    return menu;
 }
 
 export default Menu;
 
+Menu.defaultProps = { cta: true }
+
 Menu.propTypes = {
     screen: PropTypes.string.isRequired,
-    cta: PropTypes.bool.isRequired
+    cta: PropTypes.bool
 }

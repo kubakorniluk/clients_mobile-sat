@@ -13,9 +13,6 @@ class ProductCatalog extends Component {
     }
     componentDidMount() {
         this.importData();
-        this.setState((state) => ({
-            productsCount: state.productsData.length
-        }))
     }
     componentDidUpdate(prevState) {
         if(prevState.filter !== prevState.filter) {

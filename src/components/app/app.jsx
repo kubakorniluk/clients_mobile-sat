@@ -1,17 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Homepage from '../../routes/homepage/index.jsx';
+import Header from '../../components/header/header';
+import Main from '../../components/main/main';
 import './app.scss';
 
 const App = () => {
     return (
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/">
-                    <Homepage />
-                </Route>
-            </Switch>
-        </BrowserRouter>
+        <>
+            <React.StrictMode>
+                <Header />
+                <Main />
+            </React.StrictMode>
+        </>
     );
 }
 export default App;

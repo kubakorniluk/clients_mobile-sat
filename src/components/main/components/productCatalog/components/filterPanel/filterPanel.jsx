@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Fieldset from '../../../../../fieldset/fieldset';
-import Input from '../../../../../input/input' ;
+import Input from '../../../../../input/input';
 import Button from '../../../../../button/button';
 import Icon from '../../../../../icon/icon';
 import './filterPanel.scss';
@@ -44,12 +44,7 @@ class FilterPanel extends Component {
             <aside className="filter-panel">
                 <div className="header">
                     <h1 className="header__title">Filtry</h1>
-                    <Button 
-                        type='button' 
-                        text={<Icon name={this.state.toggle ? 'faCaretUp' : 'faCaretDown'}/>}
-                        className='header__toggle'
-                        onClick={this.togglePanel}
-                    />
+                    <Icon name={this.state.toggle ? 'faCaretUp' : 'faCaretDown'} action={this.togglePanel}/>
                 </div>
                 {
                     <form 

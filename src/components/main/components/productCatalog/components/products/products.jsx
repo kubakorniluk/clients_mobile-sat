@@ -25,6 +25,4 @@ const Products = ({
 }
 export default Products;
 
-Products.propTypes = {
-    products: PropTypes.array.isRequired
-}
+Products.propTypes = { products: PropTypes.array.isRequired }
