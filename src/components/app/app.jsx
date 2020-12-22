@@ -6,10 +6,8 @@ import './app.scss';
 const App = () => {
     return (
         <>
-            <React.StrictMode>
-                <Header />
-                <Main />
-            </React.StrictMode>
+            <Header />
+            <Main />
         </>
     );
 }

@@ -12,8 +12,9 @@
     align-items: flex-start;
     margin: 0 5vw;
     .product-list {
+        position: relative;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         flex-basis: 75%;
         .products__header {
             background-color: rgb(255, 255, 255);

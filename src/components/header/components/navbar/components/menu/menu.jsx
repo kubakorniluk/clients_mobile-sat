@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import './menu.scss';
 
 const Menu = ({
-    screen, 
+    version, 
     cta
 }) => {
     return (
-        <ul className={`menu menu--${screen}`}>
+        <ul className={`menu menu--${version}`}>
             <li className="menu__item">Strona główna</li>
             <li className="menu__item">Nowości</li>
             <li className="menu__item">Produkty</li>
@@ -21,6 +21,6 @@ export default Menu;
 Menu.defaultProps = { cta: true }
 
 Menu.propTypes = {
-    screen: PropTypes.string.isRequired,
+    version: PropTypes.string.isRequired,
     cta: PropTypes.bool
 }

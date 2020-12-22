@@ -27,6 +27,6 @@ Icon.defaultProps = {
 
 Icon.propTypes = {
     name: PropTypes.string.isRequired,
-    action: PropTypes.func.isRequired,
+    action: PropTypes.func,
     className: PropTypes.string
 }

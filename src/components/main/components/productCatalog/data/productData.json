@@ -2,61 +2,61 @@
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "name": "Opaska v2",
-        "category": "Opaski",
+        "category": "opaski",
         "price": 49.00
     },
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "name": "Zegarek 4",
-        "category": "Zegarki",
+        "category": "zegarki",
         "price": 1659.99
     },
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "name": "Opaska XS",
-        "category": "Opaski",
+        "category": "opaski",
         "price": 29.99
     },
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        "name": "Mefedron",
-        "category": "Maseczki",
+        "name": "Maseczka S",
+        "category": "maseczki",
         "price": 99.99
     },
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "name": "Opaska v2",
-        "category": "Opaski",
+        "category": "opaski",
         "price": 49.00
     },
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "name": "Opaska v2",
-        "category": "Opaski",
+        "category": "opaski",
         "price": 49.00
     },
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "name": "Zegarek 4",
-        "category": "Zegarki",
+        "category": "zegarki",
         "price": 1659.99
     },
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "name": "Opaska XS",
-        "category": "Opaski",
+        "category": "opaski",
         "price": 29.99
     },
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        "name": "Mefedron",
-        "category": "Maseczki",
+        "name": "Maseczka 1",
+        "category": "maseczki",
         "price": 99.99
     },
     {
         "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "name": "Opaska v2",
-        "category": "Opaski",
+        "category": "opaski",
         "price": 49.00
     }
 ]

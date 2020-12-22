@@ -1,3 +1,7 @@
+.navbar__toggle {
+    font-size: 130%;
+    color: rgb(26, 30, 40);
+}
 .sidebar {
     position: fixed;
     z-index: 999;
@@ -10,6 +14,18 @@
     text-align: right;
     transition: width 0.5s;
     padding: 5vw;
+}
+.heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .heading__title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 115%;
+        font-weight: 500;
+        color: rgb(26, 30, 40);
+    }
 }
 /*.sidebar--show {
     width: calc(100vw/3);

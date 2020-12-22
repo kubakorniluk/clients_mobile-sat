@@ -1,44 +1,38 @@
 import React, { Component, Suspense } from 'react';
 import Menu from './components/menu/menu';
-import Icon from '../../../icon/icon'
 import './navbar.scss';
-
-const showSidebar = {
-    width: '100%'
-} 
-const hideSidebar = {
-    width: 0
-}
 
 class Navbar extends Component {
     constructor() {
         super();
         this.state = {
-            screenWidth: screen.width,
-            toggle: false
+            screenWidth: window.innerWidth
         }
-        this.handleClick = this.handleClick.bind(this);
+        this.handleResize = this.handleResize.bind(this);
     }
-    handleClick() {
-        this.setState((prevState) => ({
-            toggle: !prevState.toggle
-        }))
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+    }
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+    handleResize() {
+        this.setState({
+            screenWidth: window.innerWidth
+        })
     }
     render() {
         const MobileMenu = React.lazy(() => import('./components/mobileMenu/mobileMenu'));
         const mobile = (
-            <>
-                <Icon name={this.state.toggle ? 'faTimes' : 'faBars'} action={this.handleClick} />
-                <Suspense fallback={null}>
-                    <MobileMenu action={this.handleClick} toggle={this.state.toggle ? showSidebar : hideSidebar}/>
-                </Suspense>
-            </>
+            <Suspense fallback={null}>
+                <MobileMenu />
+            </Suspense>
         )
-        const desktop = <Menu screen='desktop'/>
+        const desktop = <Menu version='desktop'/>
         return (
             <nav className="navbar">
                 <h1 className="navbar__logo">e-shop.net</h1>
-                { (this.state.screenWidth < 576) ?  desktop : mobile }
+                { (this.state.screenWidth < 768) ?  desktop : mobile }
             </nav>
         );
     }

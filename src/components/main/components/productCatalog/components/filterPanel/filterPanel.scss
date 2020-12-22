@@ -25,11 +25,9 @@
             border: none;
             background-color: transparent;
             font-family: 'Poppins', sans-serif;
-            font-weight: 400;
-            font-size: 115%;
+            font-weight: 500;
+            font-size: 130%;
             cursor: pointer;
-            transition: 0.5s;
-
         }
     }
     .content {
@@ -39,6 +37,7 @@
         .filter-by-price__separator {
             font-weight: 400;
             padding: 0 1vw;
+            margin: 0;
         }
     }
 }

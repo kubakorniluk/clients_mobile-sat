@@ -4,8 +4,10 @@ import './input.scss';
 const Input = ({
     name,
     type,
+    checked,
     placeholder,
     onChange,
+    onClick,
     value,
     label,
     labelText
@@ -14,9 +16,11 @@ const Input = ({
         <input 
             name={name} 
             type={type}
+            checked={checked}
             placeholder={placeholder}
             className={`input input--${type}`} 
             onChange={onChange}
+            onClick={onClick}
             value={value}
             id={name}
         />
