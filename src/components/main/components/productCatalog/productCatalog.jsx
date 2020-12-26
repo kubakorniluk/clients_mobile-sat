@@ -32,18 +32,32 @@ class ProductCatalog extends Component {
             categories
         } = filter;
         this.setState({
-            filter: i => {
-                let product = i;
-                const price = product.price >= priceFrom && product.price <= priceTo 
-                if(allChecked) {
-                    return price;
-                } else if (!allChecked) {
-                    return (
-                        price && categories.some(cat => cat.name === product.category && cat.checked)
-                    )
-                } else if ((priceFrom == 0 && priceTo == 0) && allChecked) {
-                    return i
+            filter: product => {
+                const priceFilter = product.price >= priceFrom && product.price <= priceTo;
+                const categoriesFilter = categories.some(cat => cat.name === product.category && cat.checked);
+                const priceFilterEmpty = isNaN(priceFrom) && isNaN(priceTo);
+                switch(true) {
+                    case !priceFilterEmpty && allChecked:
+                        return priceFilter;
+                        break;
+                    case priceFilterEmpty && allChecked:
+                        return product;
+                        break;
+                    case !priceFilterEmpty && !allChecked:
+                        return priceFilter && categoriesFilter; 
+                        break;
+                    case priceFilterEmpty && !allChecked:
+                        return categoriesFilter;
+                        break;
+                    case priceFilterEmpty && !allChecked && categories.some(cat => cat.checked):
+                        return categoriesFilter;
+                        break;
+                    default:
+                        return null;
+                        break;
+
                 }
+                
             }
         });
     }

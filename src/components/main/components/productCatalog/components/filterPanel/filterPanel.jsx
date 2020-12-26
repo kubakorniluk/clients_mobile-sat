@@ -17,8 +17,8 @@ class FilterPanel extends Component {
         super(props);
         this.state = {
             toggle: true,
-            priceFrom: '0',
-            priceTo: '0',
+            priceFrom: '',
+            priceTo: '',
             allChecked: true, 
             categories: [
                 { name: 'maseczki', checked: true },
