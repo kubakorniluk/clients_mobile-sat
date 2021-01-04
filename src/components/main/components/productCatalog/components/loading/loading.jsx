@@ -1,10 +1,11 @@
 import React from 'react';
-import Icon from '../../../../../icon/icon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons/faSpinner';
 import './loading.scss';
 
 const Loading = () => {
     return (
-        <Icon className='product-list__loading' name='faSpinner'/>
+        <FontAwesomeIcon className='product-list__loading' icon={faSpinner} spin={true}/> 
     );
 }
  

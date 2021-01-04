@@ -4,12 +4,4 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 200%;
-    animation-name: rotate;
-    animation-duration: .55s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-}
-@keyframes rotate {
-    from{transform: rotate(0deg)}
-    to{transform: rotate(360deg);}
 }

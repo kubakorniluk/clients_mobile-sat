@@ -22,7 +22,7 @@ class Navbar extends Component {
         })
     }
     render() {
-        const MobileMenu = React.lazy(() => import('./components/mobileMenu/mobileMenu'));
+        const MobileMenu = React.lazy(() => import(/* webpackPrefetch: 0 */'./components/mobileMenu/mobileMenu'));
         const mobile = (
             <Suspense fallback={null}>
                 <MobileMenu />
@@ -32,7 +32,7 @@ class Navbar extends Component {
         return (
             <nav className="navbar">
                 <h1 className="navbar__logo">e-shop.net</h1>
-                { (this.state.screenWidth < 768) ?  desktop : mobile }
+                { (this.state.screenWidth > 768) ?  desktop : mobile }
             </nav>
         );
     }

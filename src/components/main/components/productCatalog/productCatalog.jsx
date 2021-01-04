@@ -2,7 +2,6 @@ import React, { Component, Suspense} from 'react';
 import FilterPanel from './components/filterPanel/filterPanel';
 import Loading from './components/loading/loading';
 import './productCatalog.scss';
-
 class ProductCatalog extends Component {
     constructor() {
         super();
@@ -16,13 +15,11 @@ class ProductCatalog extends Component {
     componentDidMount() {
         this.importData()
     }
-    importData() {
-        import('./data/productData.json')
-        .then(json => 
-            this.setState({
-                productsData: json.default
-            })
-        );
+    async importData() {
+        const data = await import('./data/productData.json');
+        this.setState(state => ({ 
+           productsData: state.productsData.concat(data.default)
+        }))
     }
     handleFilter(filter) {
         const { 
@@ -31,46 +28,34 @@ class ProductCatalog extends Component {
             allChecked,
             categories
         } = filter;
-        this.setState({
-            filter: product => {
-                const priceFilter = product.price >= priceFrom && product.price <= priceTo;
-                const categoriesFilter = categories.some(cat => cat.name === product.category && cat.checked);
-                const priceFilterEmpty = isNaN(priceFrom) && isNaN(priceTo);
-                switch(true) {
-                    case !priceFilterEmpty && allChecked:
-                        return priceFilter;
-                        break;
-                    case priceFilterEmpty && allChecked:
-                        return product;
-                        break;
-                    case !priceFilterEmpty && !allChecked:
-                        return priceFilter && categoriesFilter; 
-                        break;
-                    case priceFilterEmpty && !allChecked:
-                        return categoriesFilter;
-                        break;
-                    case priceFilterEmpty && !allChecked && categories.some(cat => cat.checked):
-                        return categoriesFilter;
-                        break;
-                    default:
-                        return null;
-                        break;
-
-                }
-                
+        const setFilterQuery = (product) => {
+            const priceFilter = product.price >= priceFrom && product.price <= priceTo;
+            const categoriesFilter = categories.some(cat => cat.name === product.category && cat.checked);
+            const priceFilterEmpty = isNaN(priceFrom) && isNaN(priceTo);
+            switch(true) {
+                case priceFilterEmpty && allChecked:
+                    return product;
+                    break;
+                case !priceFilterEmpty && allChecked:
+                    return priceFilter;
+                    break;
+                case priceFilterEmpty && !allChecked:
+                    return categoriesFilter;
+                    break;
+                case !priceFilterEmpty && !allChecked:
+                    return priceFilter && categoriesFilter; 
+                    break;
+                default:
+                    return null;
+                    break;
             }
+        }
+        this.setState({
+            filter: product => setFilterQuery(product)
         });
     }
     render() {
-        const Products = React.lazy(() => {
-            return (
-                Promise.all([
-                    import('./components/products/products'),
-                    new Promise(resolve => setTimeout(resolve, 750))
-                ])
-                .then(([moduleExports]) => moduleExports)
-            );
-        });
+        const Products = React.lazy(() => import(/* webpackPrefetch: true */'./components/products/products'));
         // const heading = (
         //     <div className="products__header">
         //         <h1 className="product-catalog__heading">Produkty</h1>

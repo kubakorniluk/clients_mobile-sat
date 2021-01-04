@@ -4,7 +4,7 @@
     width: auto;
     height: 50vh;
     margin: 0 5vw 5vw 5vw;
-    background-image: url("https://images.pexels.com/photos/796602/pexels-photo-796602.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-image: url('../../../../assets/img/background-image.jpeg');
     background-size: cover;
     background-position: center;
     .overlay {
@@ -34,4 +34,31 @@
             }
         }
     }
+}
+@media only screen and (min-width: 0px) and (max-width: 576.99px) {
+    
+    .gallery .overlay .text .text__title {
+        font-size: 115%;
+    }
+    .gallery .overlay .text .text__subtitle {
+        font-size: 100%;
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 768.99px) { 
+    .gallery .overlay .text .text__title {
+        font-size: 115%;
+    }
+    .gallery .overlay .text .text__subtitle {
+        font-size: 105%;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 992px) { 
+
+}
+
+@media only screen and (max-width: 1200px) { 
+
 }

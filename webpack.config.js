@@ -1,64 +1,74 @@
+// const webpack = require('webpack');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 // plugins
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     entry: './src/index.jsx',
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'index.js',
-        publicPath: '/'
+        filename: '[name].[contenthash].js',
+        publicPath: '',
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.scss']
+        extensions: ['.jsx', '.json', '.scss', '.js',]
     },
-    devServer: {
-        historyApiFallback: true
-     },
-    devtool: 'eval-source-map',
+    devtool: 'eval',
+    plugins: [
+        new CleanWebpackPlugin(),
+        new BundleAnalyzerPlugin(),
+        new HtmlWebpackPlugin({
+            template: __dirname + '/src/index.html',
+            filename: 'index.html',
+            inject: 'body'
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css',
+            chunkFilename: '[id].[contenthash].css',
+        })
+        
+    ],
     module: {
         // loaders
         rules: [
             {
                 test: /\.jsx?$/,
-                exclude: /node_modules/,
-                use: [
-                    "babel-loader"
-                ]
+                include: path.resolve(__dirname, 'src'),
+                loader: 'babel-loader'
             },
             {
                 test: /\.s[ac]ss$/i,
-                exclude: /node_modules/,
+                include: path.resolve(__dirname, 'src'),
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
-                    'sass-loader',
                     { 
                         loader: 'postcss-loader',
                         options: {
                             ident: 'postcss',
                             plugins: () => [
-                                autoprefixer({})
+                                autoprefixer()
                             ]
                         }
-                     }
-                ]                
+                    },
+                    'sass-loader'
+                ]               
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
-                exclude: /node_modules/,
-                use: [
-                    'file-loader',
-                ]
+                test: /\.(png|svg|jpe?g|gif)$/,
+                include: path.resolve(__dirname, 'src/assets'),
+                loader:'file-loader',
+                options: {
+                    outputPath: 'assets/img',
+                    name: '[name].[ext]',
+                    esModule: false
+                }
             }
         ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: __dirname + '/src/index.html',
-            filename: 'index.html',
-            inject: 'body'
-        })
-    ]
+    }
 }

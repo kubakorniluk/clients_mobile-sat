@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import Fieldset from '../../../../../fieldset/fieldset';
-import Input from '../../../../../input/input';
-import Button from '../../../../../button/button';
-import Icon from '../../../../../icon/icon';
+import PropTypes from 'prop-types';
+import PriceFilter from './components/priceFilter/priceFilter';
+import CheckboxFilter from './components/checkboxFilter/checkboxFilter';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretUp } from '@fortawesome/free-solid-svg-icons/faCaretUp';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons/faCaretDown';
 import './filterPanel.scss';
 
 const showContent = {
@@ -30,8 +32,6 @@ class FilterPanel extends Component {
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCheckbox = this.handleCheckbox.bind(this);
-        this.renderCategories = this.renderCategories.bind(this);
-        
     }
     togglePanel() {
         this.setState(prevState => ({
@@ -41,16 +41,6 @@ class FilterPanel extends Component {
     handleInput(event) {
         this.setState({
             [event.target.name]: event.target.value
-        })
-    }
-    handleSubmit(event) {
-        event.preventDefault();
-        const { priceFrom, priceTo, allChecked, categories } = this.state;
-        this.props.handleFilter({
-            priceFrom: parseFloat(priceFrom), 
-            priceTo: parseFloat(priceTo),
-            allChecked: allChecked,
-            categories: categories
         })
     }
     handleCheckbox(event) {
@@ -71,71 +61,58 @@ class FilterPanel extends Component {
             return { allChecked, categories }
         });
     }
-    renderCategories() {
-        return (
-            this.state.categories.map(
-                (category, index) => (
-                    <Input
-                        key={index}
-                        label={true}
-                        labelText={category.name[0].toUpperCase() + category.name.substr(1, category.name.length)}
-                        name={category.name}
-                        type='checkbox'
-                        checked={category.checked}
-                        onChange={this.handleCheckbox}  
-                    />
-                )
-            )
-        )
+    handleSubmit(event) {
+        event.preventDefault();
+        const { 
+            priceFrom, 
+            priceTo, 
+            allChecked, 
+            categories 
+        } = this.state;
+        this.props.handleFilter({
+            priceFrom: parseFloat(priceFrom), 
+            priceTo: parseFloat(priceTo),
+            allChecked: allChecked,
+            categories: categories
+        })
     }
     render() {
-
         return (
             <>
                 <div className="header">
                     <h1 className="header__title">Filtry</h1>
-                    <Icon 
+                    <FontAwesomeIcon 
                         className='header__toggle' 
-                        name={this.state.toggle ? 'faCaretUp' : 'faCaretDown'} 
-                        action={this.togglePanel}
+                        icon={this.state.toggle ? faCaretUp : faCaretDown} 
+                        onClick={this.togglePanel}
                     />
                 </div>
-                <form onSubmit={this.handleSubmit} className="content" style={this.state.toggle ? showContent : hideContent}>
-                    <Fieldset title='Cena'>
-                        <Input 
-                            type='number'
-                            name='priceFrom' 
-                            value={this.state.priceFrom}
-                            onChange={this.handleInput} 
-                            placeholder='Od'    
-                        />
-                        <span className="filter-by-price__separator">-</span>
-                        <Input
-                            type='number' 
-                            name='priceTo' 
-                            value={this.state.priceTo}
-                            onChange={this.handleInput} 
-                            placeholder='Do'
-                        />
-                    </Fieldset>
-                    <Fieldset title='Kategorie' className='filter-by-category'>
-                        <Input
-                            label={true}
-                            labelText='Wszystkie'
-                            type='checkbox'
-                            name='allChecked'
-                            checked={this.state.allChecked}
-                            onChange={this.handleCheckbox} 
-                        />
-                        {this.renderCategories()}
-                    </Fieldset>
-                    <Button 
-                        type='submit' 
-                        text='Filtruj' 
+                <form 
+                    onSubmit={this.handleSubmit} 
+                    className="content" 
+                    style={this.state.toggle ? showContent : hideContent}
+                >
+                    <PriceFilter 
+                        handleInput={this.handleInput} 
+                        priceFrom={this.state.priceFrom}
+                        priceTo={this.state.priceTo}     
                     />
+                    <CheckboxFilter 
+                        handleCheckbox={this.handleCheckbox} 
+                        allChecked={this.state.allChecked} 
+                        categories={this.state.categories}
+                    />
+                    <button
+                        className='form__button'
+                        type='submit'
+                    >
+                        Filtruj
+                    </button>
                 </form>
             </>
         );
     }
 }
 export default FilterPanel;
+
+FilterPanel.propTypes = { handleFilter: PropTypes.func.isRequired }

@@ -1,60 +1,70 @@
 [
     {
-        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "id": 1,
+        "img": "product-image.jpeg",
         "name": "Opaska v2",
         "category": "opaski",
         "price": 49.00
     },
     {
-        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "id": 2,
+        "img": "product-image.jpeg",
         "name": "Zegarek 4",
         "category": "zegarki",
         "price": 1659.99
     },
     {
-        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "id": 3,
+        "img": "product-image.jpeg",
         "name": "Opaska XS",
         "category": "opaski",
         "price": 29.99
     },
     {
-        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "id": 4,
+        "img": "product-image.jpeg",
         "name": "Maseczka S",
         "category": "maseczki",
         "price": 99.99
     },
     {
-        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "id": 5,
+        "img": "product-image.jpeg",
         "name": "Opaska v2",
         "category": "opaski",
         "price": 49.00
     },
     {
-        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "id": 6,
+        "img": "product-image.jpeg",
         "name": "Opaska v2",
         "category": "opaski",
         "price": 49.00
     },
     {
-        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "id": 7,
+        "img": "product-image.jpeg",
         "name": "Zegarek 4",
         "category": "zegarki",
         "price": 1659.99
     },
     {
-        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "id": 8,
+        "img": "product-image.jpeg",
         "name": "Opaska XS",
         "category": "opaski",
         "price": 29.99
     },
     {
-        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "id": 9,
+        "img": "product-image.jpeg",
         "name": "Maseczka 1",
         "category": "maseczki",
         "price": 99.99
     },
     {
-        "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "id": 10,
+        "img": "product-image.jpeg",
         "name": "Opaska v2",
         "category": "opaski",
         "price": 49.00

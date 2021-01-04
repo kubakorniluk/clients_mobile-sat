@@ -1,3 +1,4 @@
+@use '../../../../../../styles/base' as base;
 .filter-panel {
     display: flex;
     flex-direction: column;
@@ -12,8 +13,8 @@
         padding-bottom: 0;
         .header__title {
             margin: 0;
-            color: rgb(26, 30, 40);
-            font-family: 'Poppins', sans-serif;
+            color: base.$primary-color;
+            font-family: base.$primary-font;
             font-weight: 500;
             font-size: 115%;
             text-align: left;
@@ -21,10 +22,10 @@
         .header__toggle {
             margin: 0;
             padding: 0;
-            color: rgb(26, 30, 40);
+            color: base.$primary-color;
             border: none;
             background-color: transparent;
-            font-family: 'Poppins', sans-serif;
+            font-family: base.$primary-font;
             font-weight: 500;
             font-size: 130%;
             cursor: pointer;
@@ -34,10 +35,23 @@
         display: flex;
         flex-direction: column;
         transition: 0.75s;
-        .filter-by-price__separator {
-            font-weight: 400;
-            padding: 0 1vw;
-            margin: 0;
+        .form__button {
+            padding: 1vw 2vw;
+            color: rgb(255, 255, 255);
+            border: .5px solid rgb(26, 30, 40);
+            background-color: rgb(26, 30, 40);
+            font-family: 'Poppins', sans-serif;
+            font-size: 105%;
+            font-weight: 300;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .form__button:hover {
+            color: rgb(26, 30, 40);
+            background-color: transparent;
+        }
+        .form__button:focus {
+            outline: 0;
         }
     }
 }

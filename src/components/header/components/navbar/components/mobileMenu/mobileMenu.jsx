@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 import Menu from '../menu/menu';
-import Icon from '../../../../../icon/icon';
 import './mobileMenu.scss';
-
 const showSidebar = {
-    width: '33.33%',
+    width: '75%',
     display: 'block'
 } 
 const hideSidebar = {
@@ -27,18 +28,18 @@ class MobileMenu extends Component {
     render() {
         return (
             <>
-                <Icon 
+                <FontAwesomeIcon 
                     className='navbar__toggle' 
-                    name='faBars' 
-                    action={this.handleClick} 
+                    icon={faBars} 
+                    onClick={this.handleClick} 
                 />
                 <aside className="sidebar" style={this.state.toggle ? showSidebar : hideSidebar}>   
                     <div className="heading">
                         <h1 className="heading__title">Menu</h1>
-                        <Icon 
+                        <FontAwesomeIcon 
                             className='navbar__toggle' 
-                            name='faTimes' 
-                            action={this.handleClick}
+                            icon={faTimes} 
+                            onClick={this.handleClick}
                         />
                     </div>
                     <Menu version='mobile' cta={false}/>
