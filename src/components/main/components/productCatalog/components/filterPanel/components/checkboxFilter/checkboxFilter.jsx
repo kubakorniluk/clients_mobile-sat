@@ -10,34 +10,34 @@ const CheckboxFilter = ({
         return (
             categories.map(
                 (category, index) => (
-                    <label className="form__label" htmlFor={category.name} key={index}>
+                    <label className="filter-label" htmlFor={category.name} key={index}>
                         <input
                             id={category.name}
                             name={category.name}
                             type="checkbox"
-                            className="input--checkbox"
+                            className="filter-input filter-input--checkbox"
                             checked={category.checked}
                             onChange={handleCheckbox}  
                         />
-                        <span>{category.name[0].toUpperCase() + category.name.substr(1, category.name.length)}</span>
+                        <span className="filter-label__title">{category.name[0].toUpperCase() + category.name.substr(1, category.name.length)}</span>
                     </label>
                 )
             )
         )
     }
     return ( 
-        <fieldset className='fieldset filter-by-category'>
-            <legend className="fieldset__name">Kategorie</legend>
-            <label className="form__label" htmlFor="allChecked">
+        <fieldset className="filter-fieldset filter-by-category">
+            <legend className="filter-fieldset__title">Kategorie</legend>
+            <label className="filter-label" htmlFor="allChecked">
                 <input
-                    id='allChecked'
-                    name='allChecked'
-                    type='checkbox'
-                    className="input--checkbox"
+                    id="allChecked"
+                    name="allChecked"
+                    type="checkbox"
+                    className="filter-input filter-input--checkbox"
                     checked={allChecked}
                     onChange={handleCheckbox} 
                 />
-                <span>Wszystkie</span>
+                <span className="filter-label__title">Wszystkie</span>
             </label>
             {renderCategories()}
         </fieldset>

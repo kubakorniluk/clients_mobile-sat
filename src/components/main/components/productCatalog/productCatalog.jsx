@@ -56,18 +56,12 @@ class ProductCatalog extends Component {
     }
     render() {
         const Products = React.lazy(() => import(/* webpackPrefetch: true */'./components/products/products'));
-        // const heading = (
-        //     <div className="products__header">
-        //         <h1 className="product-catalog__heading">Produkty</h1>
-        //     </div>  
-        // )
         return (
             <section className="product-catalog">
                 <aside className="filter-panel">
                     <FilterPanel handleFilter={this.handleFilter}/>
                 </aside>
                 <div className="product-list">
-                    {/* {heading} */}
                     <Suspense fallback={<Loading />}>
                         <Products products={this.state.productsData.filter(this.state.filter)}/>
                     </Suspense>

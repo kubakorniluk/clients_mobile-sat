@@ -16,7 +16,11 @@ module.exports = {
         publicPath: '',
     },
     resolve: {
-        extensions: ['.jsx', '.json', '.scss', '.js',]
+        extensions: ['.jsx', '.json', '.scss', '.js'],
+        roots: [path.resolve('./src')],
+        alias: {
+            styles: path.resolve('./src/styles')
+        }
     },
     devtool: 'eval',
     plugins: [

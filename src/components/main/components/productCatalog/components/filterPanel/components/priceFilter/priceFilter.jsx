@@ -7,12 +7,12 @@ const PriceFilter = ({
     priceTo
 }) => {
     return ( 
-        <fieldset className="fieldset">
-            <legend className="fieldset__name">Cena</legend>
+        <fieldset className="filter-fieldset">
+            <legend className="filter-fieldset__title">Cena</legend>
             <input 
                 type="number"
                 name="priceFrom"
-                className="input--number" 
+                className="filter-input filter-input--number" 
                 value={priceFrom}
                 onChange={handleInput} 
                 placeholder="Od"    
@@ -21,7 +21,7 @@ const PriceFilter = ({
             <input
                 type="number" 
                 name="priceTo" 
-                className="input--number"
+                className="filter-input filter-input--number"
                 value={priceTo}
                 onChange={handleInput} 
                 placeholder="Do"

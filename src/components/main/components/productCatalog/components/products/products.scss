@@ -1,30 +1,29 @@
-.products {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    .card {
-        background-color: rgb(255, 255, 255);
-        border: 2.5px solid  rgb(240, 240, 240);
-        width: calc(100%/3 - 2vw);
-        cursor: pointer;
-        margin: 0vw 0vw 2vw 2vw;
-        transition: 0.5s;
-        .card__img {
-            width: 100%;
-        }
-        .content {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 1vw;
-            .content__title, .content__price {
-                margin: 0;
-                color: rgb(26, 30, 40);
-                font-family: 'Poppins', sans-serif;
-                font-size: 110%;
-                font-weight: 400;
-    
-            }
+@use 'styles/base' as base;
+.card {
+    background-color: base.$primary-bg-color;
+    border: 2.5px solid  rgb(240, 240, 240);
+    width: calc(100%/3 - 2vw);
+    cursor: pointer;
+    transition: 0.5s;
+    margin: 0 {
+        left: 2vw;
+        bottom: 2vw;
+    }
+    &__img {
+        width: 100%;
+    }
+    .card-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1vw;
+        &__title, &__price {
+            margin: 0;
+            color: base.$primary-color;
+            font-family: base.$primary-font;
+            font-size: 110%;
+            font-weight: 400;
+
         }
     }
 }

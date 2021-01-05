@@ -1,6 +1,10 @@
+@use 'styles/base' as base;
 .navbar__toggle {
-    font-size: 130%;
-    color: rgb(26, 30, 40);
+    font: {
+        family: base.$primary-font;
+        size: 130%;
+    }
+    color: base.$primary-color
 }
 .sidebar {
     position: fixed;
@@ -14,24 +18,18 @@
     text-align: right;
     transition: width 0.5s;
     padding: 5vw;
-}
-.heading {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    .heading__title {
-        font-family: 'Poppins', sans-serif;
-        font-size: 115%;
-        font-weight: 500;
-        color: rgb(26, 30, 40);
+    .heading {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        &__title {
+            color: base.$primary-color;
+            font: {
+                family: base.$primary-font;
+                size: 115%;
+                weight: 500;
+            }
+        }
     }
 }
-/*.sidebar--show {
-    width: calc(100vw/3);
-    transition: width 0.5s
-}
-.sidebar--hide {
-    width: 0%;
-    transition: width 0.5s
-}*/

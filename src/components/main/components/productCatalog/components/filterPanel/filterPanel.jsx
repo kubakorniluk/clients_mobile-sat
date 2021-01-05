@@ -79,17 +79,17 @@ class FilterPanel extends Component {
     render() {
         return (
             <>
-                <div className="header">
-                    <h1 className="header__title">Filtry</h1>
+                <div className="filter-header">
+                    <h1 className="filter-header__title">Filtry</h1>
                     <FontAwesomeIcon 
-                        className='header__toggle' 
+                        className='filter-header__toggle' 
                         icon={this.state.toggle ? faCaretUp : faCaretDown} 
                         onClick={this.togglePanel}
                     />
                 </div>
                 <form 
                     onSubmit={this.handleSubmit} 
-                    className="content" 
+                    className="filter-form" 
                     style={this.state.toggle ? showContent : hideContent}
                 >
                     <PriceFilter 
@@ -103,8 +103,8 @@ class FilterPanel extends Component {
                         categories={this.state.categories}
                     />
                     <button
-                        className='form__button'
-                        type='submit'
+                        className="filter-form__button"
+                        type="submit"
                     >
                         Filtruj
                     </button>

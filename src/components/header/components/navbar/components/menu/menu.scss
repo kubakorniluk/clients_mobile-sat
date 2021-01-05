@@ -1,28 +1,31 @@
+@use 'styles/base' as base;
 .menu {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    .menu__item {
-        font-size: 105%;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 400;
-        color: rgb(26, 30, 40);
+    &__item {
         margin: 0 1.75vw;
         display: block;
         cursor: pointer;
+        color: base.$primary-color;
+        font: {
+            family: base.$primary-font;
+            size: 105%;
+            weight: 400;
+        }
     }
-    .menu__item--cta {
-        margin-right: 0;
-        color: rgb(255, 255, 255);
+    &__item--cta {
+        color: base.$primary-bg-color;
         padding: .75vw 1.5vw;
-        border: 1px solid rgb(26, 30, 40);
-        background-color: rgb(26, 30, 40);
+        border: 1px solid base.$primary-color;
+        background-color: base.$primary-color;
         cursor: pointer;
         transition: 0.5s;
-    }
-    .menu__item--cta:hover {
-        background-color: rgb(255, 255, 255);
-        color:rgb(26, 30, 40);
+        margin-right: 0;
+        &:hover {
+            background-color: base.$primary-bg-color;
+            color: base.$primary-color;
+        }
     }
 }
 .menu--desktop {

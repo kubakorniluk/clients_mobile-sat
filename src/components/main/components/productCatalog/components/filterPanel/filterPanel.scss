@@ -1,57 +1,63 @@
-@use '../../../../../../styles/base' as base;
+@use 'styles/base' as base;
 .filter-panel {
     display: flex;
     flex-direction: column;
     flex-basis: 25%;
-    padding: 1vw 1.5vw;
     background-color: rgb(242, 242, 242);
-    .header {
+    .filter-header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 0;
-        .header__title {
+        padding: 1vw 1.5vw;
+        margin-bottom: .75vw;
+        background-color: rgb(200, 240, 255);
+        &__title {
             margin: 0;
             color: base.$primary-color;
-            font-family: base.$primary-font;
-            font-weight: 500;
-            font-size: 115%;
             text-align: left;
+            font: {
+                family: base.$primary-font;
+                size: 115%;
+                weight: 500;
+            }
         }
-        .header__toggle {
+        &__toggle {
             margin: 0;
             padding: 0;
             color: base.$primary-color;
-            border: none;
             background-color: transparent;
-            font-family: base.$primary-font;
-            font-weight: 500;
-            font-size: 130%;
             cursor: pointer;
+            font: {
+                family: base.$primary-font;
+                size: 130%;
+                weight: 500;
+            }
         }
     }
-    .content {
+    .filter-form {
         display: flex;
         flex-direction: column;
-        transition: 0.75s;
-        .form__button {
+        &__button {
+            margin: 1.5vw;
             padding: 1vw 2vw;
-            color: rgb(255, 255, 255);
-            border: .5px solid rgb(26, 30, 40);
-            background-color: rgb(26, 30, 40);
-            font-family: 'Poppins', sans-serif;
-            font-size: 105%;
-            font-weight: 300;
+            color: base.$primary-bg-color;
+            border: .5px solid base.$primary-color;
+            background-color: base.$primary-color;
             cursor: pointer;
             transition: 0.5s;
-        }
-        .form__button:hover {
-            color: rgb(26, 30, 40);
-            background-color: transparent;
-        }
-        .form__button:focus {
-            outline: 0;
+            font: {
+                family: base.$primary-font;
+                size: 105%;
+                weight: 300;
+            }
+            &:hover {
+                color: base.$primary-color;
+                background-color: transparent;
+            }
+            &:focus {
+                outline: 0;
+            }
         }
     }
 }
