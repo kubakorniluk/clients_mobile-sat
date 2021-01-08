@@ -35,7 +35,7 @@ class MobileMenu extends Component {
                 />
                 <aside className="sidebar" style={this.state.toggle ? showSidebar : hideSidebar}>   
                     <div className="heading">
-                        <h1 className="heading__title">Menu</h1>
+                        <h2 className="heading__title">Menu</h2>
                         <FontAwesomeIcon 
                             className='navbar__toggle' 
                             icon={faTimes} 

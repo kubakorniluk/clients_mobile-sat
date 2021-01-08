@@ -7,10 +7,10 @@ const Products = ({ products }) => {
             return (
                 <div className="card" key={item.id}>
                     <img className="card__img" src={require(`../../../../../../assets/img/${item.img}`)} alt={item.name}/>
-                    <div className="card-content">
-                        <h1 className="card-content__title">{item.name}</h1>
-                        <h1 className="card-content__price">{`${item.price} zł`}</h1>
-                    </div>
+                    <header className="card-content">
+                        <h3 className="card-content__title">{item.name}</h3>
+                        <h3 className="card-content__price">{`${item.price} zł`}</h3>
+                    </header>
                 </div>
             )
         })

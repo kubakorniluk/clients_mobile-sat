@@ -18,7 +18,7 @@ class FilterPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            toggle: true,
+            toggle: (window.innerWidth < 768) ? false : true,
             priceFrom: '',
             priceTo: '',
             allChecked: true, 
@@ -79,14 +79,14 @@ class FilterPanel extends Component {
     render() {
         return (
             <>
-                <div className="filter-header">
+                <header className="filter-header">
                     <h1 className="filter-header__title">Filtry</h1>
                     <FontAwesomeIcon 
                         className='filter-header__toggle' 
                         icon={this.state.toggle ? faCaretUp : faCaretDown} 
                         onClick={this.togglePanel}
                     />
-                </div>
+                </header>
                 <form 
                     onSubmit={this.handleSubmit} 
                     className="filter-form" 

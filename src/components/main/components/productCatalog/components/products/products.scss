@@ -11,19 +11,50 @@
     }
     &__img {
         width: 100%;
+        height: auto;
     }
     .card-content {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1vw;
-        &__title, &__price {
+        flex-direction: column;
+        text-align: center;
+        padding: .75em;
+        &__title {
             margin: 0;
             color: base.$primary-color;
-            font-family: base.$primary-font;
-            font-size: 110%;
-            font-weight: 400;
-
+            font: {
+                family: base.$primary-font;
+                size: 115%;
+                weight: 400;
+            }
+        }
+        &__price {
+            color: base.$primary-color;
+            margin: 0 {
+                top: .75em;
+            }
+            font: {
+                family: base.$primary-font;
+                size: 105%;
+                weight: 300;
+            }
         }
     }
+}
+@media only screen and (min-width: 0px) and (max-width: 576.99px) {
+    .card {
+        width: 100%;
+        margin: 0 {
+            top: 1.5em;
+        }
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 768.99px) {
+
+}
+@media only screen and (min-width: 769px) and(max-width: 992.99px) { 
+
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1200px) { 
+
 }

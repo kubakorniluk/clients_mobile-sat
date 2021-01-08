@@ -61,11 +61,11 @@ class ProductCatalog extends Component {
                 <aside className="filter-panel">
                     <FilterPanel handleFilter={this.handleFilter}/>
                 </aside>
-                <div className="product-list">
+                <section className="product-list">
                     <Suspense fallback={<Loading />}>
                         <Products products={this.state.productsData.filter(this.state.filter)}/>
                     </Suspense>
-                </div>
+                </section>
             </section>
         );
     }

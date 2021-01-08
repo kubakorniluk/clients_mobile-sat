@@ -10,8 +10,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 1vw 1.5vw;
-        margin-bottom: .75vw;
-        background-color: rgb(200, 240, 255);
+        
         &__title {
             margin: 0;
             color: base.$primary-color;
@@ -60,4 +59,18 @@
             }
         }
     }
+}
+@media only screen and (min-width: 0px) and (max-width: 576.99px) {
+
+}
+
+@media only screen and (min-width: 577px) and (max-width: 768.99px) { 
+
+}
+@media only screen and (max-width: 992px) { 
+
+}
+
+@media only screen and (max-width: 1200px) { 
+
 }

@@ -9,5 +9,36 @@
         flex-direction: row;
         flex-wrap: wrap;
         flex-basis: 75%;
+        width: 100%;
     }
+    .filter-panel {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 25%;
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 0px) and (max-width: 576.99px) {
+    .product-catalog {
+        flex-direction: column;
+        align-items: center;
+        .product-list {
+            flex-direction: column;
+            flex-basis: auto;
+            flex-wrap: nowrap;
+        }
+        .filter-panel {
+            flex-basis: auto;
+        }
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 768.99px) {
+
+}
+@media only screen and (min-width: 769px) and(max-width: 992.99px) { 
+
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1200px) { 
+
 }
