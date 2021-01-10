@@ -1,3 +1,19 @@
+@use 'styles/base' as base;
+.products-heading {
+    margin: 2vw 5vw;
+    &__title {
+        align-items: center;
+        color: rgb(150, 150, 150);
+        font: {
+            family: base.$primary-font;
+            size: 115%;
+            weight: 400;
+        }
+    }
+    &__split {
+        margin: 0 .5em;
+    }
+}
 .product-catalog {
     display: flex;
     flex-direction: row;
@@ -6,10 +22,27 @@
     .product-list {
         position: relative;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         flex-basis: 75%;
         width: 100%;
+        &__title {
+            align-items: center;
+            color: base.$primary-color;
+            margin: 0 {
+                left: 2vw;
+                bottom: 2vw;
+            }
+            font: {
+                family: base.$primary-font;
+                size: 130%;
+                weight: 500;
+            }
+        }
+        &__count {
+            color: rgb(150, 150, 150);
+            margin-left: 1vw;
+        }
     }
     .filter-panel {
         display: flex;
@@ -33,12 +66,26 @@
     }
 }
 @media only screen and (min-width: 577px) and (max-width: 768.99px) {
-
+    .product-catalog {
+        .product-list {
+            flex-basis: 70%;
+        }
+        .filter-panel {
+            flex-basis: 30%;
+        }
+    }
 }
 @media only screen and (min-width: 769px) and(max-width: 992.99px) { 
 
 }
 
 @media only screen and (min-width: 993px) and (max-width: 1200px) { 
-
+    .product-catalog {
+        .product-list {
+            flex-basis: 75%;
+        }
+        .filter-panel {
+            flex-basis: 25%;
+        }
+    }
 }

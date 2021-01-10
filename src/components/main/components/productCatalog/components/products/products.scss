@@ -1,60 +1,112 @@
 @use 'styles/base' as base;
-.card {
-    background-color: base.$primary-bg-color;
-    border: 2.5px solid  rgb(240, 240, 240);
-    width: calc(100%/3 - 2vw);
-    cursor: pointer;
-    transition: 0.5s;
-    margin: 0 {
-        left: 2vw;
-        bottom: 2vw;
-    }
-    &__img {
-        width: 100%;
-        height: auto;
-    }
-    .card-content {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        padding: .75em;
-        &__title {
-            margin: 0;
-            color: base.$primary-color;
-            font: {
-                family: base.$primary-font;
-                size: 115%;
-                weight: 400;
-            }
+
+.products-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    .card {
+        background-color: base.$primary-bg-color;
+        border: 2.5px solid  rgb(240, 240, 240);
+        width: calc(100%/3 - 2vw);
+        cursor: pointer;
+        transition: 0.5s;
+        margin: 0 {
+            left: 2vw;
+            bottom: 2vw;
         }
-        &__price {
-            color: base.$primary-color;
-            margin: 0 {
-                top: .75em;
+        &__img {
+            width: 100%;
+            height: auto;
+        }
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: .75em;
+            &__title {
+                margin: 0;
+                color: base.$primary-color;
+                font: {
+                    family: base.$primary-font;
+                    size: 115%;
+                    weight: 400;
+                }
             }
-            font: {
-                family: base.$primary-font;
-                size: 105%;
-                weight: 300;
+            &__price {
+                color: base.$primary-color;
+                margin: 0 {
+                    top: .75em;
+                }
+                font: {
+                    family: base.$primary-font;
+                    size: 105%;
+                    weight: 300;
+                }
             }
         }
     }
 }
 @media only screen and (min-width: 0px) and (max-width: 576.99px) {
-    .card {
-        width: 100%;
-        margin: 0 {
-            top: 1.5em;
+    .products-wrapper {
+        .card {
+            width: 100%;
+            margin: 0 {
+                top: 1.5em;
+            }
+            .card-content {
+                padding: .5em;
+                &__title {
+                    font-size: 105%;
+                }
+                &__price {
+                    margin: 0 {
+                        top: .5em;
+                    }
+                    font-size: 95%;
+                }
+            }
         }
     }
 }
 @media only screen and (min-width: 577px) and (max-width: 768.99px) {
-
+    .products-wrapper {
+        .card {
+            width: calc(100%/2 - 2vw);
+            .card-content {
+                padding: .5em;
+                &__title {
+                    font-size: 110%;
+                }
+                &__price {
+                    margin: 0 {
+                        top: .5em;
+                    }
+                    font-size: 100%;
+                }
+            }
+        }
+    }
 }
 @media only screen and (min-width: 769px) and(max-width: 992.99px) { 
 
 }
 
 @media only screen and (min-width: 993px) and (max-width: 1200px) { 
-
+    .products-wrapper {
+        .card {
+            .card-content {
+                padding: .5em;
+                &__title {
+                    font-size: 105%;
+                }
+                &__price {
+                    margin: 0 {
+                        top: .5em;
+                    }
+                    font-size: 95%;
+                }
+            }
+        }
+    }
 }

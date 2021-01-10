@@ -17,7 +17,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.jsx', '.json', '.scss', '.js'],
-        root: [
+        roots: [
             path.resolve('./src')
         ],
         alias: {

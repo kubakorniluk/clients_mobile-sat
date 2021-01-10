@@ -1,6 +1,8 @@
 import React, { Component, Suspense} from 'react';
 import FilterPanel from './components/filterPanel/filterPanel';
 import Loading from './components/loading/loading';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons/faCaretRight';
 import './productCatalog.scss';
 class ProductCatalog extends Component {
     constructor() {
@@ -55,18 +57,37 @@ class ProductCatalog extends Component {
         });
     }
     render() {
+        const arrowRight = (
+            <FontAwesomeIcon 
+                className='products-heading__split'
+                icon={faCaretRight}
+            />
+        );
+        const heading = (
+            <header className="products-heading">
+                <h2 className="products-heading__title">
+                    Home {arrowRight} Produkty {arrowRight} Wszystkie
+                </h2>
+            </header>
+        )
         const Products = React.lazy(() => import(/* webpackPrefetch: true */'./components/products/products'));
         return (
-            <section className="product-catalog">
-                <aside className="filter-panel">
-                    <FilterPanel handleFilter={this.handleFilter}/>
-                </aside>
-                <section className="product-list">
-                    <Suspense fallback={<Loading />}>
-                        <Products products={this.state.productsData.filter(this.state.filter)}/>
-                    </Suspense>
+            <>
+                {heading}
+                <section className="product-catalog">
+                    <aside className="filter-panel">
+                        <FilterPanel handleFilter={this.handleFilter}/>
+                    </aside>
+                    <section className="product-list">
+                        <h2 className="product-list__title">
+                            Wszystkie<span className="product-list__count">({this.state.productsData.length})</span>
+                        </h2>
+                        <Suspense fallback={<Loading />}>
+                            <Products products={this.state.productsData.filter(this.state.filter)}/>
+                        </Suspense>
+                    </section>
                 </section>
-            </section>
+            </>
         );
     }
 }
