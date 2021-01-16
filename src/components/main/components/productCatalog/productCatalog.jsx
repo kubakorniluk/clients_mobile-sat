@@ -1,4 +1,4 @@
-import React, { Component, Suspense} from 'react';
+import React, { Component, lazy, Suspense} from 'react';
 import FilterPanel from './components/filterPanel/filterPanel';
 import Loading from './components/loading/loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,43 +9,38 @@ class ProductCatalog extends Component {
         super();
         this.state = {
             productsData: [],
-            filter: i => i
+            filterQuery: i => i,
+            currentCategory: 'wszystkie',
+
         }
-        this.importData = this.importData.bind(this);
-        this.handleFilter = this.handleFilter.bind(this);
+        // this.importData = this.importData.bind(this);
+        this.handleFilters = this.handleFilters.bind(this);
+        this.setCurrentCategory = this.setCurrentCategory.bind(this);
     }
-    componentDidMount() {
-        this.importData()
-    }
-    async importData() {
+    async componentDidMount() {
         const data = await import('./data/productData.json');
         this.setState(state => ({ 
            productsData: state.productsData.concat(data.default)
         }))
     }
-    handleFilter(filter) {
-        const { 
-            priceFrom, 
-            priceTo, 
-            allChecked,
-            categories
-        } = filter;
+    // async importData() {
+    //     const data = await import('./data/productData.json');
+    //     this.setState(state => ({ 
+    //        productsData: state.productsData.concat(data.default),
+    //        currentCategoryCount: data.length
+    //     }))
+    // }
+    handleFilters(filter) {
+        const { priceFrom, priceTo } = filter;
+        const priceFilterEmpty = isNaN(priceFrom) && isNaN(priceTo);
         const setFilterQuery = (product) => {
             const priceFilter = product.price >= priceFrom && product.price <= priceTo;
-            const categoriesFilter = categories.some(cat => cat.name === product.category && cat.checked);
-            const priceFilterEmpty = isNaN(priceFrom) && isNaN(priceTo);
             switch(true) {
-                case priceFilterEmpty && allChecked:
+                case priceFilterEmpty:
                     return product;
                     break;
-                case !priceFilterEmpty && allChecked:
+                case !priceFilterEmpty:
                     return priceFilter;
-                    break;
-                case priceFilterEmpty && !allChecked:
-                    return categoriesFilter;
-                    break;
-                case !priceFilterEmpty && !allChecked:
-                    return priceFilter && categoriesFilter; 
                     break;
                 default:
                     return null;
@@ -53,8 +48,13 @@ class ProductCatalog extends Component {
             }
         }
         this.setState({
-            filter: product => setFilterQuery(product)
+            filterQuery: product => setFilterQuery(product)
         });
+    }
+    setCurrentCategory(categoryName) {
+        this.setState({
+            currentCategory: categoryName
+        })
     }
     render() {
         const arrowRight = (
@@ -63,27 +63,44 @@ class ProductCatalog extends Component {
                 icon={faCaretRight}
             />
         );
+        const currentCategory = this.state.currentCategory[0].toUpperCase() + this.state.currentCategory.substr(1, this.state.currentCategory.length);
         const heading = (
             <header className="products-heading">
                 <h2 className="products-heading__title">
-                    Home {arrowRight} Produkty {arrowRight} Wszystkie
+                    Home {arrowRight} Produkty {arrowRight} {currentCategory}
                 </h2>
             </header>
         )
-        const Products = React.lazy(() => import(/* webpackPrefetch: true */'./components/products/products'));
+        const filteredProducts = this.state.productsData.filter(i => {
+            const { currentCategory} = this.state;
+            const checkCategory = () => i.category == currentCategory;
+            switch(true) {
+                case currentCategory == 'wszystkie':
+                    return i;
+                    break;
+                default: 
+                    return checkCategory();
+            }
+        });
+        const Products = lazy(() => import(/* webpackPrefetch: true */'./components/products/products'));
         return (
             <>
                 {heading}
                 <section className="product-catalog">
                     <aside className="filter-panel">
-                        <FilterPanel handleFilter={this.handleFilter}/>
+                        <FilterPanel 
+                            data={this.state.productsData}
+                            setCurrentCategory={this.setCurrentCategory}
+                            handleFilters={this.handleFilters}
+                        />
                     </aside>
                     <section className="product-list">
                         <h2 className="product-list__title">
-                            Wszystkie<span className="product-list__count">({this.state.productsData.length})</span>
+                            {currentCategory}
+                            <span className="product-list__count">({filteredProducts.length})</span>
                         </h2>
                         <Suspense fallback={<Loading />}>
-                            <Products products={this.state.productsData.filter(this.state.filter)}/>
+                            <Products products={filteredProducts.filter(this.state.filterQuery)}/>
                         </Suspense>
                     </section>
                 </section>

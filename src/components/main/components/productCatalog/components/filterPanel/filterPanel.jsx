@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import PriceFilter from './components/priceFilter/priceFilter';
-import CheckboxFilter from './components/checkboxFilter/checkboxFilter';
+import CategoriesFilter from './components/categoriesFilter/categoriesFilter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons/faCaretUp';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons/faCaretDown';
@@ -14,24 +14,18 @@ const hideContent = {
     display: 'none'
 }
 
-class FilterPanel extends Component {
+class FilterPanel extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            toggle: (window.innerWidth < 768) ? false : true,
+            toggle: (window.innerWidth >= 768) ? true : false,
             priceFrom: '',
-            priceTo: '',
-            allChecked: true, 
-            categories: [
-                { name: 'maseczki', checked: true },
-                { name: 'opaski', checked: true },
-                { name:'zegarki', checked: true }
-            ]
+            priceTo: ''
         }
         this.togglePanel = this.togglePanel.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleCheckbox = this.handleCheckbox.bind(this);
+        this.liftUp = this.liftUp.bind(this);    
     }
     togglePanel() {
         this.setState(prevState => ({
@@ -43,76 +37,81 @@ class FilterPanel extends Component {
             [event.target.name]: event.target.value
         })
     }
-    handleCheckbox(event) {
-        const checked = event.target.checked;
-        const name = event.target.name;
-        this.setState(prevState => {
-            let { allChecked, categories } = prevState;
-            if(name === 'allChecked') {
-                allChecked = checked
-                categories = categories.map(item => ({ ...item, checked: checked }));
-            } 
-            else {
-                categories = categories.map(item => 
-                    (item.name === name) ? { ...item, checked: checked } : item
-                );
-                allChecked = categories.every(item => item.checked);
-            }
-            return { allChecked, categories }
-        });
-    }
     handleSubmit(event) {
         event.preventDefault();
-        const { 
-            priceFrom, 
-            priceTo, 
-            allChecked, 
-            categories 
-        } = this.state;
-        this.props.handleFilter({
+        const { priceFrom, priceTo } = this.state;
+        this.props.handleFilters({
             priceFrom: parseFloat(priceFrom), 
-            priceTo: parseFloat(priceTo),
-            allChecked: allChecked,
-            categories: categories
+            priceTo: parseFloat(priceTo)
         })
     }
+    liftUp(data) {
+        this.props.setCurrentCategory(data)
+    }
     render() {
-        return (
-            <>
+        const renderHeader = (title) => {
+            return (
                 <header className="filter-header">
-                    <h1 className="filter-header__title">Filtry</h1>
+                    <h1 className="filter-header__title">{title}</h1>
                     <FontAwesomeIcon 
                         className='filter-header__toggle' 
                         icon={this.state.toggle ? faCaretUp : faCaretDown} 
                         onClick={this.togglePanel}
                     />
                 </header>
-                <form 
-                    onSubmit={this.handleSubmit} 
-                    className="filter-form" 
-                    style={this.state.toggle ? showContent : hideContent}
-                >
-                    <PriceFilter 
-                        handleInput={this.handleInput} 
-                        priceFrom={this.state.priceFrom}
-                        priceTo={this.state.priceTo}     
-                    />
-                    <CheckboxFilter 
-                        handleCheckbox={this.handleCheckbox} 
-                        allChecked={this.state.allChecked} 
-                        categories={this.state.categories}
-                    />
-                    <button
-                        className="filter-form__button"
-                        type="submit"
+            )
+        }
+        return (
+            <>
+                <section className="filter-wrapper">
+                    {renderHeader('Kategorie')}
+                    <div
+                        onSubmit={this.handleSubmit} 
+                        className="filter-form" 
+                        style={this.state.toggle ? showContent : hideContent}
                     >
-                        Filtruj
-                    </button>
-                </form>
+                        <CategoriesFilter
+                            data={this.props.data}
+                            liftUp={this.liftUp}
+                        />
+                    </div>
+                </section>
+                <section className="filter-wrapper" style={{paddingTop: '1em'}}>
+                    {renderHeader('Filtry')}
+                    <div  
+                        className="filter-form" 
+                        style={this.state.toggle ? showContent : hideContent}
+                    >
+                        <PriceFilter 
+                            handleInput={this.handleInput} 
+                            priceFrom={this.state.priceFrom}
+                            priceTo={this.state.priceTo}     
+                        />
+                        <button
+                            onClick={this.handleSubmit}
+                            className="filter-form__button"
+                            type="button"
+                        >
+                            Filtruj
+                        </button>
+                    </div>
+                </section>
             </>
         );
     }
 }
 export default FilterPanel;
 
-FilterPanel.propTypes = { handleFilter: PropTypes.func.isRequired }
+FilterPanel.propTypes = { 
+    handleFilters: PropTypes.func.isRequired,
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            img: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            category: PropTypes.string.isRequired,
+            price: PropTypes.number.isRequired
+        })
+    ).isRequired 
+
+}

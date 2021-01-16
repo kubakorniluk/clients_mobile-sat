@@ -21,7 +21,8 @@ module.exports = {
             path.resolve('./src')
         ],
         alias: {
-            styles: path.resolve('./src/styles')
+            styles: path.resolve('./src/styles'),
+            assets: path.resolve('./src/assets')
         }
     },
     devtool: 'eval',

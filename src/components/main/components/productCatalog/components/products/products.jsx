@@ -7,7 +7,7 @@ const Products = ({ products }) => {
             products.map((item) => {
                 return (
                     <div className="card" key={item.id}>
-                        <img className="card__img" src={require(`../../../../../../assets/img/${item.img}`)} alt={item.name}/>
+                        <img className="card__img" src={require(`assets/img/${item.img}`)} alt={item.name}/>
                         <header className="card-content">
                             <h3 className="card-content__title">{item.name}</h3>
                             <h3 className="card-content__price">{`${item.price} zł`}</h3>
