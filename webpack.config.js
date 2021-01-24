@@ -22,7 +22,8 @@ module.exports = {
         ],
         alias: {
             styles: path.resolve('./src/styles'),
-            assets: path.resolve('./src/assets')
+            assets: path.resolve('./src/assets'),
+            helpers: path.resolve('./src/helpers')
         }
     },
     devtool: 'eval',

@@ -55,9 +55,7 @@
 }
 .filter-wrapper {
     background-color: rgb(242, 242, 242);
-    :first-of-type {
-        background-color: base.$primary-color;
-    }
+    margin: 0 0 2vw 0;
 }
 @media only screen and (min-width: 0px) and (max-width: 576.99px) {
 

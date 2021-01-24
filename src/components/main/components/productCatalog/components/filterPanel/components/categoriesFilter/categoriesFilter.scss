@@ -1,43 +1,28 @@
 @use 'styles/base' as base;
-.filter-fieldset {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    border: none;
-    margin: .75vw 1.5vw;
-    padding: 0;
-    font: {
-        family: base.$primary-font;
-        weight: 300;
-    }
-    &__title {
-        padding: 0;
-        margin-bottom: 0.5vw;
-        font: {
-            family: base.$primary-font;
-            size: 105%;
-            weight: 400;
-        }
-    } 
-    .filter-label {
+.filter-categories {
+    list-style-type: none;
+    margin: .75vw 1.5vw .75vw 0;
+    &__category {
         display: flex;
-        align-items: center;
-        font: {
-            family: base.$primary-font;
-            size: 95%;
-        }
-        .filter-input {
-            display: block;
-        }
-        .filter-input--checkbox {
-            margin-right: 1vw;
-            border: 1px solid base.$primary-color {
-                radius: none;
+        flex-direction: row;
+        justify-content: space-between;
+        .category-name, .category-count {
+            margin: .5vw 0;
+            color: rgb(150, 150, 150);
+            font: {
+                family: base.$primary-font;
+                size: 105%;
+                weight: 400;   
             }
-        }  
+            transition: 0.5s;
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
     }
-}
-.filter-by-category {
-    display: flex;
-    flex-direction: column;
+    &__category:hover {
+        .category-name, .category-count { color: base.$primary-color; }
+        cursor: pointer;
+    }
+    .active { color: base.$primary-color; }
 }

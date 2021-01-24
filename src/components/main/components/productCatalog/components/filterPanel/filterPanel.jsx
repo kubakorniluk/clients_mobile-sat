@@ -18,18 +18,24 @@ class FilterPanel extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            toggle: (window.innerWidth >= 768) ? true : false,
+            toggleCategories: (window.innerWidth >= 768) ? true : false,
+            toggleFilters: (window.innerWidth >= 768) ? true : false,
             priceFrom: '',
             priceTo: ''
         }
-        this.togglePanel = this.togglePanel.bind(this);
+        this.toggleCategories = this.toggleCategories.bind(this);
+        this.toggleFilters = this.toggleFilters.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.liftUp = this.liftUp.bind(this);    
     }
-    togglePanel() {
+    toggleCategories() {
         this.setState(prevState => ({
-            toggle: !prevState.toggle
+            toggleCategories: !prevState.toggle
+        }))
+    }
+    toggleFilters() {
+        this.setState(prevState => ({
+            toggleFilters: !prevState.toggle
         }))
     }
     handleInput(event) {
@@ -45,18 +51,15 @@ class FilterPanel extends PureComponent {
             priceTo: parseFloat(priceTo)
         })
     }
-    liftUp(data) {
-        this.props.setCurrentCategory(data)
-    }
     render() {
-        const renderHeader = (title) => {
+        const renderHeader = (title, toggleFunction) => {
             return (
                 <header className="filter-header">
                     <h1 className="filter-header__title">{title}</h1>
                     <FontAwesomeIcon 
                         className='filter-header__toggle' 
-                        icon={this.state.toggle ? faCaretUp : faCaretDown} 
-                        onClick={this.togglePanel}
+                        icon={faCaretDown} 
+                        onClick={toggleFunction}
                     />
                 </header>
             )
@@ -68,19 +71,20 @@ class FilterPanel extends PureComponent {
                     <div
                         onSubmit={this.handleSubmit} 
                         className="filter-form" 
-                        style={this.state.toggle ? showContent : hideContent}
+                        style={this.state.toggleCategories ? showContent : hideContent}
                     >
                         <CategoriesFilter
                             data={this.props.data}
-                            liftUp={this.liftUp}
+                            filteredData={this.props.filteredData}
+                            setCurrentCategory={(data) => this.props.setCurrentCategory(data)}
                         />
                     </div>
                 </section>
-                <section className="filter-wrapper" style={{paddingTop: '1em'}}>
+                <section className="filter-wrapper">
                     {renderHeader('Filtry')}
                     <div  
                         className="filter-form" 
-                        style={this.state.toggle ? showContent : hideContent}
+                        style={this.state.toggleFilters ? showContent : hideContent}
                     >
                         <PriceFilter 
                             handleInput={this.handleInput} 
@@ -103,7 +107,6 @@ class FilterPanel extends PureComponent {
 export default FilterPanel;
 
 FilterPanel.propTypes = { 
-    handleFilters: PropTypes.func.isRequired,
     data: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,
@@ -112,6 +115,16 @@ FilterPanel.propTypes = {
             category: PropTypes.string.isRequired,
             price: PropTypes.number.isRequired
         })
-    ).isRequired 
-
+    ).isRequired,
+    filteredData: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            img: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            category: PropTypes.string.isRequired,
+            price: PropTypes.number.isRequired
+        })
+    ).isRequired,
+    setCurrentCategory: PropTypes.func.isRequired, 
+    handleFilters: PropTypes.func.isRequired
 }
