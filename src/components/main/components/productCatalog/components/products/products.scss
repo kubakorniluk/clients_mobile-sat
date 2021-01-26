@@ -7,7 +7,7 @@
     width: 100%;
     .card {
         background-color: base.$primary-bg-color;
-        border: 2.5px solid  rgb(240, 240, 240);
+        border: 2px solid  rgb(240, 240, 240);
         width: calc(100%/3 - 2vw);
         cursor: pointer;
         transition: 0.5s;

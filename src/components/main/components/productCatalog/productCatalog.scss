@@ -26,22 +26,29 @@
         flex-wrap: wrap;
         flex-basis: 75%;
         width: 100%;
-        &__title {
+        .catalog-control {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
             align-items: center;
-            color: base.$primary-color;
             margin: 0 {
                 left: 2vw;
                 bottom: 2vw;
             }
-            font: {
-                family: base.$primary-font;
-                size: 130%;
-                weight: 500;
+            &__title {
+                align-items: center;
+                color: base.$primary-color;
+                margin: 0;
+                font: {
+                    family: base.$primary-font;
+                    size: 130%;
+                    weight: 500;
+                }
             }
-        }
-        &__count {
-            color: rgb(150, 150, 150);
-            margin-left: 1vw;
+            &__count {
+                color: rgb(150, 150, 150);
+                margin-left: 1vw;
+            }
         }
     }
     .filter-panel {

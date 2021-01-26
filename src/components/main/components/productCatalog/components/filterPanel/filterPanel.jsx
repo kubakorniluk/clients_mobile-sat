@@ -27,29 +27,38 @@ class FilterPanel extends PureComponent {
         this.toggleFilters = this.toggleFilters.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleReset = this.handleReset.bind(this);
     }
     toggleCategories() {
         this.setState(prevState => ({
-            toggleCategories: !prevState.toggle
-        }))
+            toggleCategories: !prevState.toggleCategories
+        }));
     }
     toggleFilters() {
         this.setState(prevState => ({
-            toggleFilters: !prevState.toggle
-        }))
+            toggleFilters: !prevState.toggleFilters
+        }));
     }
     handleInput(event) {
         this.setState({
             [event.target.name]: event.target.value
-        })
+        });
     }
     handleSubmit(event) {
-        event.preventDefault();
+        if (event) {
+            event.preventDefault()
+        }
         const { priceFrom, priceTo } = this.state;
         this.props.handleFilters({
             priceFrom: parseFloat(priceFrom), 
             priceTo: parseFloat(priceTo)
-        })
+        });
+    }
+    handleReset() {
+        this.setState({
+            priceFrom: '',
+            priceTo: ''
+        }, () => this.handleSubmit());
     }
     render() {
         const renderHeader = (title, toggleFunction) => {
@@ -58,48 +67,68 @@ class FilterPanel extends PureComponent {
                     <h1 className="filter-header__title">{title}</h1>
                     <FontAwesomeIcon 
                         className='filter-header__toggle' 
-                        icon={faCaretDown} 
+                        icon={(this.state.toggleCategories && this.state.toggleFilters) ? faCaretUp : faCaretDown} 
                         onClick={toggleFunction}
                     />
                 </header>
-            )
+            );
         }
+        const {
+            data,
+            filterQuery,
+            setCurrentCategory
+        } = this.props;
+        const {
+            toggleCategories,
+            toggleFilters,
+            priceFrom,
+            priceTo
+        } = this.state
         return (
             <>
-                <section className="filter-wrapper">
-                    {renderHeader('Kategorie')}
+                <div className="filter-wrapper">
+                    {renderHeader('Kategorie', this.toggleCategories)}
                     <div
                         onSubmit={this.handleSubmit} 
                         className="filter-form" 
-                        style={this.state.toggleCategories ? showContent : hideContent}
+                        style={toggleCategories ? showContent : hideContent}
                     >
                         <CategoriesFilter
-                            data={this.props.data}
-                            filteredData={this.props.filteredData}
-                            setCurrentCategory={(data) => this.props.setCurrentCategory(data)}
+                            data={data}
+                            filterQuery={filterQuery}
+                            setCurrentCategory={(data) => setCurrentCategory(data)}
                         />
                     </div>
-                </section>
-                <section className="filter-wrapper">
-                    {renderHeader('Filtry')}
-                    <div  
+                </div>
+                <div className="filter-wrapper">
+                    {renderHeader('Filtry', this.toggleFilters)}
+                    <form  
                         className="filter-form" 
-                        style={this.state.toggleFilters ? showContent : hideContent}
+                        style={toggleFilters ? showContent : hideContent}
                     >
                         <PriceFilter 
                             handleInput={this.handleInput} 
-                            priceFrom={this.state.priceFrom}
-                            priceTo={this.state.priceTo}     
+                            priceFrom={priceFrom}
+                            priceTo={priceTo}     
                         />
-                        <button
-                            onClick={this.handleSubmit}
-                            className="filter-form__button"
-                            type="button"
-                        >
-                            Filtruj
-                        </button>
-                    </div>
-                </section>
+                        <div className="button-group">
+                            <button
+                                onClick={this.handleSubmit}
+                                className="filter-form__button"
+                                type="submit"
+                            >
+                                Filtruj
+                            </button>
+                            <button
+                                className="filter-form__button"
+                                onClick={this.handleReset}
+                                type="reset"
+                            >
+                                Resetuj
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </>
         );
     }
@@ -116,15 +145,7 @@ FilterPanel.propTypes = {
             price: PropTypes.number.isRequired
         })
     ).isRequired,
-    filteredData: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            img: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            category: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired
-        })
-    ).isRequired,
+    filterQuery: PropTypes.func.isRequired,
     setCurrentCategory: PropTypes.func.isRequired, 
     handleFilters: PropTypes.func.isRequired
 }

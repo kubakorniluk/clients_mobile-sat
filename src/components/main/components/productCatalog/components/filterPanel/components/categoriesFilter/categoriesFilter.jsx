@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import transformCategoryName from 'helpers/transformCategoryName';
+import { transformCategoryName } from 'helpers/transformCategoryName';
 import PropTypes from 'prop-types';
 import './categoriesFilter.scss';
 
@@ -19,7 +19,8 @@ class CategoriesFilter extends PureComponent {
         }
     }
     mapCategories() {
-        const { data, filteredData } = this.props;
+        const { data, filterQuery } = this.props;
+        const filteredData = data.filter(filterQuery)
         const categories = [...new Set(data.map(item => item.category))];
         const countForEach = categories.map((category, index) => {
             return {
@@ -48,16 +49,20 @@ class CategoriesFilter extends PureComponent {
                     categories.map(item => 
                         <li 
                             key={item.id} 
-                            className="filter-categories__category"
+                            onClick={() => this.handleCategoryUpdate(item.name)}
+                            className={
+                                (item.name == this.state.currentCategory) 
+                                ? 'filter-categories__category filter-categories__category--active' 
+                                : 'filter-categories__category'
+                            }
                         >
                             <h3 
-                                onClick={() => this.handleCategoryUpdate(item.name)}
-                                className={(item.name == this.state.currentCategory) ? 'category-name active' : 'category-name'}
+                                className="category-name"
                             >
                                 {transformCategoryName(item.name)}
                             </h3>
                             <h3 
-                                className={(item.name == this.state.currentCategory) ? 'category-count active' : 'category-count'}
+                                className="category-count"
                             >
                                 {item.count}
                             </h3>
@@ -82,13 +87,5 @@ CategoriesFilter.propTypes = {
             price: PropTypes.number.isRequired
         })
     ).isRequired,
-    filteredData: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            img: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            category: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired
-        })
-    ).isRequired
+    filterQuery: PropTypes.func.isRequired
 }

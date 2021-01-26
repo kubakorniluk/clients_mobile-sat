@@ -1,21 +1,22 @@
-import React, { Component, lazy, Suspense} from 'react';
+import React, { PureComponent, lazy, Suspense} from 'react';
+import Pagination from './components/pagination/pagination'
 import FilterPanel from './components/filterPanel/filterPanel';
 import Loading from './components/loading/loading';
-import transformCategoryName from 'helpers/transformCategoryName'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons/faCaretRight';
+import { transformCategoryName } from 'helpers/transformCategoryName'
 import './productCatalog.scss';
-class ProductCatalog extends Component {
+class ProductCatalog extends PureComponent {
     constructor() {
         super();
         this.state = {
             productsData: [],
             filterQuery: i => i,
             currentCategory: 'wszystkie',
-
+            productsPerPage: 12,
+            currentProductsInterval: [1, 12]
         }
         this.handleFilters = this.handleFilters.bind(this);
         this.setCurrentCategory = this.setCurrentCategory.bind(this);
+        this.handleProductsPerPage = this.handleProductsPerPage.bind(this);
     }
     async componentDidMount() {
         const data = await import('./data/productData.json');
@@ -49,6 +50,10 @@ class ProductCatalog extends Component {
             currentCategory: categoryName
         })
     }
+    handleProductsPerPage() {
+        
+    }
+    
     render() {
         const filteredProducts = this.state.productsData.filter(i => {
             const { currentCategory} = this.state;
@@ -69,16 +74,22 @@ class ProductCatalog extends Component {
                     <aside className="filter-panel">
                         <FilterPanel 
                             data={this.state.productsData}
-                            filteredData={this.state.productsData.filter(this.state.filterQuery)}
+                            filterQuery={this.state.filterQuery}
                             setCurrentCategory={this.setCurrentCategory}
                             handleFilters={this.handleFilters}
                         />
                     </aside>
                     <section className="product-list">
-                        <h2 className="product-list__title">
-                            {transformCategoryName(this.state.currentCategory)}
-                            <span className="product-list__count">({applyFilters.length})</span>
-                        </h2>
+                        <div className="catalog-control">
+                            <h2 className="catalog-control__title">
+                                {transformCategoryName(this.state.currentCategory)}
+                                <span className="catalog-control__count">({applyFilters.length})</span>
+                            </h2>
+                            <Pagination 
+                                data={applyFilters} 
+                                handleProductsPerPage={this.handleProductsPerPage}
+                            />
+                        </div>
                         <Suspense fallback={<Loading />}>
                             <Products products={applyFilters}/>
                         </Suspense>

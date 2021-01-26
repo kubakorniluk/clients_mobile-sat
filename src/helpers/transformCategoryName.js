@@ -1,2 +1,1 @@
-const transformCategoryName = (name) => name[0].toUpperCase() + name.substr(1, name.length);
-export default transformCategoryName;
+ export const transformCategoryName = (name) => name[0].toUpperCase() + name.substr(1, name.length)

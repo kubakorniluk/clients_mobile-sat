@@ -31,25 +31,38 @@
 .filter-form {
     display: flex;
     flex-direction: column;
-    &__button {
-        margin: 1.5vw;
-        padding: 1vw 2vw;
-        color: base.$primary-bg-color;
-        border: .5px solid base.$primary-color;
-        background-color: base.$primary-color;
-        cursor: pointer;
-        transition: 0.5s;
-        font: {
-            family: base.$primary-font;
-            size: 105%;
-            weight: 300;
-        }
-        &:hover {
-            color: base.$primary-color;
-            background-color: transparent;
-        }
-        &:focus {
-            outline: 0;
+    .button-group {
+        display: flex;
+        flex-direction: row;
+        margin: .75vw 1.5vw;
+        .filter-form__button {
+            padding: .75vw 1.5vw;
+            color: base.$primary-bg-color;
+            border: 1px solid base.$primary-color;
+            background-color: base.$primary-color;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.5s;
+            font: {
+                family: base.$primary-font;
+                size: 105%;
+                weight: 300;
+            }
+            &:hover {
+                color: base.$primary-color;
+                background-color: transparent;
+            }
+            &:focus { outline: 0; }
+            &:first-of-type { margin-right: .75vw; }
+            &:last-of-type { 
+                margin-left: .75vw;
+                background-color: transparent;
+                color: base.$primary-color;
+                &:hover {
+                    background-color: base.$primary-color;
+                    color: base.$primary-bg-color;
+                }
+            }
         }
     }
 }

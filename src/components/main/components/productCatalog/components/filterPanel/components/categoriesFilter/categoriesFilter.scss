@@ -6,23 +6,26 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        margin: 1vw 0;
+        color: rgb(150, 150, 150);
+        &:first-of-type { margin-top: 0; }
+        &:last-of-type { margin-bottom: 0; }
+        &--active { 
+            color: base.$primary-color; 
+        }
         .category-name, .category-count {
-            margin: .5vw 0;
-            color: rgb(150, 150, 150);
+            margin: 0;
+            
             font: {
                 family: base.$primary-font;
                 size: 105%;
                 weight: 400;   
             }
-            transition: 0.5s;
-            &:first-of-type {
-                margin-top: 0;
-            }
+
         }
     }
     &__category:hover {
         .category-name, .category-count { color: base.$primary-color; }
         cursor: pointer;
     }
-    .active { color: base.$primary-color; }
 }

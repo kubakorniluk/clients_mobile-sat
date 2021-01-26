@@ -68,5 +68,12 @@
         "name": "Opaska v2",
         "category": "opaski",
         "price": 49.00
+    },
+    {
+        "id": 11,
+        "img": "product-image.jpeg",
+        "name": "Maseczka 1",
+        "category": "maseczki",
+        "price": 99.99
     }
 ]
