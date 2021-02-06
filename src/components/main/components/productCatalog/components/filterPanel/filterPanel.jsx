@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PriceFilter from './components/priceFilter/priceFilter';
 import CategoriesFilter from './components/categoriesFilter/categoriesFilter';
@@ -14,7 +14,7 @@ const hideContent = {
     display: 'none'
 }
 
-class FilterPanel extends PureComponent {
+class FilterPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -83,7 +83,7 @@ class FilterPanel extends PureComponent {
             toggleFilters,
             priceFrom,
             priceTo
-        } = this.state
+        } = this.state;
         return (
             <>
                 <div className="filter-wrapper">

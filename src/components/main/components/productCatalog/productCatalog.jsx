@@ -1,9 +1,10 @@
-import React, { PureComponent, lazy, Suspense} from 'react';
+import React, { PureComponent, lazy, Suspense } from 'react';
 import Pagination from './components/pagination/pagination'
 import FilterPanel from './components/filterPanel/filterPanel';
 import Loading from './components/loading/loading';
 import { transformCategoryName } from 'helpers/transformCategoryName'
 import './productCatalog.scss';
+
 class ProductCatalog extends PureComponent {
     constructor() {
         super();
@@ -12,18 +13,21 @@ class ProductCatalog extends PureComponent {
             filterQuery: i => i,
             currentCategory: 'wszystkie',
             productsPerPage: 12,
-            currentProductsInterval: [1, 12]
+            currentProductsInterval: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         }
         this.handleFilters = this.handleFilters.bind(this);
         this.setCurrentCategory = this.setCurrentCategory.bind(this);
-        this.handleProductsPerPage = this.handleProductsPerPage.bind(this);
+        this.setCurrentProductsInterval = this.setCurrentProductsInterval.bind(this);
     }
-    async componentDidMount() {
-        const data = await import('./data/productData.json');
-        this.setState({ 
-           productsData: data.default
-        })
+    componentDidMount() {
+        import('./data/productData.json')
+        .then(data => 
+            this.setState({ 
+                productsData: data.default
+            })
+        )
     }
+
     handleFilters(filter) {
         const { priceFrom, priceTo } = filter;
         const priceFilterEmpty = isNaN(priceFrom) && isNaN(priceTo);
@@ -48,15 +52,16 @@ class ProductCatalog extends PureComponent {
     setCurrentCategory(categoryName) {
         this.setState({
             currentCategory: categoryName
-        })
+        });
     }
-    handleProductsPerPage() {
-        
+    setCurrentProductsInterval(currentInterval) {
+        this.setState({
+            currentProductsInterval: currentInterval
+        });
     }
-    
     render() {
         const filteredProducts = this.state.productsData.filter(i => {
-            const { currentCategory} = this.state;
+            const { currentCategory } = this.state;
             switch(true) {
                 case currentCategory == 'wszystkie':
                     return i;
@@ -66,7 +71,19 @@ class ProductCatalog extends PureComponent {
             }
         });
         const applyFilters = filteredProducts.filter(this.state.filterQuery);
-        const Products = lazy(() => import(/* webpackPrefetch: true */'./components/products/products'));
+        const shownProducts = applyFilters.filter((product, index) => {
+            if(this.state.currentProductsInterval.includes(index + 1)) {
+                return product;
+            }
+            else {return null}
+        })
+        const Products = lazy(() => {
+            return new Promise(resolve => {
+                setTimeout(
+                    () => resolve(import(/* webpackPrefetch: true */'./components/products/products')), 
+                500)
+            })
+        });
         return (
             <>
                 {/* {heading} */}
@@ -87,11 +104,14 @@ class ProductCatalog extends PureComponent {
                             </h2>
                             <Pagination 
                                 data={applyFilters} 
-                                handleProductsPerPage={this.handleProductsPerPage}
+                                productsPerPage={this.state.productsPerPage}
+                                interval={this.state.currentProductsInterval}
+                                currentCategory={this.state.currentCategory}
+                                setCurrentProductsInterval={this.setCurrentProductsInterval}
                             />
                         </div>
                         <Suspense fallback={<Loading />}>
-                            <Products products={applyFilters}/>
+                            <Products products={shownProducts}/>
                         </Suspense>
                     </section>
                 </section>

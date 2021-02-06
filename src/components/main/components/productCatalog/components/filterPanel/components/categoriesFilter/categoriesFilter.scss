@@ -1,7 +1,7 @@
 @use 'styles/base' as base;
 .filter-categories {
     list-style-type: none;
-    margin: .75vw 1.5vw .75vw 0;
+    margin: .75vw 1.5vw 1.5vw 0;
     &__category {
         display: flex;
         flex-direction: row;

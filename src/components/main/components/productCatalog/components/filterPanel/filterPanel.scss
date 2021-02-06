@@ -22,7 +22,6 @@
         background-color: transparent;
         cursor: pointer;
         font: {
-            family: base.$primary-font;
             size: 130%;
             weight: 500;
         }
@@ -34,7 +33,9 @@
     .button-group {
         display: flex;
         flex-direction: row;
-        margin: .75vw 1.5vw;
+        margin: 1.5vw {
+            top: .75vw;
+        };
         .filter-form__button {
             padding: .75vw 1.5vw;
             color: base.$primary-bg-color;

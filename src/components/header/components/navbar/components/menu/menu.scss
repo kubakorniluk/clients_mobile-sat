@@ -10,34 +10,21 @@
         color: base.$primary-color;
         font: {
             family: base.$primary-font;
-            size: 105%;
+            size: 110%;
             weight: 400;
         }
     }
-    &__item--cta {
-        color: base.$primary-bg-color;
-        padding: .75vw 1.5vw;
-        border: 1px solid base.$primary-color;
-        background-color: base.$primary-color;
-        cursor: pointer;
-        transition: 0.5s;
-        margin-right: 0;
-        &:hover {
-            background-color: base.$primary-bg-color;
-            color: base.$primary-color;
-        }
+    &--desktop {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
-}
-.menu--desktop {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-.menu--mobile {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    .menu__item {
-        margin: 0;
+    &--mobile {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        .menu__item {
+            margin: 1.5vw 0;
+        }
     }
 }

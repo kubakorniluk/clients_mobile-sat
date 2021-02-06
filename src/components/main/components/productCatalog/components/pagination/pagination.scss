@@ -16,8 +16,10 @@
     }
     &__item--next {
         padding-right: 0;
+        cursor: pointer;
     }
     &__item--prev {
         padding-left: 0;
+        cursor: pointer;
     }
 }

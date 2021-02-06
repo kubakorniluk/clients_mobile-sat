@@ -42,7 +42,7 @@ class MobileMenu extends Component {
                             onClick={this.handleClick}
                         />
                     </div>
-                    <Menu version='mobile' cta={false}/>
+                    <Menu version='mobile'/>
                 </aside>
             </>
         )
