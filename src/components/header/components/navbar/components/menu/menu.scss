@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     &__item {
-        margin: 0 1.75vw;
+        margin: 0 1.5vw;
         display: block;
         cursor: pointer;
         color: base.$primary-color;
@@ -13,6 +13,9 @@
             size: 110%;
             weight: 400;
         }
+    }
+    &__item:last-of-type {
+        margin-right: 0;
     }
     &--desktop {
         display: flex;
@@ -24,7 +27,7 @@
         flex-direction: column;
         text-align: right;
         .menu__item {
-            margin: 1.5vw 0;
+            margin: 3vw 0;
         }
     }
 }

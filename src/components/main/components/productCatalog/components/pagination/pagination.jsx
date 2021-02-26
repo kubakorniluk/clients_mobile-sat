@@ -23,6 +23,8 @@ class Pagination extends Component {
     componentDidUpdate(prevProps, prevState) {
         if(this.props.currentCategory != prevProps.currentCategory) {
             this.backToStartPage();
+        } else if(this.props.filterQuery != prevProps.filterQuery) {
+            this.backToStartPage()
         }
     }
     mapIntervalsFromData() {

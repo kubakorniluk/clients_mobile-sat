@@ -6,8 +6,8 @@ const Menu = ({ version }) => {
     return (
         <ul className={`menu menu--${version}`}>
             <li className="menu__item">Strona główna</li>
-            <li className="menu__item">Nowości</li>
             <li className="menu__item">Produkty</li>
+            <li className="menu__item">Zamów</li>
             <li className="menu__item">Kontakt</li>
         </ul>
     )
