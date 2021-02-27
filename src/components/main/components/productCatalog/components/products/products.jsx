@@ -5,15 +5,16 @@ const Products = ({ products }) => {
     const renderProducts = () => {
         return (
             products.map((item) => {
+                let bgImg = require(`assets/img/${item.img}`);
                 return (
                     <div className="card" key={item.id}>
-                        {/* <div className="card__img" style={{backgroundImage: require(`assets/img/${item.img}`)}}>
+                        <div className="card__img" style={{backgroundImage: `url(${bgImg})`}}>
                             <div className="overlay"></div>
-                        </div> */}
-                        <img className="card__img" src={require(`assets/img/${item.img}`)} alt={item.name}/>
+                        </div>
                         <header className="card-content">
                             <h3 className="card-content__title">{item.name}</h3>
                             <h3 className="card-content__price">{`${item.price} zł`}</h3>
+                            <button className="card-content__button">Dodaj do zamówienia</button>
                         </header>
                     </div>
                 )
