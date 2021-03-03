@@ -1,19 +1,4 @@
 @use 'styles/base' as base;
-.products-heading {
-    margin: 2vw 5vw;
-    &__title {
-        align-items: center;
-        color: rgb(150, 150, 150);
-        font: {
-            family: base.$primary-font;
-            size: 115%;
-            weight: 400;
-        }
-    }
-    &__split {
-        margin: 0 .5em;
-    }
-}
 .product-catalog {
     position: relative;
     display: flex;
@@ -30,7 +15,6 @@
             bottom: 2vw;
         }
         &__title {
-            align-items: center;
             color: base.$primary-color;
             margin: 0;
             font: {
@@ -41,46 +25,64 @@
         }
         &__count {
             color: rgb(150, 150, 150);
-            margin-left: 1vw;
-            font-weight: 400;
+            margin: 0;
+            font: {
+                family: base.$primary-font;
+                size: 115%;
+                weight: 400;
+            }
         }
     }
 }
 @media only screen and (min-width: 0px) and (max-width: 576.99px) {
     .product-catalog {
+        margin: 0 7vw;
         flex-direction: column;
-        align-items: center;
-        .product-list {
-            flex-direction: column;
-            flex-basis: auto;
-            flex-wrap: nowrap;
-        }
-        .filter-panel {
-            flex-basis: auto;
+        .catalog-control {
+            margin-bottom: 7vw;
+            &__title {
+                font-size: 110%;
+            }
+            &__count {
+                margin: 0;
+                font-size: 100%;
+            }
         }
     }
 }
 @media only screen and (min-width: 577px) and (max-width: 768.99px) {
     .product-catalog {
-        .product-list {
-            flex-basis: 70%;
-        }
-        .filter-panel {
-            flex-basis: 30%;
+        margin: 0 6vw;
+        .catalog-control {
+            margin-bottom: 3vw;
+            &__title {
+                font-size: 120%;
+            }
+            &__count {
+                margin: 0;
+                font-size: 110%;
+            }
         }
     }
 }
-@media only screen and (min-width: 769px) and(max-width: 992.99px) { 
-
-}
+// @media only screen and (min-width: 769px) and(max-width: 992.99px) { 
+//     .product-catalog {
+//         margin: 0 7vw;
+//         .catalog-control {
+//             margin-bottom: 3vw;
+//     }
+// }
 
 @media only screen and (min-width: 993px) and (max-width: 1200px) { 
     .product-catalog {
-        .product-list {
-            flex-basis: 75%;
-        }
-        .filter-panel {
-            flex-basis: 25%;
+        .catalog-control {
+            margin-bottom: 2.5vw;
+            &__title {
+                font-size: 130%;
+            }
+            // &__count {
+            //     font-size: 115%;
+            // }
         }
     }
 }

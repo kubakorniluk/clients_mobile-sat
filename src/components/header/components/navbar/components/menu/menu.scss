@@ -5,6 +5,7 @@
     padding: 0;
     &__item {
         margin: 0 1.5vw;
+        padding: 0;
         display: block;
         cursor: pointer;
         color: base.$primary-color;
@@ -12,6 +13,22 @@
             family: base.$primary-font;
             size: 105%;
             weight: 400;
+        }
+        transition: .5s;
+        &:hover {
+            color: rgb(150, 150, 150);
+        }
+        &--cta {
+            background-color: base.$primary-color;
+            color: base.$primary-bg-color;
+            padding: .75vw 1.5vw;
+            font-weight: 400;
+            cursor: pointer;
+            transition: .5s;
+            &:hover {
+                color: base.$primary-color;
+                background-color: rgb(240, 240, 240);
+            }
         }
     }
     &__item:last-of-type {
@@ -25,9 +42,61 @@
     &--mobile {
         display: flex;
         flex-direction: column;
-        text-align: right;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 3;
         .menu__item {
             margin: 3vw 0;
+        }
+    }
+}
+@media only screen and (min-width: 0px) and (max-width: 576.99px) {
+    .menu {
+        &--mobile {
+            .menu__item {
+                margin: 5vw 0;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 768.99px) {
+    .menu {
+        &--mobile {
+            .menu__item {
+                margin: 5vw 0;
+                font-size: 110%;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 769px) and(max-width: 992.99px) { 
+    .menu {
+        &__item {
+            margin: 0 1.5vw;
+            font: {
+                size: 105%;
+                weight: 400;
+            }
+            &--cta {
+                padding: .75vw 1.5vw;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1281px) { 
+    .menu {
+        &__item {
+            margin: 0 2vw;
+            font: {
+                size: 110%;
+                weight: 400;
+            }
+            &--cta {
+                padding: 1vw 2vw;
+                font-weight: 400;
+            }
         }
     }
 }

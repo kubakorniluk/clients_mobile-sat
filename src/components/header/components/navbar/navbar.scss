@@ -18,3 +18,46 @@
         }
     }
 }
+@media only screen and (min-width: 0px) and (max-width: 576.99px) {
+    .navbar {
+        margin: 7vw {
+            bottom: 5vw;
+        }
+        &__logo {
+            font-size: 125%;
+        }
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 768.99px) {
+    .navbar {
+        margin: 6vw {
+            bottom: 3vw;
+        }
+        &__logo {
+            font-size: 140%;
+        }
+    }
+}
+// @media only screen and (min-width: 769px) and(max-width: 992.99px) { 
+//     .navbar {
+//         margin: 5vw {
+//             bottom: 2.5vw;
+//         }
+//         &__logo {
+//             font: {
+//                 size: 145%;
+//             }
+//         }
+//     }
+// }
+
+@media only screen and (min-width: 993px) and (max-width: 1281px) { 
+    .navbar {
+        margin: 5vw {
+            bottom: 2.5vw;
+        }
+        &__logo {
+            font-size: 150%;
+        }
+    }
+}

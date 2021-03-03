@@ -5,11 +5,12 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 import Menu from '../menu/menu';
 import './mobileMenu.scss';
 const showSidebar = {
-    width: '75%',
+    width: '100%',
     display: 'block'
+    
 } 
 const hideSidebar = {
-    width: 0,
+    width: '0%',
     display: 'none'
 }
 class MobileMenu extends Component {

@@ -9,8 +9,10 @@
     background-position: center;
     .overlay {
         position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 50vh;
+        height: 100%;
         background-color: rgba(26, 30, 40, 0.7);
         .text {
             position: absolute;
@@ -36,29 +38,59 @@
     }
 }
 @media only screen and (min-width: 0px) and (max-width: 576.99px) {
-    
-    .gallery .overlay .text .text__title {
-        font-size: 115%;
-    }
-    .gallery .overlay .text .text__subtitle {
-        font-size: 100%;
-        width: 100%;
+    .gallery {
+        margin: 0 7vw 14vw 7vw;
+        height: 60vh;
+        .overlay .text {
+            bottom: 10%;
+            left: 30%;
+            transform: translate(-30%, 10%);
+            .text__title {
+                font-size: 110%;
+            }
+            .text__subtitle {    
+                font-size: 90%;
+                width: 100%;
+            }
+        }
     }
 }
 
 @media only screen and (min-width: 577px) and (max-width: 768.99px) { 
-    .gallery .overlay .text .text__title {
-        font-size: 115%;
-    }
-    .gallery .overlay .text .text__subtitle {
-        font-size: 105%;
-        width: 100%;
+    .gallery {
+        margin: 0 6vw 6vw 6vw;
+        height: 40vh;
+        .overlay .text {
+            .text__subtitle {
+                width: 100%;
+            }
+        }
     }
 }
-@media only screen and (max-width: 992px) { 
-
+@media only screen and (min-width: 769px) and(max-width: 992.99px) { 
+    .gallery {
+        margin: 0 6vw 6vw 6vw;
+        height: 40vh;
+        .overlay .text {
+            .text__subtitle {    
+                font-size: 105%;
+                width: 100%;
+            }
+        }
+    }
 }
 
-@media only screen and (max-width: 1200px) { 
-
+@media only screen and (min-width: 993px) and (max-width: 1281px) { 
+    .gallery {
+        height: 45vh;
+        .overlay .text {
+            .text__title {
+                font-size: 130%;
+            }
+            .text__subtitle {    
+                font-size: 110%;
+                width: 100%;
+            }
+        }
+    }
 }

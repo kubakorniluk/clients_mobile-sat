@@ -14,10 +14,10 @@
     transform: translate(0%, -0%);
     height: 100vh;
     width: 0%;
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(240, 240, 240);
     text-align: right;
     transition: width 0.5s;
-    padding: 5vw;
+    padding: 5vw 7vw;
     .heading {
         display: flex;
         flex-direction: row;
@@ -27,9 +27,28 @@
             color: base.$primary-color;
             font: {
                 family: base.$primary-font;
-                size: 115%;
+                size: 110%;
                 weight: 500;
             }
+        }
+    }
+    .menu--mobile {
+        text-align: center;
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 768.99px) {
+    .navbar__toggle {
+        font-size: 145%;
+    }
+    .sidebar {
+        padding: 5vw 7vw;
+        .heading {
+            &__title {
+                font-size: 125%;
+            }
+        }
+        .menu--mobile {
+            text-align: center;
         }
     }
 }

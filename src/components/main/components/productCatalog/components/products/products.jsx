@@ -19,8 +19,8 @@ const Products = ({ products }) => {
                             </div>
                         </div>
                         <header className="card-content">
-                            <h3 className="card-content__title">{item.name}</h3>
-                            <h3 className="card-content__price">{`${item.price} zł`}</h3>
+                            <h3 className="card-content__title">{`${item.price} zł`}</h3>
+                            <h3 className="card-content__price">{item.name}</h3>
                             <button className="card-content__button">Dodaj do zamówienia</button>
                         </header>
                     </div>
