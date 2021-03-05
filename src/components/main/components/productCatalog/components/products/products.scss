@@ -3,86 +3,72 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 2.5vw;
     width: 100%;
     .card {
         background-color: base.$primary-bg-color;
-        border: 2px solid rgb(240, 240, 240);
-        width: calc(100%/4 - 1.5vw);
+        width: calc(100%/4 - ((2.5vw/4)*3));
+        height: auto;
         cursor: pointer;
         transition: 0.5s;
-        margin: 0 {
-            right: 2vw;
-            bottom: 2vw;
-        }
-        &__img {
+        .img-container {
+            overflow: hidden;
             position: relative;
             width: 100%;
             height: 25vh;
-            background-position: center;
-            background-size: cover;
-            margin: 0;
-            padding: 0;
-            .overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
+            .card__img {
                 width: 100%;
                 height: 100%;
-                background-color: transparent;
-                transition: 0.5s;
-                &__toggle-icon {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    color: transparent;
-                    transition: 0.5s;
-                    font-size: 250%;
-                }
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                transition: all .5s ease;
             }
         }
         .card-content {
             display: flex;
-            flex-direction: column;
-            text-align: center;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
             margin: 0; 
-            padding: 0;
-            &__title {
-                margin: 0 {
-                    top: 1.5vw;
-                };
-                color: base.$primary-color;
-                font: {
-                    family: base.$primary-font;
-                    size: 115%;
-                    weight: 500;
+            padding-top: 1.5vw;
+            .card-details {
+                display: flex;
+                flex-direction: column;
+                margin: 0;
+                &__price {
+                    margin: 0;
+                    color: base.$primary-color;  
+                    font: {
+                        family: base.$primary-font;
+                        size: 110%;
+                        weight: 500;
+                    }
                 }
-            }
-            &__price {
-                color: base.$primary-color;
-                margin: 0 {
-                    top: .75vw;
-                    bottom: 1.5vw;
-                };    
-                font: {
-                    family: base.$primary-font;
-                    size: 105%;
-                    weight: 300;
+                &__title {
+                    margin: 0 {
+                        top: .5vw;
+                    };
+                    color: rgb(150, 150, 150);
+                    font: {
+                        family: base.$primary-font;
+                        size: 90%;
+                        weight: 400;
+                    }
                 }
             }
             &__button {
                 border: none;
                 background-color: rgb(240, 240, 240);
                 color: base.$primary-color;
-                text-transform: uppercase;
-                padding: 1.25vw;
                 margin: 0;
-                width: 100%;
+                padding: 1vw 2vw;
                 cursor: pointer;
                 transition: .5s;
                 font: {
                     family: base.$primary-font;
-                    weight: 500;
+                    size: 90%;
+                    weight: 400;
                 }
                 &:hover {
                     color: base.$primary-bg-color;
@@ -91,55 +77,46 @@
             }
         }
         &:hover {
-            border-color: base.$primary-color;
-            .overlay {
-                background-color: rgba(26, 30, 40, 0.33);
-                &__toggle-icon {
-                    color: base.$primary-bg-color;
+            .img-container {
+                .card__img {
+                    transform: scale(1.2);
                 }
             }
-        }
-        &:nth-child(4n) {
-            margin-right: 0;
         }
     }
 }
 @media only screen and (min-width: 0px) and (max-width: 576.99px) {
     .products-wrapper {
+        flex-direction: column;
+        gap: 7vw;
         .card {
             width: 100%;
-            margin: 0 {
-                top: 7vw;
-            }
-            &:first-of-type {
-                margin-top: 0;
-            }
-            &__img {
+            .img-container {
                 height: 27.5vh;
-                .overlay {
-                    &__toggle-icon {
-                        font-size: 200%;
-                    }
-                }
             }
             .card-content {
-                &__title {
-                    font-size: 105%;
-                    margin: 0 {
-                        top: 4.5vw;
-                    };
-                }
-                &__price {
-                    font-size: 85%;
-                    margin: 0 {
-                        top: 1vw;
-                        bottom: 4.5vw;
-                    };  
+                padding-top: 3vw;
+                .card-details {
+                    &__price {
+                        font-size: 100%;
+                    }
+                    &__title {
+                        margin: 0 {
+                            top: .5vw;
+                        };
+                        font-size: 80%;
+                    }
                 }
                 &__button {
-                    padding: 3.5vw;
-                    font-size: 75%;
-                    font-weight: 400;
+                    padding: 3.5vw 7vw;
+                    font-size: 80%;
+                }
+            }
+            &:hover {
+                .img-container {
+                    .card__img {
+                        transform: scale(1.1);
+                    }
                 }
             }
         }
@@ -147,98 +124,87 @@
 }
 @media only screen and (min-width: 577px) and (max-width: 768.99px) {
     .products-wrapper {
+        gap: 4vw;
         .card {
-            margin: 0 {
-                right: 3vw;
-                bottom: 3vw;
-            }
-            width: calc(100%/2 - 1.5vw);
-            &__img {
-                height: 18vh;
-                .overlay {
-                    &__toggle-icon {
-                        font-size: 225%;
-                    }
-                }
+            width: calc(100%/2 - ((4vw/2)*1));
+            .img-container {
+                height: 20vh;
             }
             .card-content {
-                &__title {
-                    font-size: 110%;
-                    margin: 0 {
-                        top: 2.5vw;
-                    };
-                }
-                &__price {
-                    font-size: 100%;
-                    margin: 0 {
-                        top: .75vw;
-                        bottom: 2.5vw;
-                    };
+                padding-top: 2.5vw;
+                .card-details {
+                    &__price {
+                        font-size: 105%;
+                    }
+                    &__title {
+                        margin: 0 {
+                            top: .5vw;
+                        };
+                        font-size: 85%;
+                    }
                 }
                 &__button {
-                    padding: 2vw;
+                    padding: 2vw 4vw;
+                    font-size: 85%;
                 }
-            }
-            &:nth-child(2n) {
-                margin-right: 0;
             }
         }
     }
 }
-@media only screen and (min-width: 769px) and(max-width: 992.99px) { 
+@media only screen and (min-width: 769px) and(max-width: 1024.99px) { 
     .products-wrapper {
+        gap: 3vw;
         .card {
-            &__img {
-                height: 22.5vh;
-                .overlay {
-                    &__toggle-icon {
-                        font-size: 250%;
-                    }
-                }
+            width: calc(100%/3 - ((3vw/3)*2));
+            .img-container {
+                height: 15vh;
             }
             .card-content {
-                &__title {
-                    font-size: 105%;
-                    margin: 0 {
-                        top: 1.5vw;
-                    };
+                padding-top: 2vw;
+                .card-details {
+                    &__price {
+                        font-size: 105%;
+                    }
+                    &__title {
+                        margin: 0 {
+                            top: .5vw;
+                        };
+                        font-size: 85%;
+                    }
                 }
-                &__price {
-                    font-size: 100%;
-                    margin: 0 {
-                        top: .75vw;
-                        bottom: 1.5vw;
-                    };
+                &__button {
+                    padding: 1.5vw 3vw;
+                    font-size: 85%;
                 }
             }
         }
     }
 }
 
-@media only screen and (min-width: 993px) and (max-width: 1281px) { 
+@media only screen and (min-width: 1025px) and (max-width: 1366.99px) { 
     .products-wrapper {
+        gap: 2.5vw;
         .card {
-            &__img {
-                height: 20vh;
-                .overlay {
-                    &__toggle-icon {
-                        font-size: 200%;
-                    }
-                }
+            width: calc(100%/4 - ((2.5vw/4)*3));
+            .img-container {
+                height: 22.5vh;
             }
             .card-content {
-                &__title {
-                    font-size: 110%;
-                    margin: 0 {
-                        top: 1.75vw;
-                    };
+                padding-top: 1.5vw;
+                .card-details {
+                    &__price {
+                        font-size: 105%;
+                    }
+                    &__title {
+                        margin: 0 {
+                            top: .5vw;
+                        };
+                        font-size: 85%;
+                    }
                 }
-                &__price {
-                    font-size: 100%;
-                    margin: 0 {
-                        top: .75vw;
-                        bottom: 1.75vw;
-                    };
+                &__button {
+                    padding: 1.25vw 2.5vw;
+                    font-size: 85%;
                 }
             }
         }

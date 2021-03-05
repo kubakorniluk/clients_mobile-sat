@@ -11,7 +11,7 @@
         color: base.$primary-color;
         font: {
             family: base.$primary-font;
-            size: 105%;
+            size: 100%;
             weight: 400;
         }
         transition: .5s;
@@ -69,33 +69,25 @@
         }
     }
 }
-@media only screen and (min-width: 769px) and(max-width: 992.99px) { 
+@media only screen and (min-width: 769px) and(max-width: 1024.99px) { 
     .menu {
         &__item {
-            margin: 0 1.5vw;
-            font: {
-                size: 105%;
-                weight: 400;
-            }
+            margin: 0 2vw;
+            font-size: 95%;
             &--cta {
-                padding: .75vw 1.5vw;
-                font-weight: 400;
+                padding: 1vw 2vw;
             }
         }
     }
 }
 
-@media only screen and (min-width: 993px) and (max-width: 1281px) { 
+@media only screen and (min-width: 1025px) and (max-width: 1366.99px) { 
     .menu {
         &__item {
             margin: 0 2vw;
-            font: {
-                size: 110%;
-                weight: 400;
-            }
+            font-size: 100%;
             &--cta {
-                padding: 1vw 2vw;
-                font-weight: 400;
+                padding: 1vw 2.5vw;
             }
         }
     }

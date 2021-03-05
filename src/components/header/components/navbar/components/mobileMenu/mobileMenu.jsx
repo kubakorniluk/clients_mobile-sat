@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
-import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars.js';
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes.js';
 import Menu from '../menu/menu';
 import './mobileMenu.scss';
 const showSidebar = {

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { faSearchPlus } from '@fortawesome/free-solid-svg-icons/faSearchPlus';
 import './products.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Products = ({ products }) => {
     const renderProducts = () => {
         return (
@@ -12,16 +10,16 @@ const Products = ({ products }) => {
                     <div
                         className="card" 
                         key={item.id}
-                    >
-                        <div className="card__img" style={{backgroundImage: `url(${bgImg})`}}>
-                            <div className="overlay">
-                                <FontAwesomeIcon icon={faSearchPlus} className="overlay__toggle-icon"/>
-                            </div>
+                    >   
+                        <div className="img-container">
+                            <div className="card__img" style={{backgroundImage: `url(${bgImg})`}}></div>
                         </div>
                         <header className="card-content">
-                            <h3 className="card-content__title">{`${item.price} zł`}</h3>
-                            <h3 className="card-content__price">{item.name}</h3>
-                            <button className="card-content__button">Dodaj do zamówienia</button>
+                            <div className="card-details">
+                                <h3 className="card-details__price">{`${item.price} zł`}</h3>
+                                <h3 className="card-details__title">{item.name}</h3>
+                            </div>
+                            <button className="card-content__button">Do koszyka</button>
                         </header>
                     </div>
                 )

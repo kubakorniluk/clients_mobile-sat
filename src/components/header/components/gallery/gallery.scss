@@ -55,7 +55,6 @@
         }
     }
 }
-
 @media only screen and (min-width: 577px) and (max-width: 768.99px) { 
     .gallery {
         margin: 0 6vw 6vw 6vw;
@@ -67,10 +66,10 @@
         }
     }
 }
-@media only screen and (min-width: 769px) and(max-width: 992.99px) { 
+@media only screen and (min-width: 769px) and(max-width: 1024.99px) { 
     .gallery {
         margin: 0 6vw 6vw 6vw;
-        height: 40vh;
+        height: 30vh;
         .overlay .text {
             .text__subtitle {    
                 font-size: 105%;
@@ -79,8 +78,7 @@
         }
     }
 }
-
-@media only screen and (min-width: 993px) and (max-width: 1281px) { 
+@media only screen and (min-width: 1025px) and (max-width: 1366.99px) { 
     .gallery {
         height: 45vh;
         .overlay .text {

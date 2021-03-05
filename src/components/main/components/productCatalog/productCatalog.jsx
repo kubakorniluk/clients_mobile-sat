@@ -44,18 +44,11 @@ class ProductCatalog extends PureComponent {
         });
         return (
             <section className="product-catalog">
-                <div className="catalog-control">
+                {/* <div className="catalog-control">
                     <h2 className="catalog-control__title">Oferta</h2>
                     <h2 className="catalog-control__count">Znaleziono {this.state.productsData.length} produkty</h2>
-                    {/* <Pagination 
-                        data={this.state.productsData} 
-                        productsPerPage={this.state.productsPerPage}
-                        interval={this.state.currentProductsInterval}
-                        currentCategory={this.state.currentCategory}
-                        setCurrentProductsInterval={this.setCurrentProductsInterval}
-                        filter={this.state.filterQuery}
-                    /> */}
-                </div>
+                    
+                </div> */}
                 <Suspense fallback={<Loading />}>
                     <Products products={this.state.productsData}/>
                 </Suspense>

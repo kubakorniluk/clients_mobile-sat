@@ -1,3 +1,62 @@
+@use 'styles/base' as base;
 .footer {
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20vh;
+    width: 100%;
+    background-color: rgb(240, 240, 240);
+    padding: 5vw 5vw 2.5vw 5vw;
+    .info {
+        display: flex;
+        flex-direction: row;
+        .about {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 50%;
+            &__text {
+                color: base.$primary-color;
+                width: 75%;
+                letter-spacing: .6px;
+                line-height: 1.6;
+                font: {
+                    family: base.$primary-font;
+                    size: 90%;
+                    weight: 400;
+                }
+            }
+        }
+        .links {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 25%;
+            &__heading {
+                margin: 0;
+                color: base.$primary-color;  
+                font: {
+                    family: base.$primary-font;
+                    size: 100%;
+                    weight: 500;
+                }
+            }
+            &__item {
+                margin-top: 1.5vw;
+                color: base.$primary-color;  
+                font: {
+                    family: base.$primary-font;
+                    size: 90%;
+                    weight: 400;
+                }
+                // &:first-of-type {
+                //     margin-top: 0;
+                // }
+            }
+            &__item--nav {
+                cursor: pointer;
+                transition: .5s;
+                &:hover {
+                    color: rgb(150, 150, 150);
+                }
+            }
+        }
+    }
 }

@@ -1,0 +1,65 @@
+@use 'styles/base' as base;
+.copyright {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    margin-top: 10vw;
+    &__text {
+        display: flex;
+        flex-basis: 50%;
+        margin: 0;
+        color: base.$primary-color;
+        font: {
+            family: base.$primary-font;
+            size: 90%;
+            weight: 400;
+        }
+    }
+    &__author {
+        display: flex;
+        flex-basis: 25%;
+        margin: 0;
+        color: base.$primary-color;
+        font: {
+            family: base.$primary-font;
+            size: 90%;
+            weight: 400;
+        }
+    }
+    &__top {
+        display: flex;
+        flex-basis: 25%;
+        margin: 0;
+        color: base.$primary-color;
+        font: {
+            family: base.$primary-font;
+            size: 90%;
+            weight: 400;
+        }
+        cursor: pointer;
+        text-align: left;
+    }
+}
+@media only screen and (min-width: 0px) and (max-width: 576.99px) {
+    .copyright {
+        &__top {
+            font-size: 125%;
+        }
+        &__text {
+            font-size: 70%;
+        }
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 768.99px) { 
+
+}
+@media only screen and (min-width: 769px) and(max-width: 1024.99px) { 
+
+}
+@media only screen and (min-width: 1025px) and (max-width: 1366.99px) { 
+
+}

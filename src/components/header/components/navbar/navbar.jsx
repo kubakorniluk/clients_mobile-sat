@@ -28,10 +28,11 @@ class Navbar extends Component {
                 <MobileMenu />
             </Suspense>
         )
-        const desktop = <Menu version='desktop'/>
+        const desktop = <Menu version='desktop'/>;
+        const logo = <h1 className="navbar__logo">e-shop.net</h1>;
         return (
             <nav className="navbar">
-                <h1 className="navbar__logo">e-shop.net</h1>
+                { logo }
                 { (this.state.screenWidth > 768) ?  desktop : mobile }
             </nav>
         );
