@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars.js';
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes.js';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons/faMapMarkerAlt.js';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope.js';
+import { faPhone } from '@fortawesome/free-solid-svg-icons/faPhone.js';
 import Menu from '../menu/menu';
 import './mobileMenu.scss';
 const showSidebar = {
-    width: '100%',
-    display: 'block'
+    width: '85%',
+    display: 'flex'
     
 } 
 const hideSidebar = {
@@ -24,9 +27,12 @@ class MobileMenu extends Component {
     handleClick() {
         this.setState((prevState) => ({
             toggle: !prevState.toggle
-        }))
+        }));
     }
     render() {
+        const dark = () => document.body.style.backgroundColor = 'rgba(26, 30, 40, 0.5)';
+        const white = () => document.body.style.backgroundColor = 'rgba(255, 255, 255)';
+        (this.state.toggle) ? dark() : white();
         return (
             <>
                 <FontAwesomeIcon 
@@ -35,15 +41,31 @@ class MobileMenu extends Component {
                     onClick={this.handleClick} 
                 />
                 <aside className="sidebar" style={this.state.toggle ? showSidebar : hideSidebar}>   
-                    <div className="heading">
-                        <h2 className="heading__title">Menu</h2>
-                        <FontAwesomeIcon 
-                            className='navbar__toggle' 
-                            icon={faTimes} 
-                            onClick={this.handleClick}
-                        />
+                    <nav>
+                        <div className="heading">
+                            <h1 className="navbar__logo">e-shop.net</h1>
+                            <FontAwesomeIcon 
+                                className='navbar__toggle' 
+                                icon={faTimes} 
+                                onClick={this.handleClick}
+                            />
+                        </div>
+                        <Menu version='mobile'/>
+                    </nav>
+                    <div className="sidebar-footer">
+                        <a href="mailto:" className="sidebar-footer__item">
+                            <FontAwesomeIcon style={{marginRight: '3.5vw'}} icon={faEnvelope} />
+                            contact@example.com
+                        </a>
+                        <a href="tel:" className="sidebar-footer__item">
+                            <FontAwesomeIcon style={{marginRight: '3.5vw'}} icon={faPhone} />
+                            (+48) 123 456 789
+                        </a>
+                        <a className="sidebar-footer__item">
+                            <FontAwesomeIcon style={{marginRight: '3.5vw'}} icon={faMapMarkerAlt} />
+                            Otwock, Polska
+                        </a>
                     </div>
-                    <Menu version='mobile'/>
                 </aside>
             </>
         )

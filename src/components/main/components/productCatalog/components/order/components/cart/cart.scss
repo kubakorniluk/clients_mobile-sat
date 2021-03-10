@@ -1,0 +1,152 @@
+@use 'styles/base' as base;
+.cart {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    background-color: rgb(240, 240, 240);
+    padding: 2.5vw;
+    min-height: 50vh;
+    .cart-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-basis: 100%;
+        border: 2px solid rgb(228, 228, 228);
+        margin-top: 1.5vw;
+        &:first-of-type {
+            margin-top: 0;
+        }
+        .preview {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-basis: 50%;
+            &__img {
+                height: 10vh;
+                margin-right: 1.5vw
+            }
+            .preview-details {
+                &__price {
+                    margin: 0;
+                    color: base.$primary-color;  
+                    font: {
+                        family: base.$primary-font;
+                        size: 90%;
+                        weight: 500;
+                    }
+                    margin: 0 {
+                        top: .5vw;
+                    };
+                }
+                &__title {
+                    margin: 0;
+                    color: rgb(150, 150, 150);
+                    font: {
+                        family: base.$primary-font;
+                        size: 90%;
+                        weight: 400;
+                    }
+                }
+            }
+        }
+        .quantity {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            &__title {
+                margin: 0;
+                color: rgb(150, 150, 150);
+                font: {
+                    family: base.$primary-font;
+                    size: 90%;
+                    weight: 400;
+                }
+            }
+            .quantity-control {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-top: .5vw;
+                &__count {
+                    margin: 0;
+                    color: base.$primary-color;  
+                    font: {
+                        family: base.$primary-font;
+                        size: 90%;
+                        weight: 500;
+                    }
+                    margin: 0;
+                }
+                &__dec, &__inc {
+                    margin: 0 1.5vw;
+                    color: base.$primary-color;
+                    font-size: 90%;
+                    cursor: pointer;
+                    transition: .5s;
+                    &:hover {
+                        color: rgb(150, 150, 150);
+                    }       
+                }
+                &__dec {margin-left: 0};
+                &__inc {margin-right: 0};
+            }
+        }
+        &__delete {
+            margin: 0 {
+                right: 1.5vw;
+            };
+            color: base.$primary-color;
+            font-size: 125%;
+            cursor: pointer;
+            transition: .5s;
+            &:hover {
+                color: rgb(150, 150, 150);
+            }
+        }
+    }
+    .cart-empty {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        color: rgb(150, 150, 150);
+        font: {
+            family: base.$primary-font;
+            size: 110%;
+            weight: 400;
+        }
+    }
+    .cart-heading {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 {
+            top: auto;
+        };
+        &__title {
+            margin: 0 {
+                top: 2.5vw;
+            };
+            color: base.$primary-color;  
+            font: {
+                family: base.$primary-font;
+                size: 110%;
+                weight: 500;
+            }
+        }
+        &__total {
+            margin: 0 {
+                top: 2.5vw;
+            };
+            color: base.$primary-color;  
+            font: {
+                family: base.$primary-font;
+                size: 110%;
+                weight: 500;
+            }
+        }
+    }
+}

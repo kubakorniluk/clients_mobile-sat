@@ -10,9 +10,12 @@ html {
 a:link {
     text-decoration: none;
 }
-input:focus {
+button:focus {
     outline: 0
 }
 * {
     letter-spacing: .5px;
+}
+body {
+    transition: .5s;
 }

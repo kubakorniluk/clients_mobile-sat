@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './products.scss';
-const Products = ({ products }) => {
+const Products = ({ 
+    products, 
+    addToCart 
+}) => {
     const renderProducts = () => {
         return (
             products.map((item) => {
@@ -19,16 +22,32 @@ const Products = ({ products }) => {
                                 <h3 className="card-details__price">{`${item.price} zł`}</h3>
                                 <h3 className="card-details__title">{item.name}</h3>
                             </div>
-                            <button className="card-content__button">Do koszyka</button>
+                            <button 
+                                className="card-content__button"
+                                onClick={() => addToCart({
+                                    "id": item.id,
+                                    "img": item.img,
+                                    "name": item.name,
+                                    "price": item.price,
+                                    "quantity": 1
+                                })}
+                            >
+                                Do koszyka
+                            </button>
                         </header>
                     </div>
                 )
             })
         )
     }
+    const log = () => {
+        const x = () => {console.log(document.querySelector('.card').innerHeight)}
+        setTimeout(x, 3000)
+    }
     return (
         <div className="products-wrapper">
             {renderProducts()}
+            {log()}
         </div>
     )
 }
@@ -43,5 +62,6 @@ Products.propTypes = {
             category: PropTypes.string.isRequired,
             price: PropTypes.number.isRequired
         })
-    ).isRequired 
+    ).isRequired,
+    addToCart: PropTypes.func.isRequired
 }

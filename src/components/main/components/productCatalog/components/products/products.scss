@@ -15,7 +15,7 @@
             overflow: hidden;
             position: relative;
             width: 100%;
-            height: 25vh;
+            height: 35vh;
             .card__img {
                 width: 100%;
                 height: 100%;
@@ -87,29 +87,31 @@
 }
 @media only screen and (min-width: 0px) and (max-width: 576.99px) {
     .products-wrapper {
-        flex-direction: column;
-        gap: 7vw;
+        gap: 5vw;
         .card {
-            width: 100%;
+            width: calc(100%/2 - ((5vw/2)*1));
             .img-container {
-                height: 27.5vh;
+                height: 32.5vh;
             }
             .card-content {
-                padding-top: 3vw;
+                flex-direction: column;
                 .card-details {
+                    margin: 2.5vw 0 2.5vw 0;
+                    text-align: center;
                     &__price {
-                        font-size: 100%;
+                        font-size: 95%;
                     }
                     &__title {
                         margin: 0 {
-                            top: .5vw;
+                            top: .75vw;
                         };
                         font-size: 80%;
                     }
                 }
                 &__button {
-                    padding: 3.5vw 7vw;
+                    padding: 3vw 6vw;
                     font-size: 80%;
+                    width: 100%;
                 }
             }
             &:hover {
@@ -128,18 +130,15 @@
         .card {
             width: calc(100%/2 - ((4vw/2)*1));
             .img-container {
-                height: 20vh;
+                height: 25vh;
             }
             .card-content {
                 padding-top: 2.5vw;
                 .card-details {
                     &__price {
-                        font-size: 105%;
+                        font-size: 100%;
                     }
                     &__title {
-                        margin: 0 {
-                            top: .5vw;
-                        };
                         font-size: 85%;
                     }
                 }
@@ -157,7 +156,7 @@
         .card {
             width: calc(100%/3 - ((3vw/3)*2));
             .img-container {
-                height: 15vh;
+                height: 20vh;
             }
             .card-content {
                 padding-top: 2vw;
@@ -166,9 +165,6 @@
                         font-size: 105%;
                     }
                     &__title {
-                        margin: 0 {
-                            top: .5vw;
-                        };
                         font-size: 85%;
                     }
                 }
@@ -185,9 +181,9 @@
     .products-wrapper {
         gap: 2.5vw;
         .card {
-            width: calc(100%/4 - ((2.5vw/4)*3));
+            width: calc(100%/3 - ((2.5vw/3)*2));
             .img-container {
-                height: 22.5vh;
+                height: 30vh;
             }
             .card-content {
                 padding-top: 1.5vw;
@@ -196,9 +192,6 @@
                         font-size: 105%;
                     }
                     &__title {
-                        margin: 0 {
-                            top: .5vw;
-                        };
                         font-size: 85%;
                     }
                 }

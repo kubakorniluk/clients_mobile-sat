@@ -1,18 +1,17 @@
 @use 'styles/base' as base;
 .copyright {
-    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     margin: 0;
-    margin-top: 10vw;
+    margin-top: 5vw;
     &__text {
         display: flex;
         flex-basis: 50%;
         margin: 0;
-        color: base.$primary-color;
+        color: rgb(150, 150, 150);
         font: {
             family: base.$primary-font;
             size: 90%;
@@ -23,7 +22,7 @@
         display: flex;
         flex-basis: 25%;
         margin: 0;
-        color: base.$primary-color;
+        color: rgb(150, 150, 150);
         font: {
             family: base.$primary-font;
             size: 90%;
@@ -34,7 +33,7 @@
         display: flex;
         flex-basis: 25%;
         margin: 0;
-        color: base.$primary-color;
+        color: rgb(150, 150, 150);
         font: {
             family: base.$primary-font;
             size: 90%;
@@ -46,20 +45,74 @@
 }
 @media only screen and (min-width: 0px) and (max-width: 576.99px) {
     .copyright {
-        &__top {
-            font-size: 125%;
-        }
+        text-align: left;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 14vw;
         &__text {
-            font-size: 70%;
+            flex-basis: 100%;
+            font-size: 75%;
+        }
+        &__author {
+            flex-basis: 100%;
+            font-size: 75%;
+            margin-top: 2.5vw;
+        }
+        &__top {
+            flex-basis: 100%;
+            font-size: 75%;
+            color: base.$primary-color;
+            margin-top: 2.5vw;
         }
     }
 }
 @media only screen and (min-width: 577px) and (max-width: 768.99px) { 
-
+    .copyright {
+        text-align: center;
+        flex-direction: column;
+        margin-top: 6vw;
+        &__text {
+            flex-basis: 100%;
+            font-size: 85%;
+        }
+        &__author {
+            flex-basis: 100%;
+            font-size: 85%;
+            margin-top: 2vw;
+        }
+        &__top {
+            flex-basis: 100%;
+            font-size: 85%;
+            color: base.$primary-color;
+            margin-top: 2vw;
+        }
+    }
 }
 @media only screen and (min-width: 769px) and(max-width: 1024.99px) { 
-
+    .copyright {
+        margin-top: 6vw;
+        &__text {
+            font-size: 85%;
+        }
+        &__author {
+            font-size: 85%;
+        }
+        &__top {
+            font-size: 85%;
+        }
+    }
 }
 @media only screen and (min-width: 1025px) and (max-width: 1366.99px) { 
-
+    .copyright {
+        margin-top: 5vw;
+        &__text {
+            font-size: 85%;
+        }
+        &__author {
+            font-size: 85%;
+        }
+        &__top {
+            font-size: 85%;
+        }
+    }
 }

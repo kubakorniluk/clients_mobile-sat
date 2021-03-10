@@ -1,20 +1,18 @@
-import React, { PureComponent, lazy, Suspense } from 'react';
-import Pagination from './components/pagination/pagination'
+import { string } from 'prop-types';
+import React, { Component, lazy, Suspense } from 'react';
 import Loading from './components/loading/loading';
-import { transformCategoryName } from 'helpers/transformCategoryName'
+import Order from './components/order/order';
 import './productCatalog.scss';
 
-class ProductCatalog extends PureComponent {
+class ProductCatalog extends Component {
     constructor() {
         super();
         this.state = {
             productsData: [],
-            currentCategory: 'wszystkie',
-            productsPerPage: 12,
-            currentProductsInterval: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+            virtualCart: []
         }
-        this.setCurrentCategory = this.setCurrentCategory.bind(this);
-        this.setCurrentProductsInterval = this.setCurrentProductsInterval.bind(this);
+        this.addToCart = this.addToCart.bind(this);
+        this.cartControl = this.cartControl.bind(this);
     }
     componentDidMount() {
         import('./data/productData.json')
@@ -24,15 +22,57 @@ class ProductCatalog extends PureComponent {
             })
         )
     }
-    setCurrentCategory(categoryName) {
-        this.setState({
-            currentCategory: categoryName
-        });
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     if(this.state.virtualCart !== nextState.virtualCart) { return false }
+    //     else { return true }
+    // }
+    addToCart(item) {
+        const { virtualCart } = this.state;
+        if(virtualCart.some(obj => obj['name'] === item.name)) { 
+            this.setState({
+                virtualCart: virtualCart.map((findItem, index) => {
+                    if(index == virtualCart.findIndex(i => i.name === item.name)) {
+                        findItem.quantity++;
+                    }
+                    return findItem;
+                })
+            })
+        } else {
+            this.setState(prevState => ({
+                virtualCart: [...prevState.virtualCart, item]
+            }));
+        }
     }
-    setCurrentProductsInterval(currentInterval) {
-        this.setState({
-            currentProductsInterval: currentInterval
-        });
+    cartControl(action, item) {
+        const { virtualCart } = this.state;
+        if(action && typeof action == 'string') {
+            if(action == 'delete') {
+                this.setState({
+                    virtualCart: virtualCart.filter(i => i.id !== item)
+                });
+            } else if(action == 'quantity_increment') {
+                this.setState({
+                    virtualCart: virtualCart.map((findItem, index) => {
+                        if(index == virtualCart.findIndex(i => i.name === item.name)) {
+                            findItem.quantity++;
+                        }
+                        return findItem;
+                    })
+                })
+            } else if(action == 'quantity_decrement') {
+                this.setState({
+                    virtualCart: virtualCart.map((findItem, index) => {
+                        if(index == virtualCart.findIndex(i => i.name === item.name)) {
+                            findItem.quantity--;
+                        }
+                        return findItem;
+                    })
+                })
+            }
+        } else { console.warn('cartControl: you passed wrong action type') }
+        // this.setState({
+        //     virtualCart: this.state.virtualCart.filter(i => i.id !== item)
+        // });
     }
     render() {
         const Products = lazy(() => {
@@ -43,16 +83,21 @@ class ProductCatalog extends PureComponent {
             })
         });
         return (
-            <section className="product-catalog">
-                {/* <div className="catalog-control">
-                    <h2 className="catalog-control__title">Oferta</h2>
-                    <h2 className="catalog-control__count">Znaleziono {this.state.productsData.length} produkty</h2>
-                    
-                </div> */}
-                <Suspense fallback={<Loading />}>
-                    <Products products={this.state.productsData}/>
-                </Suspense>
-            </section>
+            <>
+                <section className="product-catalog">
+                    <h2 className="catalog-control__count">Oferta</h2>
+                    <Suspense fallback={<Loading />}>
+                        <Products 
+                            products={this.state.productsData}
+                            addToCart={this.addToCart}
+                        />
+                    </Suspense>
+                </section>
+                <Order 
+                    virtualCart={this.state.virtualCart}
+                    cartControl={this.cartControl}
+                />
+            </>
         );
     }
 }

@@ -4,39 +4,25 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: 0 5vw;
-    .catalog-control {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+    padding: 0 5vw;
+    min-height: 40vh;
+    .catalog-control__count {
         width: 100%;
         margin: 0 {
-            bottom: 2vw;
+            bottom: 2.5vw;
         }
-        &__title {
-            color: base.$primary-color;
-            margin: 0;
+        color: base.$primary-color;
+            text-align: center;
             font: {
                 family: base.$primary-font;
-                size: 125%;
+                size: 110%;
                 weight: 500;
             }
-        }
-        &__count {
-            color: rgb(150, 150, 150);
-            margin: 0;
-            font: {
-                family: base.$primary-font;
-                size: 115%;
-                weight: 400;
-            }
-        }
     }
 }
 @media only screen and (min-width: 0px) and (max-width: 576.99px) {
     .product-catalog {
-        margin: 0 7vw;
+        padding: 0 7vw;
         flex-direction: column;
         .catalog-control {
             margin-bottom: 7vw;
@@ -52,7 +38,7 @@
 }
 @media only screen and (min-width: 577px) and (max-width: 768.99px) {
     .product-catalog {
-        margin: 0 6vw;
+        padding: 0 6vw;
         .catalog-control {
             margin-bottom: 3vw;
             &__title {
