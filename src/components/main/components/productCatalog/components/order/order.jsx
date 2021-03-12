@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import OrderForm from './components/orderForm/orderForm';
 import Cart from './components/cart/cart';
 import './order.scss';
 
@@ -22,7 +23,7 @@ class Order extends PureComponent {
                         virtualCart={this.props.virtualCart}
                         cartControl={(action, item) => this.liftUp(action, item)}
                     />
-                    <div style={{display: "flex", flexBasis: '50%'}}></div>
+                    <OrderForm virtualCart={this.props.virtualCart}/>
                 </div>
             </section>
         );

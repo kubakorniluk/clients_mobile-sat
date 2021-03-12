@@ -12,12 +12,11 @@
             bottom: 2.5vw;
         }
         color: base.$primary-color;
-            text-align: center;
-            font: {
-                family: base.$primary-font;
-                size: 110%;
-                weight: 500;
-            }
+        font: {
+            family: base.$primary-font;
+            size: 110%;
+            weight: 500;
+        }
     }
 }
 @media only screen and (min-width: 0px) and (max-width: 576.99px) {

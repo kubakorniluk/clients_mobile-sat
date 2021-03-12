@@ -19,7 +19,7 @@ const Products = ({
                         </div>
                         <header className="card-content">
                             <div className="card-details">
-                                <h3 className="card-details__price">{`${item.price} zł`}</h3>
+                                <h3 className="card-details__price">{`${item.price.toFixed(2)} zł`}</h3>
                                 <h3 className="card-details__title">{item.name}</h3>
                             </div>
                             <button 
@@ -40,18 +40,17 @@ const Products = ({
             })
         )
     }
-    const log = () => {
-        const x = () => {console.log(document.querySelector('.card').innerHeight)}
-        setTimeout(x, 3000)
-    }
     return (
         <div className="products-wrapper">
             {renderProducts()}
-            {log()}
         </div>
     )
 }
-export default Products;
+/* 
+    React memo instead of lazy, because of the design. 
+    When i was using lazy loading, the section height was breaking, and page was like pulsing. 
+*/
+export default React.memo(Products);
 
 Products.propTypes = { 
     products: PropTypes.arrayOf(

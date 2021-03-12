@@ -4,12 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus } from '@fortawesome/free-solid-svg-icons/faMinus.js';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus.js';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons/faTrashAlt.js';
+import TotalPrice from './components/totalPrice/totalPrice';
 import './cart.scss';
 
 const Cart = ({ virtualCart, cartControl }) => {
     const renderCart = virtualCart.map(item => {
         return (
-            <div className="cart-item" key={item.id}>
+            <div className="cart-item" key={`cart-${item.id}`}>
                 <div className="preview">
                     <img 
                         src={require(`assets/img/${item.img}`)} 
@@ -18,8 +19,7 @@ const Cart = ({ virtualCart, cartControl }) => {
                     />
                     <div className="preview-details">
                         <h3 className="preview-details__title">{item.name}</h3>
-                        <h3 className="preview-details__price">{`${item.price} zł`}</h3>
-                        
+                        <h3 className="preview-details__price">{`${item.price.toFixed(2)} zł`}</h3>
                     </div>
                 </div>
                 <div className="quantity">
@@ -28,49 +28,36 @@ const Cart = ({ virtualCart, cartControl }) => {
                         <FontAwesomeIcon 
                             className="quantity-control__dec"
                             icon={faMinus}
-                            onClick={() => cartControl('quantity_decrement', item)} 
+                            onClick={() => cartControl('QUANTITY_DECREMENT', item)} 
                         />
                         <h3 className="quantity-control__count">{item.quantity}</h3>
                         <FontAwesomeIcon 
                             className="quantity-control__inc"
                             icon={faPlus} 
-                            onClick={() => cartControl('quantity_increment', item)} 
+                            onClick={() => cartControl('QUANTITY_INCREMENT', item)} 
                         />
                     </div>
                 </div>
                 <FontAwesomeIcon 
                     className="cart-item__delete"
                     icon={faTrashAlt}
-                    onClick={() => cartControl('delete', item.id)}
+                    onClick={() => cartControl('DELETE', item.id)}
                 />
             </div>
         )
     });
-    const totalSum = () => {
-        const mapSums = virtualCart.map(i => {
-            const { quantity, price } = i;
-            return quantity * price;
-        })
-        let total = 0;
-        for(let i in mapSums) { total += mapSums[i] }
-        return `${total} zł`;
-    }
     const renderEmptyCart = <h2 className="cart-empty">Koszyk jest pusty</h2>;
-    const heading = (
-        <header className="cart-heading">
-            <h2 className="cart-heading__title">Razem:</h2>
-            <h2 className="cart-heading__total">{totalSum()}</h2>
-        </header>
-    )
+    const totalPrice = <TotalPrice key="totalPrice" cartItems={virtualCart}/>;
     return ( 
         <div className="cart">
-            { (virtualCart.length) ? renderCart : renderEmptyCart }
-            { heading }
+            { (virtualCart.length) ? 
+            [renderCart, totalPrice] : 
+            renderEmptyCart }
         </div>
     );
 }
  
-export default Cart;
+export default React.memo(Cart);
 
 Cart.propTypes = {
     virtualCart: PropTypes.arrayOf(

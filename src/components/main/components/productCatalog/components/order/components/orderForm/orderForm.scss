@@ -1,0 +1,128 @@
+@use 'styles/base' as base;
+.order-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-basis: 50%;
+    .fieldset {
+        width: 100%;
+        // padding: 2.5vw;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border: none;
+        padding: 0;
+        margin: 0 {
+            top: 1vw;
+        };
+        &:first-of-type { margin-top: 0; }
+        &__title {
+            margin: 0 {
+                bottom: 1.5vw;
+            }
+            padding: 0;
+            color: base.$primary-color;
+            font: {
+                family: base.$primary-font;
+                size: 110%;
+                weight: 400;
+            }
+        }
+        &__label {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 50%;
+            margin: 0 {
+                bottom: 1.5vw;
+            }
+            font: {
+                family: base.$primary-font;
+                size: 90%;
+                weight: 400;
+            }
+            .fieldset__input {
+                border: 2px solid rgb(240, 240, 240);
+                color: base.$primary-color;
+                font: {
+                    family: base.$primary-font;
+                    size: 90%;
+                    weight: 400;
+                }
+                padding: .5vw;
+                margin: 0 {
+                    top: .75vw;
+                    right: 1.5vw;
+                }
+            }
+        }
+    }
+    &__submit {
+        border: none;
+        background-color: base.$primary-color;
+        color: base.$primary-bg-color;
+        padding: .75vw 1.5vw;
+        font: {
+            family: base.$primary-font;
+            size: 90%;
+            weight: 400;
+        }
+        cursor: pointer;
+        transition: .5s;
+        &:hover {
+            color: base.$primary-color;
+            background-color: rgb(240, 240, 240);            
+        }
+    }
+}
+@media only screen and (min-width: 0px) and (max-width: 576.99px) {
+    .order-form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex-basis: 100%;
+        .fieldset {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 0 {
+                top: 1vw;
+            };
+            &__title {
+                margin: 0 {
+                    bottom: 1.5vw;
+                }
+                font-size: 110%;
+            }
+            &__label {
+                display: flex;
+                flex-direction: column;
+                flex-basis: 50%;
+                margin: 0 {
+                    bottom: 1.5vw;
+                }
+                font-size: 90%;
+                .fieldset__input {
+                    font-size: 90%;
+                    padding: .5vw;
+                    margin: 0 {
+                        top: .75vw;
+                        right: 1.5vw;
+                    }
+                }
+            }
+        }
+        &__submit {
+            padding: .75vw 1.5vw;
+            font-size: 90%;
+        }
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 768.99px) {
+
+}
+@media only screen and (min-width: 769px) and(max-width: 1024.99px) { 
+
+}
+@media only screen and (min-width: 1025px) and (max-width: 1366.99px) { 
+
+}

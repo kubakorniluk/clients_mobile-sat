@@ -23,6 +23,9 @@
                 background-size: cover;
                 background-repeat: no-repeat;
                 transition: all .5s ease;
+                &:hover {
+                    transform: scale(1.2);
+                }
             }
         }
         .card-content {
@@ -76,13 +79,6 @@
                 }
             }
         }
-        &:hover {
-            .img-container {
-                .card__img {
-                    transform: scale(1.2);
-                }
-            }
-        }
     }
 }
 @media only screen and (min-width: 0px) and (max-width: 576.99px) {
@@ -92,6 +88,11 @@
             width: calc(100%/2 - ((5vw/2)*1));
             .img-container {
                 height: 32.5vh;
+                .card__img {
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
             }
             .card-content {
                 flex-direction: column;
@@ -112,13 +113,6 @@
                     padding: 3vw 6vw;
                     font-size: 80%;
                     width: 100%;
-                }
-            }
-            &:hover {
-                .img-container {
-                    .card__img {
-                        transform: scale(1.1);
-                    }
                 }
             }
         }
