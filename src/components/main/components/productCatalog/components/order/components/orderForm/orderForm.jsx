@@ -164,6 +164,20 @@ class OrderForm extends Component {
                     </label>
                 </fieldset>
                 <fieldset className="fieldset">
+                    <label className="fieldset__label" style={{flexDirection: 'row'}} htmlFor="">
+                        <input 
+                            type="radio"
+                        />
+                        Kurier za pobraniem (15zł)
+                    </label>
+                    <label className="fieldset__label" htmlFor="" style={{flexDirection: 'row'}}>
+                        <input 
+                            type="radio"
+                        />
+                        Poczta za pobraniem (12zł)
+                    </label>
+                </fieldset>
+                <fieldset className="fieldset">
                     <legend className="fieldset__title">Sposób płatności</legend>
                     <label className="fieldset__label" style={{flexDirection: 'row'}} htmlFor="">
                         <input 

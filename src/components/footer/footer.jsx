@@ -31,7 +31,7 @@ const Footer = () => {
             </a>
             <a href="tel:" className="links__item links__item--contact">
                 {/* <FontAwesomeIcon style={{marginRight: '.75vw'}} icon={faPhone} /> */}
-                (+48) 123 456 789
+                (+48) 515 298 631
                 </a>
             <a className="links__item links__item--contact">
                 {/* <FontAwesomeIcon style={{marginRight: '.75vw'}} icon={faMapMarkerAlt} /> */}
