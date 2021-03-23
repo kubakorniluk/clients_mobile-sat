@@ -5,17 +5,20 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0 5vw;
-    min-height: 40vh;
-    .catalog-control__count {
+    .catalog-control {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         width: 100%;
-        margin: 0 {
-            bottom: 2.5vw;
-        }
-        color: base.$primary-color;
-        font: {
-            family: base.$primary-font;
-            size: 110%;
-            weight: 500;
+        margin-bottom: 2.5vw;
+        &__title {
+            margin:0;
+            color: base.$primary-color;
+            font: {
+                family: base.$primary-font;
+                size: 110%;
+                weight: 500;
+            }
         }
     }
 }
@@ -24,13 +27,9 @@
         padding: 0 7vw;
         flex-direction: column;
         .catalog-control {
-            margin-bottom: 7vw;
+            margin-bottom: 5vw;
             &__title {
-                font-size: 110%;
-            }
-            &__count {
-                margin: 0;
-                font-size: 100%;
+                font-size: 95%;
             }
         }
     }
@@ -39,35 +38,31 @@
     .product-catalog {
         padding: 0 6vw;
         .catalog-control {
+            margin-bottom: 4vw;
+            &__title {
+                font-size: 105%;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 769px) and(max-width: 1024.99px) { 
+    .product-catalog {
+        padding: 0 6vw;
+        .catalog-control {
             margin-bottom: 3vw;
             &__title {
-                font-size: 120%;
-            }
-            &__count {
-                margin: 0;
                 font-size: 110%;
             }
         }
     }
 }
-// @media only screen and (min-width: 769px) and(max-width: 1024.99px) { 
-//     .product-catalog {
-//         margin: 0 7vw;
-//         .catalog-control {
-//             margin-bottom: 3vw;
-//     }
-// }
-
 @media only screen and (min-width: 1025px) and (max-width: 1366.99px) { 
     .product-catalog {
         .catalog-control {
             margin-bottom: 2.5vw;
             &__title {
-                font-size: 130%;
+                font-size: 110%;
             }
-            // &__count {
-            //     font-size: 115%;
-            // }
         }
     }
 }

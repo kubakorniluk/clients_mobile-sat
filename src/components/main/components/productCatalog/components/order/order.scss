@@ -3,7 +3,9 @@
     display: flex;
     flex-direction: column;
     margin: 5vw 0;
-    padding: 5vw 5vw;
+    padding: 5vw {
+        bottom: 2vw;
+    }
     .section-heading {
         color: base.$primary-color;
         text-align: center;
@@ -26,27 +28,66 @@
 @media only screen and (min-width: 0px) and (max-width: 576.99px) {
     .order {
         margin: 5vw 0;
-        padding: 5vw 5vw;
+        padding: 7vw {
+            bottom: 4vw;
+        }
         .section-heading {
-            margin: 0 {
-                bottom: 2.5vw;
-            };
-            font-size: 110%;
+            margin-bottom: 5vw;
+            font-size: 95%;
         }
         .container {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 3.5vw;
+            gap: 5vw;
         }
     }
 }
 @media only screen and (min-width: 577px) and (max-width: 768.99px) {
-
+    .order {
+        margin: 5vw 0;
+        padding: 6vw {
+            bottom: 3vw;
+        }
+        .section-heading {
+            margin-bottom: 4vw;
+            font-size: 100%;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4vw;
+        }
+    }
 }
 @media only screen and (min-width: 769px) and(max-width: 1024.99px) { 
-
+    .order {
+        margin: 5vw 0;
+        padding: 6vw {
+            bottom: 2.5vw;
+        }
+        .section-heading {
+            margin-bottom: 3vw;
+            font-size: 110%;
+        }
+        .container {
+            gap: 3vw;
+        }
+    }
 }
 @media only screen and (min-width: 1025px) and (max-width: 1366.99px) { 
-
+    .order {
+        margin: 5vw 0;
+        padding: 5vw {
+            bottom: 2.5vw;
+        }
+        .section-heading {
+            margin-bottom: 2.5vw;
+            font-size: 110%;
+        }
+        .container {
+            gap: 2.5vw;
+        }
+    }
 }

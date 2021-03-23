@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Products from './components/products/products';
+import Pagination from './components/pagination/pagination';
 import Order from './components/order/order';
 import './productCatalog.scss';
 
@@ -8,8 +9,11 @@ class ProductCatalog extends Component {
         super();
         this.state = {
             productsData: [],
-            virtualCart: []
+            virtualCart: [],
+            productsPerPage: 8,
+            currentProductsInterval: [1, 2, 3, 4, 5, 6, 7, 8]
         }
+        this.setCurrentProductsInterval = this.setCurrentProductsInterval.bind(this);
         this.addToCart = this.addToCart.bind(this);
         this.cartControl = this.cartControl.bind(this);
     }
@@ -20,6 +24,11 @@ class ProductCatalog extends Component {
                 productsData: data.default
             })
         )
+    }
+    setCurrentProductsInterval(currentInterval) {
+        this.setState({
+            currentProductsInterval: currentInterval
+        });
     }
     addToCart(item) {
         const { virtualCart } = this.state;
@@ -68,12 +77,25 @@ class ProductCatalog extends Component {
         } else { console.warn('cartControl: you\'ve passed wrong action type.') }
     }
     render() {
+        const shownProducts = this.state.productsData.filter((product, index) => {
+            if(this.state.currentProductsInterval.includes(index + 1)) {
+                return product;
+            }
+            else {return null}
+        })
         return (
             <>
                 <section className="product-catalog">
-                    {/* <h2 className="catalog-control__count">Oferta</h2> */}
+                    <div className="catalog-control">
+                        <h2 className="catalog-control__title">Oferta</h2>
+                        <Pagination 
+                            data={this.state.productsData} 
+                            productsPerPage={this.state.productsPerPage}
+                            setCurrentProductsInterval={this.setCurrentProductsInterval}
+                        />
+                    </div>
                     <Products 
-                        products={this.state.productsData}
+                        products={shownProducts}
                         addToCart={this.addToCart}
                     />
                 </section>

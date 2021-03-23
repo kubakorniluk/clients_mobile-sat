@@ -110,6 +110,10 @@
                     }
                 }
             }
+            &__label--radio {
+                display: flex;
+                flex-direction: row;
+            }
         }
         &__submit {
             padding: .75vw 1.5vw;

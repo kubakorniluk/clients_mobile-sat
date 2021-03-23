@@ -131,7 +131,7 @@ class OrderForm extends Component {
                             value={postalCode} 
                             name="postalCode"
                             type="text"
-                            inputmode="numeric"
+                            inputMode="numeric"
                             placeholder="99-999"
                         />
                     </label>
@@ -148,21 +148,36 @@ class OrderForm extends Component {
                         />
                     </label>
                 </fieldset>
-                {/* <fieldset className="fieldset">
+                <fieldset className="fieldset">
+                    <legend className="fieldset__title">Sposób dostawy</legend>
+                    <label className="fieldset__label" style={{flexDirection: 'row'}} htmlFor="">
+                        <input 
+                            type="radio"
+                        />
+                        Kurier Inpost (15zł)
+                    </label>
+                    <label className="fieldset__label" htmlFor="" style={{flexDirection: 'row'}}>
+                        <input 
+                            type="radio"
+                        />
+                        Poczta polska (12zł)
+                    </label>
+                </fieldset>
+                <fieldset className="fieldset">
                     <legend className="fieldset__title">Sposób płatności</legend>
-                    <label className="fieldset__label" htmlFor="">
+                    <label className="fieldset__label" style={{flexDirection: 'row'}} htmlFor="">
                         <input 
                             type="radio"
                         />
                         Przelew tradycyjny
                     </label>
-                    <label className="fieldset__label" htmlFor="">
+                    <label className="fieldset__label" htmlFor="" style={{flexDirection: 'row'}}>
                         <input 
                             type="radio"
                         />
                         Za pobraniem
                     </label>
-                </fieldset> */}
+                </fieldset>
                 <button className="order-form__submit" type="submit">Zamawiam i płacę</button>
             </form>
         );

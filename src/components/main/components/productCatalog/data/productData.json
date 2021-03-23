@@ -26,5 +26,61 @@
         "name": "Maseczka S",
         "category": "maseczki",
         "price": 99.99
+    },
+    {
+        "id": 5,
+        "img": "product-image.jpeg",
+        "name": "Opaska v2",
+        "category": "opaski",
+        "price": 49.00
+    },
+    {
+        "id": 6,
+        "img": "product-image.jpeg",
+        "name": "Zegarek 4",
+        "category": "zegarki",
+        "price": 1659.99
+    },
+    {
+        "id": 7,
+        "img": "product-image.jpeg",
+        "name": "Opaska XS",
+        "category": "opaski",
+        "price": 29.99
+    },
+    {
+        "id": 8,
+        "img": "product-image.jpeg",
+        "name": "Maseczka S",
+        "category": "maseczki",
+        "price": 99.99
+    },
+    {
+        "id": 9,
+        "img": "product-image.jpeg",
+        "name": "Opaska v2",
+        "category": "opaski",
+        "price": 49.00
+    },
+    {
+        "id": 10,
+        "img": "product-image.jpeg",
+        "name": "Zegarek 4",
+        "category": "zegarki",
+        "price": 1659.99
+    },
+    {
+        "id": 11,
+        "img": "product-image.jpeg",
+        "name": "Opaska XS",
+        "category": "opaski",
+        "price": 29.99
+    },
+    {
+        "id": 12,
+        "img": "product-image.jpeg",
+        "name": "Maseczka S",
+        "category": "maseczki",
+        "price": 99.99
     }
 ]
