@@ -30,7 +30,7 @@ class Navbar extends Component {
             </Suspense>
         )
         const desktop = <Menu version='desktop'/>;
-        const logo = <h1 className="navbar__logo">e-shop.net</h1>;
+        const logo = <h1 className="navbar__logo">easyonlineshop</h1>;
         return (
             <nav className="navbar">
                 { logo }

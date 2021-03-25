@@ -54,6 +54,18 @@
                     right: 1.5vw;
                 }
             }
+            .fieldset__radio {
+                color: base.$primary-color;
+                font: {
+                    family: base.$primary-font;
+                    size: 90%;
+                    weight: 400;
+                }
+                margin: 0 {
+                    top: .75vw;
+                    right: 1vw;
+                }
+            }
         }
     }
     &__submit {
@@ -91,33 +103,38 @@
                 margin: 0 {
                     bottom: 1.5vw;
                 }
-                font-size: 110%;
+                font-size: 97.5%;
             }
             &__label {
                 display: flex;
                 flex-direction: column;
                 flex-basis: 50%;
                 margin: 0 {
-                    bottom: 1.5vw;
+                    bottom: 3vw;
                 }
-                font-size: 90%;
+                font-size: 80%;
                 .fieldset__input {
                     font-size: 90%;
-                    padding: .5vw;
+                    padding: .75vw;
                     margin: 0 {
-                        top: .75vw;
-                        right: 1.5vw;
+                        top: 1vw;
+                        right: 2vw;
+                    }
+                }
+                .fieldset__radio {
+                    font-size: 90%;
+                    padding: .75vw;
+                    margin: 0 {
+                        top: 2.5vw;
+                        right: 2.5vw;
                     }
                 }
             }
-            &__label--radio {
-                display: flex;
-                flex-direction: row;
-            }
         }
         &__submit {
-            padding: .75vw 1.5vw;
-            font-size: 90%;
+            margin-top: 3vw;
+            padding: 3vw 6vw;
+            font-size: 75%;
         }
     }
 }

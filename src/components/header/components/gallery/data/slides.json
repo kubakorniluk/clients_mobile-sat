@@ -2,13 +2,7 @@
     {
         "id": 1,
         "img": "background-image.jpeg",
-        "text": "Witamy na stronie!",
-        "subtext": "Tu będzie dodatkowy tekst"
-    },
-    {
-        "id": 2,
-        "img": "product-image.jpeg",
-        "text": "Rabaty do 20%!",
-        "subtext": "Tylko do 30 kwietnia"
+        "text": "Witamy na naszej stronie!",
+        "subtext": "Zapraszamy do zapoznania się z szeroką ofertą produktów!"
     }
 ]

@@ -50,16 +50,16 @@ class MobileMenu extends Component {
                                 onClick={this.handleClick}
                             />
                         </div>
-                        <Menu version='mobile'/>
+                        <Menu version='mobile' close={this.handleClick}/>
                     </nav>
                     <div className="sidebar-footer">
-                        <a href="mailto:" className="sidebar-footer__item">
+                        <a href="mailto:kontakt@easyonlineshop.pl" className="sidebar-footer__item">
                             <FontAwesomeIcon style={{marginRight: '3.5vw'}} icon={faEnvelope} />
-                            contact@example.com
+                            kontakt@easyonlineshop.pl
                         </a>
-                        <a href="tel:" className="sidebar-footer__item">
+                        <a href="tel:515 298 631" className="sidebar-footer__item">
                             <FontAwesomeIcon style={{marginRight: '3.5vw'}} icon={faPhone} />
-                            (+48) 123 456 789
+                            (+48) 515 298 631
                         </a>
                         <a className="sidebar-footer__item">
                             <FontAwesomeIcon style={{marginRight: '3.5vw'}} icon={faMapMarkerAlt} />

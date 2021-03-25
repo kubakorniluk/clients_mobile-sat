@@ -13,19 +13,79 @@ class OrderForm extends Component {
             street: '',
             houseNumber: '',
             postalCode: '',
-            city: ''
-
+            city: '',
+            payment: '',
+            delivery: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.handleDelivery = this.handleDelivery.bind(this);
+        this.handlePayment = this.handlePayment.bind(this);
     }
     handleSubmit(event){
         event.preventDefault();
-        alert('dziala')
+        const date = new Date();
+        const { 
+            name, 
+            surname, 
+            mail, 
+            phone, 
+            street, 
+            houseNumber, 
+            postalCode, 
+            city,
+            delivery,
+            payment
+        } = this.state;
+        Email.send({
+            SecureToken : "9e052a11-41dc-4e59-bb09-37f7c002140d",
+            To : "kontakt@easyonlineshop.pl",
+            From : `${mail}`,
+            Subject : `Zamówienie ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`,
+            Body : `
+                <b>Dane zamawiającego</b>: <br/>
+                Imię: ${name}<br/>
+                Nazwisko: ${surname}<br />
+                E-mail: ${mail}<br />
+                Telefon: ${phone}<br />
+                <br />
+                <b>Dane do dostawy</b>:<br />
+                Ulica: ${street}<br />
+                Numer domu/mieszkania: ${houseNumber}<br />
+                Kod pocztowy: ${postalCode}<br />
+                Miasto: ${city}<br />
+                <b>Sposób dostawy</b>:<br />
+                ${delivery}<br />
+                <b>Sposób płatności</b>:<br />
+                ${payment}<br />
+                <br />
+                <b>Zamówienie</b>:<br />
+                ${this.props.virtualCart.map(item => {
+                    return `<b><h3>${item.name}</h3></b>, <h5><b>Cena: ${item.price}zł netto</h5></b>, <h3><b>Ilość: ${item.quantity}</h3></b><br />`
+                })}
+            `
+        }).then(
+            message => {
+                alert("Dziękujemy za złożenie zamówienia!");
+                location.reload();
+                console.log(message);
+            }
+        );
+
     }
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
+        })
+    }
+    handlePayment(event) {
+        this.setState({
+            payment: event.target.value
+        })
+    }
+    handleDelivery(event) {
+        this.setState({
+            delivery: event.target.value
         })
     }
     render() { 
@@ -37,7 +97,9 @@ class OrderForm extends Component {
             street, 
             houseNumber, 
             postalCode, 
-            city
+            city,
+            delivery,
+            payment
         } = this.state;
         return (  
             <form 
@@ -132,7 +194,7 @@ class OrderForm extends Component {
                             name="postalCode"
                             type="text"
                             inputMode="numeric"
-                            placeholder="99-999"
+                            placeholder="00-000"
                         />
                     </label>
                     <label className="fieldset__label" htmlFor="city">
@@ -144,36 +206,56 @@ class OrderForm extends Component {
                             value={city} 
                             name="city" 
                             type="text"
-                            placeholder="Eshop"
+                            placeholder="Warszawa"
                         />
                     </label>
                 </fieldset>
                 <fieldset className="fieldset">
                     <legend className="fieldset__title">Sposób dostawy</legend>
-                    <label className="fieldset__label" style={{flexDirection: 'row'}} htmlFor="">
+                    <label className="fieldset__label" style={{flexDirection: 'row', alignItems: 'center'}} htmlFor="kurierInpost">
                         <input 
+                            id="kurierInpost"
                             type="radio"
+                            className="fieldset__radio"
+                            value="Kurier Inpost (Od 12zł)"
+                            checked={delivery === "Kurier Inpost (Od 12zł)"}
+                            onChange={this.handleDelivery}
                         />
-                        Kurier Inpost (15zł)
+                        Kurier Inpost (Od 12zł)
                     </label>
-                    <label className="fieldset__label" htmlFor="" style={{flexDirection: 'row'}}>
+                    <label className="fieldset__label" htmlFor="pocztaPolska" style={{flexDirection: 'row', alignItems: 'center'}}>
                         <input 
+                            id="pocztaPolska"
                             type="radio"
+                            className="fieldset__radio"
+                            value="Poczta polska (Od 12zł)"
+                            checked={delivery === "Poczta polska (Od 12zł)"}
+                            onChange={this.handleDelivery}
                         />
-                        Poczta polska (12zł)
+                        Poczta polska (Od 12zł)
                     </label>
                 </fieldset>
                 <fieldset className="fieldset">
                     <legend className="fieldset__title">Sposób płatności</legend>
-                    <label className="fieldset__label" style={{flexDirection: 'row'}} htmlFor="">
+                    <label className="fieldset__label" style={{flexDirection: 'row', alignItems: 'center'}} htmlFor="przelewTradycyjny">
                         <input 
+                            id="przelewTradycyjny"
                             type="radio"
+                            className="fieldset__radio"
+                            value="Przelew tradycyjny"
+                            checked={payment === "Przelew tradycyjny"}
+                            onChange={this.handlePayment}
                         />
                         Przelew tradycyjny
                     </label>
-                    <label className="fieldset__label" htmlFor="" style={{flexDirection: 'row'}}>
+                    <label className="fieldset__label" htmlFor="zaPobraniem" style={{flexDirection: 'row', alignItems: 'center'}}>
                         <input 
+                            id="zaPobraniem"
                             type="radio"
+                            className="fieldset__radio"
+                            value="Za pobraniem"
+                            checked={payment === "Za pobraniem"}
+                            onChange={this.handlePayment}
                         />
                         Za pobraniem
                     </label>

@@ -13,7 +13,7 @@ const Cart = ({ virtualCart, cartControl }) => {
             <div className="cart-item" key={`cart-${item.id}`}>
                 <div className="preview">
                     <img 
-                        src={require(`assets/img/${item.img}`)} 
+                        src={require(`assets/img/${item.shortcut}/${item.img}`)} 
                         alt=""
                         className="preview__img"
                     />
@@ -66,6 +66,7 @@ Cart.propTypes = {
             img: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
             price: PropTypes.number.isRequired,
+            shortcut: PropTypes.string.isRequired,
             quantity: PropTypes.number.isRequired
         })
     ).isRequired,

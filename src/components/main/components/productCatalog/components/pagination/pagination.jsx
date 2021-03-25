@@ -102,7 +102,7 @@ Pagination.propTypes = {
             id: PropTypes.number.isRequired,
             img: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
-            category: PropTypes.string.isRequired,
+            shortcut: PropTypes.string.isRequired,
             price: PropTypes.number.isRequired
         })
     ).isRequired,

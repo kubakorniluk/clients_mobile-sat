@@ -1,8 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons/faMapMarkerAlt.js';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope.js';
-import { faPhone } from '@fortawesome/free-solid-svg-icons/faPhone.js';
 import Copyright from './components/copyright/copyright';
 import { reactScrollIntoView } from 'helpers/reactScrollIntoView';
 import './footer.scss';
@@ -25,16 +21,13 @@ const Footer = () => {
     const contact = (
         <div className="links">
             <h2 className="links__heading">Masz pytanie?</h2>
-            <a href="mailto:" className="links__item links__item--contact">
-                {/* <FontAwesomeIcon style={{marginRight: '.75vw'}} icon={faEnvelope} /> */}
-                contact@example.com
+            <a href="mailto:kontakt@easyonlineshop.pl" className="links__item links__item--contact">
+                kontakt@easyonlineshop.pl
             </a>
-            <a href="tel:" className="links__item links__item--contact">
-                {/* <FontAwesomeIcon style={{marginRight: '.75vw'}} icon={faPhone} /> */}
-                (+48) 123 456 789
+            <a href="tel:515 298 631" className="links__item links__item--contact">
+                (+48) 515 298 631
                 </a>
             <a className="links__item links__item--contact">
-                {/* <FontAwesomeIcon style={{marginRight: '.75vw'}} icon={faMapMarkerAlt} /> */}
                 Otwock, Polska
             </a>
         </div>

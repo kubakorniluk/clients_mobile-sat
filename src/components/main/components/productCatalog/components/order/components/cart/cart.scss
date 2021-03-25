@@ -134,7 +134,7 @@
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                flex-basis: 50%;
+                // flex-basis: 50%;
                 &__img {
                     height: 7.5vh;
                     width: 10vh;
@@ -180,7 +180,65 @@
     }
 }
 @media only screen and (min-width: 577px) and (max-width: 768.99px) {
-
+    .cart {
+        width: 100%;
+        flex-basis: 100%;
+        padding: 3vw;
+        .cart-item {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-basis: 100%;
+            margin-top: 3vw;
+            .preview {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                // flex-basis: 50%;
+                &__img {
+                    height: 7.5vh;
+                    width: 10vh;
+                    margin-right: 3vw
+                }
+                .preview-details {
+                    &__price {
+                        font-size: 90%;
+                        margin: 0 {
+                            top: .75vw;
+                        };
+                    }
+                    &__title {
+                        font-size: 90%;
+                    }
+                }
+            }
+            .quantity {
+                &__title {
+                    font-size: 90%;
+                }
+                .quantity-control {
+                    margin-top: .75vw;
+                    &__count {
+                        font-size: 90%;
+                    }
+                    &__dec, &__inc {
+                        margin: 0 3vw;
+                        font-size: 90%; 
+                    }
+                }
+            }
+            &__delete {
+                font-size: 100%;
+                margin: 0 {
+                    right: 3vw;
+                }
+            }
+        }
+        .cart-empty {
+            font-size: 110%;
+        }
+    }
 }
 @media only screen and (min-width: 769px) and(max-width: 1024.99px) { 
 

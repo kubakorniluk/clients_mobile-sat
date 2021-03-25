@@ -8,7 +8,7 @@ const Products = ({
     const renderProducts = () => {
         return (
             products.map((item) => {
-                let bgImg = require(`assets/img/${item.img}`);
+                let bgImg = require(`assets/img/${item.shortcut}/${item.img}`);
                 return (
                     <div
                         className="card" 
@@ -19,7 +19,7 @@ const Products = ({
                         </div>
                         <header className="card-content">
                             <div className="card-details">
-                                <h3 className="card-details__price">{`${item.price.toFixed(2)} zł`}</h3>
+                                <h3 className="card-details__price">{`${item.price.toFixed(2)} zł netto`}</h3>
                                 <h3 className="card-details__title">{item.name}</h3>
                             </div>
                             <button 
@@ -29,6 +29,7 @@ const Products = ({
                                     "img": item.img,
                                     "name": item.name,
                                     "price": item.price,
+                                    "shortcut": item.shortcut,
                                     "quantity": 1
                                 })}
                             >
@@ -58,7 +59,7 @@ Products.propTypes = {
             id: PropTypes.number.isRequired,
             img: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
-            category: PropTypes.string.isRequired,
+            shortcut: PropTypes.string.isRequired,
             price: PropTypes.number.isRequired
         })
     ).isRequired,
