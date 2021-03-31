@@ -7,7 +7,7 @@ const Products = ({
 }) => {
     const renderProducts = () => {
         return (
-            products.map((item) => {
+            products.map(item => {
                 let bgImg = require(`assets/img/${item.shortcut}/${item.img}`);
                 return (
                     <div
@@ -30,7 +30,8 @@ const Products = ({
                                     "name": item.name,
                                     "price": item.price,
                                     "shortcut": item.shortcut,
-                                    "quantity": 1
+                                    "quantity": 1,
+                                    "inputName": item.inputName
                                 })}
                             >
                                 Do koszyka
@@ -60,7 +61,8 @@ Products.propTypes = {
             img: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
             shortcut: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired
+            price: PropTypes.number.isRequired,
+            inputName: PropTypes.string.isRequired
         })
     ).isRequired,
     addToCart: PropTypes.func.isRequired

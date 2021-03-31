@@ -33,14 +33,15 @@ class ProductCatalog extends Component {
     addToCart(item) {
         const { virtualCart } = this.state;
         if(virtualCart.some(obj => obj['name'] === item.name)) { 
-            this.setState({
-                virtualCart: virtualCart.map((findItem, index) => {
-                    if(index == virtualCart.findIndex(i => i.name === item.name)) {
-                        findItem.quantity++;
-                    }
-                    return findItem;
-                })
-            })
+            // this.setState({
+            //     virtualCart: virtualCart.map((findItem, index) => {
+            //         if(index == virtualCart.findIndex(i => i.name === item.name)) {
+            //             findItem.quantity++;
+            //         }
+            //         return findItem;
+            //     })
+            // })
+            return null;
         } else {
             this.setState(prevState => ({
                 virtualCart: [...prevState.virtualCart, item]
@@ -48,14 +49,15 @@ class ProductCatalog extends Component {
         }
     }
     // my own redux :)
-    cartControl(action, item) {
+    cartControl(action, item, value) {
         const { virtualCart } = this.state;
         if(action && typeof action == 'string') {
             if(action == 'DELETE') {
                 this.setState({
                     virtualCart: virtualCart.filter(i => i.id !== item)
                 });
-            } else if(action == 'QUANTITY_INCREMENT') {
+            }
+            else if(action == 'QUANTITY_INCREMENT') {
                 this.setState({
                     virtualCart: virtualCart.map((findItem, index) => {
                         if(index == virtualCart.findIndex(i => i.name === item.name)) {
@@ -73,6 +75,17 @@ class ProductCatalog extends Component {
                         return findItem;
                     })
                 })
+            } 
+            else if(action == 'QUANTITY_CHANGE') {
+                console.log(value)
+                this.setState({
+                    virtualCart: virtualCart.map((findItem, index) => {
+                        if(index == virtualCart.findIndex(i => i.name === item.name)) {
+                            findItem.quantity = value;
+                        }
+                        return findItem;
+                    })
+                });
             } else { console.warn(`cartControl: you've tried to provide '${action}' as action. This method doesn't exist.`) }
         } else { console.warn('cartControl: you\'ve passed wrong action type.') }
     }

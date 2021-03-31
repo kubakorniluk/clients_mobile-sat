@@ -67,10 +67,15 @@
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                justify-content: center;
                 margin-top: .5vw;
                 &__count {
                     margin: 0;
-                    color: base.$primary-color;  
+                    color: base.$primary-color; 
+                    background-color: transparent; 
+                    border: 1px solid rgb(150, 150, 150);
+                    padding: .25em .5em;
+                    width: 25%;
                     font: {
                         family: base.$primary-font;
                         size: 90%;
@@ -159,6 +164,7 @@
                 .quantity-control {
                     margin-top: .75vw;
                     &__count {
+                        width: 30%;
                         font-size: 80%;
                     }
                     &__dec, &__inc {
@@ -220,6 +226,7 @@
                 .quantity-control {
                     margin-top: .75vw;
                     &__count {
+                        width: 30%;
                         font-size: 90%;
                     }
                     &__dec, &__inc {
@@ -241,7 +248,66 @@
     }
 }
 @media only screen and (min-width: 769px) and(max-width: 1024.99px) { 
-
+.cart {
+        width: 100%;
+        flex-basis: 100%;
+        padding: 3vw;
+        .cart-item {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-basis: 100%;
+            margin-top: 3vw;
+            .preview {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                // flex-basis: 50%;
+                &__img {
+                    height: 7.5vh;
+                    width: 10vh;
+                    margin-right: 3vw
+                }
+                .preview-details {
+                    &__price {
+                        font-size: 90%;
+                        margin: 0 {
+                            top: .75vw;
+                        };
+                    }
+                    &__title {
+                        font-size: 90%;
+                    }
+                }
+            }
+            .quantity {
+                &__title {
+                    font-size: 90%;
+                }
+                .quantity-control {
+                    margin-top: .75vw;
+                    &__count {
+                        width: 30%;
+                        font-size: 90%;
+                    }
+                    &__dec, &__inc {
+                        margin: 0 3vw;
+                        font-size: 90%; 
+                    }
+                }
+            }
+            &__delete {
+                font-size: 100%;
+                margin: 0 {
+                    right: 3vw;
+                }
+            }
+        }
+        .cart-empty {
+            font-size: 110%;
+        }
+    }
 }
 @media only screen and (min-width: 1025px) and (max-width: 1366.99px) { 
 

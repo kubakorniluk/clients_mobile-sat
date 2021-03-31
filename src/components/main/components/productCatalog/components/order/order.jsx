@@ -11,8 +11,8 @@ class Order extends PureComponent {
 
         }
     }
-    liftUp(action, item) {
-        this.props.cartControl(action, item)
+    liftUp(action, item, event) {
+        this.props.cartControl(action, item, event)
     }
     render() { 
         return ( 
@@ -21,7 +21,7 @@ class Order extends PureComponent {
                 <div className="container">
                     <Cart
                         virtualCart={this.props.virtualCart}
-                        cartControl={(action, item) => this.liftUp(action, item)}
+                        cartControl={(action, item, event) => this.liftUp(action, item, event)}
                     />
                     <OrderForm virtualCart={this.props.virtualCart}/>
                 </div>
@@ -39,7 +39,8 @@ Order.propTypes = {
             img: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
             price: PropTypes.number.isRequired,
-            quantity: PropTypes.number.isRequired
+            quantity: PropTypes.number.isRequired,
+            inputName: PropTypes.string.isRequired
         })
     ).isRequired,
     cartControl: PropTypes.func.isRequired

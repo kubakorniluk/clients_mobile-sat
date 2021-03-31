@@ -4,20 +4,23 @@
         "img": "kn95-huate-miniature-2.jpg",
         "name": "Maseczka KN95 Huate",
         "shortcut": "kn95-huate",
-        "price": 1.99
+        "price": 1.99,
+        "inputName": "knHuate"
     },
     {
         "id": 2,
         "img": "kn95-quan-miniature-2.jpg",
         "name": "Maseczka KN95 Quan",
         "shortcut": "kn95-quan",
-        "price": 1.99
+        "price": 1.99,
+        "inputName": "knQuan"
     },
     {
         "id": 3,
         "img": "kn95-miniature.jpg",
         "name": "Maseczka KN95",
         "shortcut": "kn95",
-        "price": 1.99
+        "price": 1.99,
+        "inputName": "kn"
     }
 ]
